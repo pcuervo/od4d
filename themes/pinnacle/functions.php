@@ -94,7 +94,7 @@ function show_filters( $taxonomy ){
 	$args = array(
 	    'orderby'                => 'name',
 	    'hide_empty'             => true,
-	); 
+	);
 	$filters = get_terms( $taxonomy, $args );
 	if( empty( $filters ) ) return;
 

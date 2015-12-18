@@ -144,7 +144,7 @@
 									case 'block_seven':
 											get_template_part('templates/home/icon', 'menu');
 									break;
-								}
+					    		}
 							}
 						endif; ?>
 
