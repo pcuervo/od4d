@@ -4,7 +4,7 @@
  */
 function pinnacle_sidebar_list() {
   $all_sidebars=array(array('name'=>__('Primary Sidebar', 'pinnacle'), 'id'=>'sidebar-primary'));
-  global $pinnacle; 
+  global $pinnacle;
   if(isset($pinnacle['cust_sidebars'])) {
   if (is_array($pinnacle['cust_sidebars'])) {
     $i = 1;
@@ -25,7 +25,7 @@ function pinnacle_register_sidebars(){
   $the_sidebars = pinnacle_sidebar_list();
   if (function_exists('register_sidebar')){
     foreach($the_sidebars as $side){
-      pinnacle_register_sidebar($side['name'], $side['id']);    
+      pinnacle_register_sidebar($side['name'], $side['id']);
     }
 
   }
@@ -42,7 +42,7 @@ function pinnacle_register_sidebar($name, $id){
 add_action('widgets_init', 'pinnacle_register_sidebars');
 
 function pinnacle_widgets_init() {
-    //Topbar 
+    //Topbar
   if(pinnacle_display_topbar_widget()) {
   register_sidebar(array(
     'name'          => __('Topbar Widget', 'pinnacle'),
@@ -221,7 +221,7 @@ class kad_contact_widget extends WP_Widget {
     }
   ?>
     <div class="vcard">
-      
+
       <?php if(!empty($instance['company'])):?><h5 class="vcard-company"><i class="icon-building"></i><?php echo esc_html($instance['company']); ?></h5><?php endif;?>
       <?php if(!empty($instance['name'])):?><p class="vcard-name"><i class="icon-user"></i><?php echo esc_html($instance['name']); ?></p><?php endif;?>
       <?php if(!empty($instance['street_address']) || !empty($instance['locality']) || !empty($instance['region']) ):?>
@@ -373,7 +373,7 @@ class kad_social_widget extends WP_Widget {
     }
   ?>
     <div class="kadence_social_widget clearfix">
-      
+
 <?php if(!empty($instance['facebook'])):?><a href="<?php echo esc_url($instance['facebook']); ?>" class="facebook_link" title="Facebook" target="_blank" data-toggle="tooltip" data-placement="top" data-original-title="Facebook"><i class="icon-facebook"></i></a><?php endif;?>
 <?php if(!empty($instance['twitter'])):?><a href="<?php echo esc_url($instance['twitter']); ?>" class="twitter_link" title="Twitter" target="_blank" data-toggle="tooltip" data-placement="top" data-original-title="Twitter"><i class="icon-twitter"></i></a><?php endif;?>
 <?php if(!empty($instance['instagram'])):?><a href="<?php echo esc_url($instance['instagram']); ?>" class="instagram_link" title="Instagram" target="_blank" data-toggle="tooltip" data-placement="top" data-original-title="Instagram"><i class="icon-instagram"></i></a><?php endif;?>
@@ -503,7 +503,7 @@ class kad_social_widget extends WP_Widget {
 /**
  * Kadence Recent_Posts widget class
  *  Just a rewite of wp recent post
- * 
+ *
  */
 class kad_recent_posts_widget extends WP_Widget {
 
@@ -547,9 +547,9 @@ class kad_recent_posts_widget extends WP_Widget {
     <?php  while ($r->have_posts()) : $r->the_post(); ?>
     <li class="clearfix postclass">
         <a href="<?php the_permalink() ?>" title="<?php echo esc_attr(get_the_title() ? get_the_title() : get_the_ID()); ?>" class="recentpost_featimg">
-          <?php global $post; if(has_post_thumbnail( $post->ID ) ) { 
-            the_post_thumbnail( 'pinnacle_widget-thumb' ); 
-          } else { 
+          <?php global $post; if(has_post_thumbnail( $post->ID ) ) {
+            the_post_thumbnail( 'pinnacle_widget-thumb' );
+          } else {
             $image_url = pinnacle_img_placeholder_small();
             echo '<img width="60" height="60" src="'.$image_url.'" class="attachment-widget-thumb wp-post-image" alt="">'; } ?></a>
         <a href="<?php the_permalink() ?>" title="<?php echo esc_attr(get_the_title() ? get_the_title() : get_the_ID()); ?>" class="recentpost_title"><?php if ( get_the_title() ) the_title(); else the_ID(); ?></a>
@@ -593,7 +593,7 @@ class kad_recent_posts_widget extends WP_Widget {
      $categories= get_categories();
      $cate_options = array();
           $cate_options[] = '<option value="">All</option>';
- 
+
     foreach ($categories as $cate) {
       if ($thecate==$cate->slug) { $selected=' selected="selected"';} else { $selected=""; }
       $cate_options[] = '<option value="' . $cate->slug .'"' . $selected . '>' . $cate->name . '</option>';
@@ -615,7 +615,7 @@ class kad_recent_posts_widget extends WP_Widget {
 
 /**
  * Kadence Post Grid widget class
- * 
+ *
  */
 class kad_post_grid_widget extends WP_Widget {
 
@@ -648,23 +648,23 @@ class kad_post_grid_widget extends WP_Widget {
 
     $title = apply_filters('widget_title', empty($instance['title']) ? '' : $instance['title'], $instance, $this->id_base);
     if ( empty( $instance['number'] ) || ! $number = absint( $instance['number'] ) )
-      $number = 8; 
+      $number = 8;
       echo $before_widget; ?>
         <?php if ( $title ) echo $before_title . $title . $after_title;
-        
+
        switch ($instance['gridchoice']) {
-      
+
         case "portfolio" :
-        
-          $r = new WP_Query( apply_filters('widget_posts_args', array( 
-          'post_type' => 'portfolio', 
-          'portfolio-type' => $instance['thetype'], 
-          'no_found_rows' => true, 
-          'posts_per_page' => $number, 
-          'post_status' => 'publish', 
+
+          $r = new WP_Query( apply_filters('widget_posts_args', array(
+          'post_type' => 'portfolio',
+          'portfolio-type' => $instance['thetype'],
+          'no_found_rows' => true,
+          'posts_per_page' => $number,
+          'post_status' => 'publish',
           'ignore_sticky_posts' => true ) ) );
           if ($r->have_posts()) :
-          ?>        
+          ?>
           <div class="imagegrid-widget">
           <?php  while ($r->have_posts()) : $r->the_post(); ?>
           <?php global $post; if(has_post_thumbnail( $post->ID ) ) { ?> <a href="<?php the_permalink() ?>" title="<?php echo esc_attr(get_the_title() ? get_the_title() : get_the_ID()); ?>" class="imagegrid_item lightboxhover"><?php the_post_thumbnail( 'pinnacle_widget-thumb' ); ?>
@@ -674,22 +674,22 @@ class kad_post_grid_widget extends WP_Widget {
           </div>
           <?php wp_reset_postdata(); endif;
                 break;
-                case "post":          
+                case "post":
             $r = new WP_Query( apply_filters( 'widget_posts_args', array( 'posts_per_page' => $number, 'category_name' => $instance['thecat'], 'no_found_rows' => true, 'post_status' => 'publish', 'ignore_sticky_posts' => true ) ) );
             if ($r->have_posts()) : ?>
             <div class="imagegrid-widget">
           <?php  while ($r->have_posts()) : $r->the_post(); ?>
-          
+
             <?php global $post; if(has_post_thumbnail( $post->ID ) ) { ?> <a href="<?php the_permalink() ?>" title="<?php echo esc_attr(get_the_title() ? get_the_title() : get_the_ID()); ?>" class="imagegrid_item lightboxhover"><?php the_post_thumbnail( 'pinnacle_widget-thumb' ); ?></a><?php } ?>
           <?php endwhile; ?>
           </div>
           <?php wp_reset_postdata(); endif;
-               break; 
+               break;
        } ?>
-             
+
              <div class="clearfix"></div>
       <?php echo $after_widget; ?>
-        
+
 <?php
         $cache[$args['widget_id']] = ob_get_flush();
         wp_cache_set('kadence_image_grid', $cache, 'widget');
@@ -716,7 +716,7 @@ class kad_post_grid_widget extends WP_Widget {
   }
 
   function form( $instance ) {
-    
+
     $title = isset($instance['title']) ? esc_attr($instance['title']) : '';
     $gridchoice = isset($instance['gridchoice']) ? esc_attr($instance['gridchoice']) : '';
     $number = isset($instance['number']) ? absint($instance['number']) : 6;
@@ -726,7 +726,7 @@ class kad_post_grid_widget extends WP_Widget {
      $types= get_terms('portfolio-type');
      $type_options = array();
           $type_options[] = '<option value="">All</option>';
- 
+
     foreach ($types as $type) {
       if ($thetype==$type->slug) { $selected=' selected="selected"';} else { $selected=""; }
       $type_options[] = '<option value="' . $type->slug .'"' . $selected . '>' . $type->name . '</option>';
@@ -734,7 +734,7 @@ class kad_post_grid_widget extends WP_Widget {
      $categories= get_categories();
      $cat_options = array();
           $cat_options[] = '<option value="">All</option>';
- 
+
     foreach ($categories as $cat) {
       if ($thecat==$cat->slug) { $selected=' selected="selected"';} else { $selected=""; }
       $cat_options[] = '<option value="' . $cat->slug .'"' . $selected . '>' . $cat->name . '</option>';
@@ -750,16 +750,16 @@ class kad_post_grid_widget extends WP_Widget {
             <option value="post"<?php echo ($gridchoice === 'post' ? ' selected="selected"' : ''); ?>><?php _e('Blog Posts', 'pinnacle'); ?></option>
             <option value="portfolio"<?php echo ($gridchoice === 'portfolio' ? ' selected="selected"' : ''); ?>><?php _e('Portfolio', 'pinnacle'); ?></option>
         </select></p>
-        
+
         <p><label for="<?php echo $this->get_field_id('thecat'); ?>"><?php _e('If Post - Choose Category (Optional):', 'pinnacle'); ?></label>
     <select id="<?php echo $this->get_field_id('thecat'); ?>" name="<?php echo $this->get_field_name('thecat'); ?>"><?php echo implode('', $cat_options); ?></select></p>
-        
+
     <p><label for="<?php echo $this->get_field_id('thetype'); ?>"><?php _e('If Portfolio - Choose Type (Optional):', 'pinnacle'); ?></label>
     <select id="<?php echo $this->get_field_id('thetype'); ?>" name="<?php echo $this->get_field_name('thetype'); ?>"><?php echo implode('', $type_options); ?></select></p>
-        
+
         <p><label for="<?php echo $this->get_field_id('number'); ?>"><?php _e('Number of images to show:', 'pinnacle'); ?></label>
     <input id="<?php echo $this->get_field_id('number'); ?>" name="<?php echo $this->get_field_name('number'); ?>" type="text" value="<?php echo $number; ?>" size="3" /></p>
-  
+
 <?php
   }
 }
@@ -773,7 +773,7 @@ class kad_image_widget extends WP_Widget{
         $this->alt_option_name = 'kadence_simple_image';
     }
 
-    public function widget($args, $instance){ 
+    public function widget($args, $instance){
         extract( $args );
         if (!empty($instance['image_link_open']) && $instance['image_link_open'] == "none") {
           $uselink = false;
@@ -793,10 +793,11 @@ class kad_image_widget extends WP_Widget{
           $linktype = 'target="_self"';
         }
         $image_id = attachment_url_to_postid( $instance['image_uri'] );
+        $alt_text;
         if(isset($image_id) && $image_id != '0') {
           $alt_text = get_post_meta($image_id, '_wp_attachment_image_alt', true);
         } else {
-          $alt_text == '';
+          //$alt_text == '';
         }
     ?>
      <?php echo $before_widget; ?>
@@ -823,7 +824,7 @@ class kad_image_widget extends WP_Widget{
     wp_cache_delete('kadence_simple_image', 'widget');
   }
 
-  public function form($instance){ 
+  public function form($instance){
     $image_uri = isset($instance['image_uri']) ? esc_attr($instance['image_uri']) : '';
     $image_link = isset($instance['image_link']) ? esc_attr($instance['image_link']) : '';
     if (isset($instance['image_link_open'])) { $image_link_open = esc_attr($instance['image_link_open']); } else {$image_link_open = 'lightbox';}
