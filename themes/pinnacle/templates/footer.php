@@ -6,8 +6,16 @@
 				if ($footer_layout == "fourc") {
 					if (is_active_sidebar('footer_1') ) { ?>
 						<div class="col-md-3 col-sm-6 footercol1">
-							<p>Hosted by</p>
-							<?php dynamic_sidebar('footer_1'); ?>
+							<div class="widget-1 widget-first footer-widget">
+								<aside id="kadence_simple_image-3" class="widget kadence_simple_image">
+									<div class="kad_img_upload_widget">
+										<span class="[ pull-left ][ text-left ]">Hosted by</span>
+										<a href="http://pcuervo.com/od4d/wp-content/uploads/2015/12/IDRC-logo-blue-full-name.png" data-rel="lightbox">
+											<img src="http://pcuervo.com/od4d/wp-content/uploads/2015/12/IDRC-logo-blue-full-name.png" alt="">
+										</a>
+									</div>
+								</aside>
+							</div>
 						</div>
 					<?php }; ?>
 					<?php if (is_active_sidebar('footer_2') ) { ?>

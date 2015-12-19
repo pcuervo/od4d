@@ -803,7 +803,7 @@ class kad_image_widget extends WP_Widget{
      <?php echo $before_widget; ?>
     <div class="kad_img_upload_widget">
         <?php if($uselink == true) {echo '<a href="'.esc_url($link).'" '.$linktype.'>';} ?>
-        <img src="<?php echo esc_url($instance['image_uri']); ?>" alt="<?php echo esc_attr($alt_text); ?>" />
+        <img src="<?php echo esc_url($instance['image_uri']); ?>" alt="<?php //echo esc_attr($alt_text); ?>" />
         <?php if($uselink == true) {echo '</a>'; }?>
         <?php if(!empty($instance['text'])) { ?> <p class="kadence_image_widget_caption"><?php echo esc_html($instance['text']); ?></p><?php }?>
     </div>
