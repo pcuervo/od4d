@@ -1,6 +1,6 @@
 <?php
 function pinnacle_lang_setup() {
-load_theme_textdomain('pinnacle', get_template_directory() . '/languages');
+	load_theme_textdomain('pinnacle', get_template_directory() . '/languages');
 }
 add_action( 'after_setup_theme', 'pinnacle_lang_setup' );
 
@@ -50,7 +50,16 @@ require_once locate_template('/lib/output_css.php'); 									// Fontend Custom 
  * Cuervo functions start here bruh!
  */
 
+/*------------------------------------*\
+	#CONSTANTS
+\*------------------------------------*/
+
+/**
+* Define paths to javascript, styles, theme and site.
+**/
 define( 'JSPATH', get_template_directory_uri() . '/assets/js/' );
+define( 'THEMEPATH', get_template_directory_uri() . '/' );
+define( 'SITEURL', site_url('/') );
 
 /*------------------------------------*\
 	#INCLUDES
@@ -94,7 +103,7 @@ function show_filters( $taxonomy ){
 	$args = array(
 	    'orderby'                => 'name',
 	    'hide_empty'             => true,
-	); 
+	);
 	$filters = get_terms( $taxonomy, $args );
 	if( empty( $filters ) ) return;
 

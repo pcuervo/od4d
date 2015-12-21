@@ -4,7 +4,6 @@
         <div class="row">
           <div class="main <?php echo esc_attr( pinnacle_main_class() ); ?>  postlist" role="main">
             <div class="entry-content" itemprop="mainContentOfPage">
-            
             <?php if (!have_posts()) : ?>
                 <div class="alert">
                   <?php _e('Sorry, no results were found.', 'pinnacle'); ?>
@@ -18,15 +17,15 @@
 
             <?php if ($wp_query->max_num_pages > 1) :
                       if(function_exists('pinnacle_wp_pagination')) {
-                          pinnacle_wp_pagination();   
-                      } else { ?>      
+                          pinnacle_wp_pagination();
+                      } else { ?>
                           <nav class="post-nav">
                             <ul class="pager">
                               <li class="previous"><?php next_posts_link(__('&larr; Older posts', 'pinnacle')); ?></li>
                               <li class="next"><?php previous_posts_link(__('Newer posts &rarr;', 'pinnacle')); ?></li>
                             </ul>
                           </nav>
-                      <?php } 
+                      <?php }
                   endif; ?>
             </div>
           </div><!-- /.main -->
