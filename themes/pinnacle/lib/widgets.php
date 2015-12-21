@@ -796,7 +796,7 @@ class kad_image_widget extends WP_Widget{
         if(isset($image_id) && $image_id != '0') {
           $alt_text = get_post_meta($image_id, '_wp_attachment_image_alt', true);
         } else {
-          $alt_text == '';
+          $alt_text = '';
         }
     ?>
      <?php echo $before_widget; ?>
