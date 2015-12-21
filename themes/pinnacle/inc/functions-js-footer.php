@@ -11,8 +11,12 @@ function footer_scripts(){
 ?>
 		<script type="text/javascript">
 			$( document ).ready(function() {
-				runIsotope('.isotope-container', '.post');
-				filterIsotope('.isotope-container', '.post');
+
+				<?php if( is_archive( 'results' ) ) : ?>
+					runIsotope('.isotope-container', '.post');
+					filterIsotope('.isotope-container', '.post');
+				<?php endif; ?>
+				
 			});
 		</script>
 <?php

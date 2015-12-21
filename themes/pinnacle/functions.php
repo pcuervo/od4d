@@ -107,8 +107,11 @@ function show_filters( $taxonomy ){
 	$filters = get_terms( $taxonomy, $args );
 	if( empty( $filters ) ) return;
 
-	echo '<ul data-filter-group="region">';
-	foreach ( $filters as $filter ) echo '<li><a class="[ btn ]" href="#" data-filter=".' . $filter->slug . '">' . $filter->name . '</a></li>';
+	echo '<ul class="[ button-group ]" data-filter-group="' . $taxonomy . '">';
+	echo '<li><a class="[ btn ]" href="#" data-filter="">All</a></li>';
+	foreach ( $filters as $filter ) {
+		echo '<li><a class="[ btn ]" href="#" data-filter=".' . $filter->slug . '">' . $filter->name . '</a></li>';
+	}
 	echo '</ul>';
 }
 
@@ -125,9 +128,11 @@ function show_filters( $taxonomy ){
 function get_result_filter_info( $post_id ){
 
 	$result_info = array(
-		'region'	=> get_result_slug( $post_id, 'region' ),
-		'area'		=> get_result_slug( $post_id, 'focus_areas_of_impact' ),
-		'sector'	=> get_result_slug( $post_id, 'sector' ),
+		'region'				=> get_result_slug( $post_id, 'region' ),
+		'area'					=> get_result_slug( $post_id, 'focus_areas_of_impact' ),
+		'sector'				=> get_result_slug( $post_id, 'sector' ),
+		'publication_type'		=> get_result_slug( $post_id, 'publication_type' ),
+		'implementing_partner'	=> get_result_slug( $post_id, 'implementing_partner' ),
 		);
 	return $result_info;
 }// get_result_filter_info
@@ -143,6 +148,10 @@ function get_result_slug( $post_id, $taxonomy ){
 	$slug = empty( $term ) ? '' : $term[0]->slug;
 	return $slug;
 }// get_result_slug
+
+function get_abstract( $post_id ){
+	return get_post_meta( $post_id, '_abstract_meta', true );
+}
 
 
 /*------------------------------------*\

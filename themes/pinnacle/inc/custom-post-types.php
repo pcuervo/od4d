@@ -17,6 +17,8 @@ add_action('init', function(){
 	insert_focus_area_impact_taxonomy_terms();
 	$results->add_taxonomy( 'Sector' );	
 	insert_sector_taxonomy_terms();
+	$results->add_taxonomy( 'Publication Type' );	
+	insert_publication_type_taxonomy_terms();
 
 
 
@@ -72,7 +74,20 @@ function insert_sector_taxonomy_terms(){
 
 		wp_insert_term( $sector, 'sector' );
 	}
-}// insert_region_taxonomy_terms
+}// insert_sector_taxonomy_terms
+
+/*
+ * Insert sector taxonomy terms
+ */
+function insert_publication_type_taxonomy_terms(){
+	// $sectors = array( 'Statistics', 'Agriculture', 'Cities', 'Health', 'Governance' );
+	// foreach ( $sectors as $sector ) {
+	// 	$term = term_exists( $sector, 'sector' );
+	// 	if ( FALSE !== $term && NULL !== $term ) continue;
+
+	// 	wp_insert_term( $sector, 'sector' );
+	// }
+}// insert_publication_type_taxonomy_terms
 
 
 
