@@ -129,6 +129,8 @@ function show_filters( $taxonomy ){
 function update_dynamic_taxonomies( $post_id ){
 	global $post;
 
+	if( ! isset( $post ) ) return; 
+	
 	if( 'implementing_partner' == $post->post_type )
 		insert_implementing_partner_taxonomy_term( $post->post_title );
 	
