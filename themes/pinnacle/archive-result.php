@@ -1,8 +1,20 @@
 <?php get_header(); ?>
 
+<div id="pageheader" class="titleclass">
+	<div class="header-color-overlay"></div>
+	<div class="container">
+		<div class="page-header">
+			<div class="row">
+				<div class="col-md-12">
+					<h1 class="kad-page-title entry-title" itemprop="name headline">Results</h1>
+				</div>
+			</div>
+		</div>
+	</div><!--container-->
+</div>
+
 <div class="[ container ]">
 	<div class="[ row ]">
-		<h1>Results</h1>
 		<aside class="[ col-md-3 ][ filtros ]">
 			<p>Filter by Publication Type:</p>
 		  	<?php show_filters( 'publication_type' ); ?>

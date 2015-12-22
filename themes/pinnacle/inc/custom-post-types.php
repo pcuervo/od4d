@@ -7,20 +7,21 @@
 add_action('init', function(){
 
 	// RESULTS
-	$results = register_cuztom_post_type( 'Result' );
+	$results_pt = register_cuztom_post_type( 'Result' );
 	// Add taxonomies
-	$results->add_taxonomy( 'Region' );
+	$results_pt->add_taxonomy( 'Region' );
 	insert_region_taxonomy_terms();
-	$results->add_taxonomy( 'Implementing Partner' );
+	$results_pt->add_taxonomy( 'Implementing Partner' );
 	insert_implementing_partner_taxonomy_terms();
-	$results->add_taxonomy( 'Focus / Areas of Impact' );	
+	$results_pt->add_taxonomy( 'Focus / Areas of Impact' );	
 	insert_focus_area_impact_taxonomy_terms();
-	$results->add_taxonomy( 'Sector' );	
+	$results_pt->add_taxonomy( 'Sector' );	
 	insert_sector_taxonomy_terms();
-	$results->add_taxonomy( 'Publication Type' );	
+	$results_pt->add_taxonomy( 'Publication Type' );	
 	insert_publication_type_taxonomy_terms();
 
-
+	// IMPLEMENTING PARTNERS
+	$implementin_partners_pt = register_cuztom_post_type( 'Implementing Partner' );
 
 });
 
@@ -88,6 +89,8 @@ function insert_publication_type_taxonomy_terms(){
 	// 	wp_insert_term( $sector, 'sector' );
 	// }
 }// insert_publication_type_taxonomy_terms
+
+
 
 
 

@@ -94,6 +94,23 @@ add_action( 'wp_enqueue_scripts', function(){
 **/
 add_action( 'wp_footer', 'footer_scripts', 21 );
 
+/*
+ * Insert dynamic taxonomy terms after a post has been created/saved.
+ */
+function update_dynamic_taxonomies( $post_id, $post, $update ){
+	var_dump( $_POST );
+	echo 'adsfasdfas dfasdf asdf adsf asdf asdf adsf asdf adsfasdfasdfasdfasdfasdfasdfasdfasd fasdf asdf';
+	var_dump( $post );
+	if( 'implementing_partner' == $post->post_type )
+		insert_implementing_partner_taxonomy_term( $post->post_title );
+	
+}// update_dynamic_taxonomies
+add_action( 'save_post', 'update_dynamic_taxonomies', 10, 3 );
+
+function insert_implementing_partner_taxonomy_term( $implementing_partner ){
+	echo $implementing_partner;
+}
+
 /**
  * Show filters
  * @param $taxonomy
