@@ -115,12 +115,12 @@ function show_filters( $taxonomy ){
 	$filters = get_terms( $taxonomy, $args );
 	if( empty( $filters ) ) return;
 
-	echo '<ul class="[ button-group ]" data-filter-group="' . $taxonomy . '">';
-	echo '<li><a class="[ btn ]" href="#" data-filter="">All</a></li>';
+	echo '<div class="[ button-group ]" data-filter-group="' . $taxonomy . '">';
+	echo '<a class="[ kad-btn kad-btn-small kad-btn-border-primary ]" href="#" data-filter="">All</a>';
 	foreach ( $filters as $filter ) {
-		echo '<li><a class="[ btn ]" href="#" data-filter=".' . $filter->slug . '">' . $filter->name . '</a></li>';
+		echo '<a class="[ kad-btn kad-btn-small kad-btn-border-primary ]" href="#" data-filter=".' . $filter->slug . '">' . $filter->name . '</a>';
 	}
-	echo '</ul>';
+	echo '</div>';
 }
 
 /*

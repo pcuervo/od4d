@@ -19,31 +19,31 @@
 		<aside class="[ tcol-ss-12 tcol-md-3 ][ filtros ]">
 			<h4>Filters</h4>
 			<div class="[ rowtight ][ js-filter-container ]">
-				<div class="[ tcol-ss-12 tcol-xs-4 ][ js-filter ]">
-					<p>Publication Type:</p>
+				<div class="[ tcol-ss-12 tcol-xs-4 tcol-md-12 ][ js-filter ]">
+					<h5>Publication Type:</h5>
 					<?php show_filters( 'publication_type' ); ?>
 				</div>
-				<div class="[ tcol-ss-12 tcol-xs-4 ][ js-filter ]">
-					<p>Region:</p>
+				<div class="[ tcol-ss-12 tcol-xs-4 tcol-md-12 ][ js-filter ]">
+					<h5>Region:</h5>
 					<?php show_filters( 'region' ); ?>
 				</div>
-				<div class="[ tcol-ss-12 tcol-xs-4 ][ js-filter ]">
-					<p>Implementing Partner:</p>
+				<div class="[ tcol-ss-12 tcol-xs-4 tcol-md-12 ][ js-filter ]">
+					<h5>Implementing Partner:</h5>
 					<?php show_filters( 'implementing_partner' ); ?>
 				</div>
-				<div class="[ tcol-ss-12 tcol-xs-4 ][ js-filter ]">
-					<p>Focus / Areas of impact:</p>
+				<div class="[ tcol-ss-12 tcol-xs-4 tcol-md-12 ][ js-filter ]">
+					<h5>Focus / Areas of impact:</h5>
 					<?php show_filters( 'focus_areas_of_impact' ); ?>
 				</div>
-				<div class="[ tcol-ss-12 tcol-xs-4 ][ js-filter ]">
-					<p>Sector:</p>
+				<div class="[ tcol-ss-12 tcol-xs-4 tcol-md-12 ][ js-filter ]">
+					<h5>Sector:</h5>
 					<?php show_filters( 'sector' ); ?>
 				</div>
 			</div>
 		</aside>
 		<section class="[ tcol-ss-12 tcol-md-9 ][ posts-container ]">
 			<div class="[ isotope-container ]">
-				<div class="[ row ]">
+				<div class="[ rowtight ]">
 					<?php
 					if ( have_posts()) : while ( have_posts() ) : the_post();
 						$result_filter_info = get_result_filter_info( $post->ID );
@@ -53,12 +53,18 @@
 						}
 					?>
 						<div class="[ post ][ tcol-ss-6 tcol-sm-4 tcol-lg-3 ][ <?php echo $result_filter_classes; ?>]">
-							<a href="<?php the_permalink(); ?>">
-								<h3 class="[ post-title ]"><?php the_title() ?></h3>
-								<?php the_post_thumbnail( 'thumbnail', array( 'class' => '[ post-image ][ image-responsive ]' ) ); ?>
-								<p class="[ post-implementing-partner ]"><?php the_title() ?></p>
-								<p class="[ post-type ]"><?php the_title() ?></p>
-							</a>
+							<div class="[ post__card ]">
+								<h4 class="[ post__title ]">
+									<a href="<?php the_permalink(); ?>">
+										<?php the_title() ?>
+									</a>
+								</h4>
+								<a href="<?php the_permalink(); ?>">
+									<?php the_post_thumbnail( 'medium', array( 'class' => '[ post__image ][ image-responsive ]' ) ); ?>
+								</a>
+								<p class="[ post__implementing-partner ]">Implementing partner: <a href="#">Ilda</a> <?php  ?></p>
+								<p class="[ post__type ]">Publication type: Magazine<?php  ?></p>
+							</div>
 						</div>
 					<?php endwhile; endif; ?>
 				</div>
