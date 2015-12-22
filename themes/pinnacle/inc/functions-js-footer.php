@@ -13,10 +13,11 @@ function footer_scripts(){
 			$( document ).ready(function() {
 
 				<?php if( is_archive( 'results' ) ) : ?>
+					runIsotope('.js-filter-container', '.js-filter');
 					runIsotope('.isotope-container', '.post');
 					filterIsotope('.isotope-container', '.post');
 				<?php endif; ?>
-				
+
 			});
 		</script>
 <?php

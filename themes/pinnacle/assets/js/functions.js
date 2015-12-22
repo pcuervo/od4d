@@ -10,6 +10,7 @@ function runIsotope( container, item ){
     $container.imagesLoaded( function(){
         $container.isotope({
             itemSelector : item,
+            "gutter": 10,
             layoutMode: 'masonry',
             masonry: {
                 columnWidth: item

@@ -130,13 +130,14 @@ function update_dynamic_taxonomies( $post_id ){
 	global $post;
 
 	if( 'implementing_partner' == $post->post_type )
+
 		insert_implementing_partner_taxonomy_term( $post->post_title );
-	
+
 }// update_dynamic_taxonomies
 add_action( 'save_post', 'update_dynamic_taxonomies' );
 
 function insert_implementing_partner_taxonomy_term( $implementing_partner ){
-	
+
 	$term = term_exists( $implementing_partner, 'implementing_partner' );
 	if ($term !== 0 && $term !== null) return;
 
