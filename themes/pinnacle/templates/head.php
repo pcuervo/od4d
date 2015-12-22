@@ -11,4 +11,5 @@
    	echo '<link rel="shortcut icon" type="image/x-icon" href="'. esc_attr($pinnacle['pinnacle_custom_favicon']['url']).'"/>';
    } ?>
   <?php wp_head(); ?>
+  <script src="http://maps.googleapis.com/maps/api/js?libraries=places&key=AIzaSyAjE9TVybKKQNNOa1g760xJ4y6b5YaZmq4"></script>
 </head>

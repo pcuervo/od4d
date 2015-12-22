@@ -70,3 +70,110 @@ function concatValues( obj ) {
     for ( var prop in obj ) value += obj[ prop ];
     return value;
 }
+
+/**
+ * Creates a Google Map without Markers
+ * @param string id
+ * @return obj map
+**/
+function createEmptyMap( id ){
+
+    var map = new google.maps.Map(document.getElementById( id ), {
+        zoom: 18,
+        mapTypeId: google.maps.MapTypeId.ROADMAP,
+        mapTypeControl: false,
+        streetViewControl: false,
+        panControl: false,
+        scrollwheel: false,
+        zoomControlOptions: {
+            position: google.maps.ControlPosition.RIGHT_BOTTOM
+        }
+    });
+
+    //var styles = [{"featureType":"water","elementType":"geometry","stylers":[{"color":"#e9e9e9"},{"lightness":17}]},{"featureType":"landscape","elementType":"geometry","stylers":[{"color":"#dcdcdc"},{"lightness":20}]},{"featureType":"road.highway","elementType":"geometry.fill","stylers":[{"color":"#ffffff"},{"lightness":17}]},{"featureType":"road.highway","elementType":"geometry.stroke","stylers":[{"color":"#ffffff"},{"lightness":29},{"weight":0.2}]},{"featureType":"road.arterial","elementType":"geometry","stylers":[{"color":"#ffffff"},{"lightness":18}]},{"featureType":"road.local","elementType":"geometry","stylers":[{"color":"#ffffff"},{"lightness":16}]},{"featureType":"poi","elementType":"geometry","stylers":[{"color":"#dcdcdc"},{"lightness":21}]},{"featureType":"poi.park","elementType":"geometry","stylers":[{"color":"#dedede"},{"lightness":21}]},{"elementType":"labels.text.stroke","stylers":[{"visibility":"on"},{"color":"#ffffff"},{"lightness":16}]},{"elementType":"labels.text.fill","stylers":[{"saturation":36},{"color":"#333333"},{"lightness":40}]},{"elementType":"labels.icon","stylers":[{"visibility":"off"}]},{"featureType":"transit","elementType":"geometry","stylers":[{"color":"#f2f2f2"},{"lightness":19}]},{"featureType":"administrative","elementType":"geometry.fill","stylers":[{"color":"#fefefe"},{"lightness":20}]},{"featureType":"administrative","elementType":"geometry.stroke","stylers":[{"color":"#fefefe"},{"lightness":17},{"weight":1.2}]}];
+    var styles = [{"featureType": "all","elementType": "all","stylers": [{"hue": "#00a5b1"}]}];
+    var styledMap = new google.maps.StyledMapType( styles, { name: "Styled Map" } );
+    map.mapTypes.set('map_style', styledMap);
+    map.setMapTypeId('map_style');
+
+    return map;
+
+}// createEmptyMap
+
+/**
+ * Add Markers of Implementing Partners to an empty map
+**/
+function addAllMarkers(){
+
+    var map = createEmptyMap( 'map' );
+    var markers = [];
+    // implementingPartnersCoordinates comes from WP functions.php
+    var coordinates = $.parseJSON( implementingPartnersCoordinates );
+    $.each( coordinates, function( slug, coord ){
+
+        // Skip if Implementing Partner doesn't have coordinates
+        if( '' === coord.lat ) return true;
+
+        var marker = createMarker( map, coord.lat, coord.lng );
+        createInfoWindow( map, marker, coord.implementingPartner, coord.permalink );
+        markers.push( marker );
+    });
+    autoCenter( map, markers );
+
+}// addAllMarkers
+
+/**
+ * Creates a new markers
+ * @param GoogleMap map
+ * @param float lat
+ * @param float lng
+ * @return Marker marker
+**/
+function createMarker( map, lat, lng ){
+
+    var marker = new google.maps.Marker({
+        position: new google.maps.LatLng( lat, lng ),
+        map: map
+    });
+    return marker;
+
+}// createMarker
+
+/**
+ * Centers the map based on the existing markers
+ * @param GoogleMap map
+ * @param array markers
+**/
+function autoCenter( map, markers ) {
+
+    var bounds = new google.maps.LatLngBounds();
+    $.each(markers, function (index, marker) { bounds.extend(marker.position); });
+    map.fitBounds(bounds);
+
+    var listener = google.maps.event.addListener(map, "idle", function() {
+        if (map.getZoom() > 16) map.setZoom(16);
+        google.maps.event.removeListener(listener);
+    });
+
+} // autoCenter
+
+/**
+ * Creates an InfoWindow for a given Marker
+ * @param GoogleMap map
+ * @param Marker marker
+ * @param string title
+ * @param string permalink
+**/
+function createInfoWindow( map, marker, title, permalink ){
+
+    var infoWindow = new google.maps.InfoWindow({ maxWidth: 200 });
+    infoWindow.setContent( '<a class="" href="' + permalink + '">' + title + '<a/>' );
+
+    //infoWindows.push( infoWindow );
+
+    google.maps.event.addListener( marker, 'click', function() {
+        infoWindow.open( map, this );
+        //styleInfoWindow();
+     });
+
+}// createInfoWindow
