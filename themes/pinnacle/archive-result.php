@@ -7,11 +7,14 @@
 			<div class="row">
 				<div class="col-md-12">
 					<h1 class="kad-page-title entry-title" itemprop="name headline">Results</h1>
+					<div class="subtitle"> Lorem ipsum</div>
 				</div>
 			</div>
 		</div>
 	</div><!--container-->
 </div>
+
+<br />
 
 <div class="[ container ]">
 	<div class="[ row ]">
@@ -50,6 +53,5 @@
 		</section>
 	</div>
 </div><!--container-->
-
 
 <?php get_footer(); ?>
