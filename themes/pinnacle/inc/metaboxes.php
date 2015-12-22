@@ -14,6 +14,7 @@ add_action('add_meta_boxes', function(){
 			add_meta_box( 'year_of_publication', 'Year of Publication', 'metabox_year_of_publication', 'result', 'advanced', 'high' );
 			add_meta_box( 'authors', 'Authors', 'metabox_authors', 'result', 'advanced', 'high' );
 			add_meta_box( 'institution', 'Institution', 'metabox_institution', 'result', 'advanced', 'high' );
+			add_meta_box( 'city', 'City', 'metabox_city', 'result', 'advanced', 'high' );
 			add_meta_box( 'url', 'URL', 'metabox_url', 'result', 'advanced', 'high' );
 		case 'implementing_partner':
 			add_meta_box( 'official_website', 'Official Website Url', 'metabox_official_website', 'implementing_partner', 'advanced', 'high' );
@@ -65,9 +66,24 @@ function metabox_institution( $post ){
 	$institution = get_post_meta($post->ID, '_institution_meta', true);
 
 	wp_nonce_field(__FILE__, '_institution_meta_nonce');
-
+	
 	echo "<input type='text' class='[ widefat ]' name='_institution_meta' value='$institution'>";
 }// metabox_institution
+
+function metabox_city( $post ){
+	$city 		= get_post_meta($post->ID, '_city_meta', true);
+	$lat 	 	= get_post_meta($post->ID, '_lat_meta', true);
+	$lon 		= get_post_meta($post->ID, '_lon_meta', true);
+
+	wp_nonce_field(__FILE__, '_city_meta_nonce');
+	wp_nonce_field(__FILE__, '_lat_meta_nonce');
+	wp_nonce_field(__FILE__, '_lon_meta_nonce');
+
+	echo "<label><small>This part is powered by Google Maps to save coordinates for the map.</small></label>";
+	echo "<input type='text' class='[ widefat ]' id='geo-autocomplete' name='_city_meta' value='$city'>";
+	echo "<input type='hidden' class='[ widefat ]' id='lat' name='_lat_meta' value='$lat' data-geo='lat' />";
+	echo "<input type='hidden' class='[ widefat ]' id='lon' name='_lon_meta' value='$lon' data-geo='lng' />";
+}// metabox_city
 
 function metabox_url( $post ){
 	$url = get_post_meta($post->ID, '_url_meta', true);
@@ -100,15 +116,7 @@ function metabox_rss_link( $post ){
  * Save metaboxes data
  */
 
-add_action('save_post', function($post_id){
-	if ( ! current_user_can('edit_page', $post_id))
-		return $post_id;
-
-	if ( defined('DOING_AUTOSAVE') and DOING_AUTOSAVE )
-		return $post_id;
-
-	if ( wp_is_post_revision($post_id) OR wp_is_post_autosave($post_id) )
-		return $post_id;
+add_action('save_post', function( $post_id ){
 
 	// Save metaboxes for post type Result
 	if ( isset($_POST['_abstract_meta']) and check_admin_referer(__FILE__, '_abstract_meta_nonce') ){

@@ -1,8 +1,4 @@
 <?php
-function pinnacle_lang_setup() {
-	load_theme_textdomain('pinnacle', get_template_directory() . '/languages');
-}
-add_action( 'after_setup_theme', 'pinnacle_lang_setup' );
 
 /*
  * Init Customizer Options
@@ -69,6 +65,7 @@ include( 'inc/cuztom/cuztom.php' );
 require_once( 'inc/custom-post-types.php' );
 require_once( 'inc/metaboxes.php' );
 require_once( 'inc/functions-js-footer.php' );
+require_once( 'inc/functions-js-footer-admin.php' );
 
 
 
@@ -88,28 +85,22 @@ add_action( 'wp_enqueue_scripts', function(){
 	wp_enqueue_script( 'functions', JSPATH.'functions.js', array('plugins'), '1.0', true );
 
 });
+/**
+* Enqueue admin scripts and styles.
+**/
+add_action( 'admin_enqueue_scripts', function(){
+
+	// scripts
+	wp_enqueue_script( 'gmaps', JSPATH.'gmaps.min.js', array('jquery'), '1.0' );
+	wp_enqueue_script( 'geo-autocomplete', JSPATH.'geocomplete.min.js', array('gmaps'), '1.0' );
+
+});
 
 /**
-* Add javascript to the footer of pages.
+* Add javascript to the footer of pages and admin.
 **/
 add_action( 'wp_footer', 'footer_scripts', 21 );
-
-/*
- * Insert dynamic taxonomy terms after a post has been created/saved.
- */
-function update_dynamic_taxonomies( $post_id, $post, $update ){
-	var_dump( $_POST );
-	echo 'adsfasdfas dfasdf asdf adsf asdf asdf adsf asdf adsfasdfasdfasdfasdfasdfasdfasdfasd fasdf asdf';
-	var_dump( $post );
-	if( 'implementing_partner' == $post->post_type )
-		insert_implementing_partner_taxonomy_term( $post->post_title );
-	
-}// update_dynamic_taxonomies
-add_action( 'save_post', 'update_dynamic_taxonomies', 10, 3 );
-
-function insert_implementing_partner_taxonomy_term( $implementing_partner ){
-	echo $implementing_partner;
-}
+add_action( 'admin_footer', 'footer_admin_scripts', 22 );
 
 /**
  * Show filters
@@ -132,6 +123,25 @@ function show_filters( $taxonomy ){
 	echo '</ul>';
 }
 
+/*
+ * Insert dynamic taxonomy terms after a post has been created/saved.
+ */
+function update_dynamic_taxonomies( $post_id ){
+	global $post;
+
+	if( 'implementing_partner' == $post->post_type )
+		insert_implementing_partner_taxonomy_term( $post->post_title );
+	
+}// update_dynamic_taxonomies
+add_action( 'save_post', 'update_dynamic_taxonomies' );
+
+function insert_implementing_partner_taxonomy_term( $implementing_partner ){
+	
+	$term = term_exists( $implementing_partner, 'implementing_partner' );
+	if ($term !== 0 && $term !== null) return;
+
+	wp_insert_term( $implementing_partner, 'implementing_partner' );
+}
 
 /*------------------------------------*\
 	#SET/GET FUNCTIONS
@@ -183,5 +193,8 @@ function get_abstract( $post_id ){
 /*------------------------------------*\
 	#AJAX FUNCTIONS
 \*------------------------------------*/
+
+
+
 
 
