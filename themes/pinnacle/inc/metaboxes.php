@@ -90,6 +90,7 @@ function metabox_url( $post ){
 
 	wp_nonce_field(__FILE__, '_url_meta_nonce');
 
+	echo "<label><small>URL format: http://google.com</small></label>";
 	echo "<input type='text' class='[ widefat ]' name='_url_meta' value='$url'>";
 }// metabox_url
 

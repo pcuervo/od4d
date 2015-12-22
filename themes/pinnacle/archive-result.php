@@ -45,6 +45,8 @@
 							<a href="<?php the_permalink(); ?>">
 								<?php the_post_thumbnail( 'medium', array( 'class' => '[ image-responsive ]' ) ); ?>
 								<p class="[ post-title ]"><?php the_title() ?></p>
+								<p>Link: <?php echo get_result_meta( $post->ID, '_url_meta' ); ?></p>
+								<p>Implementing partner: <?php echo get_implementing_partner( $post->ID ); ?></p>
 							</a>
 						</div>
 					<?php endwhile; endif; ?>

@@ -130,7 +130,7 @@ function update_dynamic_taxonomies( $post_id ){
 	global $post;
 
 	if( ! isset( $post ) ) return; 
-	
+
 	if( 'implementing_partner' == $post->post_type )
 		insert_implementing_partner_taxonomy_term( $post->post_title );
 	
@@ -178,9 +178,30 @@ function get_result_slug( $post_id, $taxonomy ){
 	return $slug;
 }// get_result_slug
 
-function get_abstract( $post_id ){
-	return get_post_meta( $post_id, '_abstract_meta', true );
-}
+/**
+ * Get meta from post type Results
+ * @param integer $post_id
+ * @param string $meta_field
+ * @return string $meta
+ */
+function get_result_meta( $post_id, $meta_field ){
+	return get_post_meta( $post_id, $meta_field, true );
+}// get_result_meta
+
+/**
+ * Get name of implementing partner for a given result
+ * @param integer $post_id
+ * @return string $implementing_partner
+ */
+function get_implementing_partner( $post_id ){
+	
+	$terms = wp_get_post_terms( $post_id, 'implementing_partner' );
+
+	if( empty( $terms ) ) return '';
+
+	return $terms[0]->name;
+
+}// get_implementing_partner
 
 
 /*------------------------------------*\

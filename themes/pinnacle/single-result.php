@@ -38,7 +38,7 @@
                     <?php get_template_part('templates/entry', 'meta-subhead'); ?>
 
                     <?php 
-                        $abstract = get_abstract( $post->ID );
+                        $abstract = get_result_meta( $post->ID, '_abstract_meta' );
                         if( $abstract ){
                             echo '<p><strong>' . $abstract . '</strong></p>';
                         }

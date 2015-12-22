@@ -53,10 +53,11 @@ function filterIsotope( container, item ){
         $grid.isotope({ filter: filterValue });
     });
 
-    // change is-checked class on buttons
+    // add an active class to active filters
     $('.button-group').each( function( i, buttonGroup ) {
         var $buttonGroup = $( buttonGroup );
-        $buttonGroup.on( 'click', 'a', function() {
+        $buttonGroup.on( 'click', 'a', function( e ) {
+            e.preventDefault();
             $buttonGroup.find('.active').removeClass('active');
             $( this ).addClass('active');
         });
