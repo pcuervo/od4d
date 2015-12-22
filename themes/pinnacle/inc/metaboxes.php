@@ -7,15 +7,19 @@
 add_action('add_meta_boxes', function(){
 	global $post;
 
-	switch ( $post->post_name ) {
-		case 'info-general':
-		default:
+	switch ( $post->post_type ) {
+		case 'result':
 			add_meta_box( 'abstract', 'Abstract', 'metabox_abstract', 'result', 'advanced', 'high' );
 			add_meta_box( 'context', 'Context', 'metabox_context', 'result', 'advanced', 'high' );
 			add_meta_box( 'year_of_publication', 'Year of Publication', 'metabox_year_of_publication', 'result', 'advanced', 'high' );
 			add_meta_box( 'authors', 'Authors', 'metabox_authors', 'result', 'advanced', 'high' );
 			add_meta_box( 'institution', 'Institution', 'metabox_institution', 'result', 'advanced', 'high' );
 			add_meta_box( 'url', 'URL', 'metabox_url', 'result', 'advanced', 'high' );
+		case 'implementing_partner':
+			add_meta_box( 'official_website', 'Official Website Url', 'metabox_official_website', 'implementing_partner', 'advanced', 'high' );
+			add_meta_box( 'rss_link', 'RSS Link', 'metabox_rss_link', 'implementing_partner', 'advanced', 'high' );
+		default:
+			
 	}
 });
 
@@ -73,6 +77,24 @@ function metabox_url( $post ){
 	echo "<input type='text' class='[ widefat ]' name='_url_meta' value='$url'>";
 }// metabox_url
 
+function metabox_official_website( $post ){
+	$official_website = get_post_meta($post->ID, '_official_website_meta', true);
+
+	wp_nonce_field(__FILE__, '_official_website_meta_nonce');
+
+	echo "<label><small>URL format: http://google.com</small></label>";
+	echo "<input type='text' class='[ widefat ]' name='_official_website_meta' value='$official_website'>";
+}// metabox_official_website
+
+function metabox_rss_link( $post ){
+	$rss_link = get_post_meta($post->ID, '_rss_link_meta', true);
+
+	wp_nonce_field(__FILE__, '_rss_link_meta_nonce');
+
+	echo "<label><small>URL format: http://google.com</small></label>";
+	echo "<input type='text' class='[ widefat ]' name='_rss_link_meta' value='$rss_link'>";
+}// metabox_rss_link
+
 
 /*
  * Save metaboxes data
@@ -88,6 +110,7 @@ add_action('save_post', function($post_id){
 	if ( wp_is_post_revision($post_id) OR wp_is_post_autosave($post_id) )
 		return $post_id;
 
+	// Save metaboxes for post type Result
 	if ( isset($_POST['_abstract_meta']) and check_admin_referer(__FILE__, '_abstract_meta_nonce') ){
 		update_post_meta($post_id, '_abstract_meta', $_POST['_abstract_meta']);
 	}
@@ -105,6 +128,14 @@ add_action('save_post', function($post_id){
 	}
 	if ( isset($_POST['_url_meta']) and check_admin_referer(__FILE__, '_url_meta_nonce') ){
 		update_post_meta($post_id, '_url_meta', $_POST['_url_meta']);
+	}
+
+	// Save metaboxes for post type Implementing Partners
+	if ( isset($_POST['_official_website_meta']) and check_admin_referer(__FILE__, '_official_website_meta_nonce') ){
+		update_post_meta($post_id, '_official_website_meta', $_POST['_official_website_meta']);
+	}
+	if ( isset($_POST['_rss_link_meta']) and check_admin_referer(__FILE__, '_rss_link_meta_nonce') ){
+		update_post_meta($post_id, '_rss_link_meta', $_POST['_rss_link_meta']);
 	}
 
 });

@@ -1,6 +1,5 @@
 <?php get_header(); ?>
 
-
 <div id="pageheader" class="titleclass">
 	<div class="header-color-overlay"></div>
 	<div class="container">
@@ -14,7 +13,9 @@
 		</div>
 	</div><!--container-->
 </div>
+
 <br />
+
 <div class="[ container ]">
 	<div class="[ row ]">
 		<aside class="[ col-md-3 ][ filtros ]">
@@ -52,6 +53,5 @@
 		</section>
 	</div>
 </div><!--container-->
-
 
 <?php get_footer(); ?>
