@@ -42,7 +42,7 @@ module.exports = function (grunt) {
     // Metadata.
     pkg: grunt.file.readJSON('package.json'),
     banner: '/*!\n' +
-            ' * Bootstrap v<%= pkg.version %> (<%= pkg.homepage %>)\n' +
+            ' * Pcuervo on pinnacle v<%= pkg.version %> (<%= pkg.homepage %>)\n' +
             ' * Copyright 2011-<%= grunt.template.today("yyyy") %> <%= pkg.author %>\n' +
             ' * Licensed under the <%= pkg.license %> license\n' +
             ' */\n',
@@ -132,14 +132,10 @@ module.exports = function (grunt) {
         mangle: true,
         preserveComments: 'some'
       },
-      core: {
-        src: 'dist/js/<%= pkg.name %>.js',
-        dest: 'dist/js/<%= pkg.name %>.min.js'
-      },
       js: {
         files: {
-          'js/functions.min.js': ['js/functions.js'],
-          'js/plugins.min.js': ['js/plugins.js']
+          'assets/js/functions.min.js': ['assets/js/functions.js'],
+          'assets/js/plugins.min.js': ['assets/js/plugins.js']
         }
       }
     },
@@ -156,12 +152,10 @@ module.exports = function (grunt) {
         options: {
           strictMath: true,
           sourceMap: true,
-          outputSourceFiles: true,
-          sourceMapURL: '<%= pkg.name %>.css.map',
-          sourceMapFilename: 'dist/css/<%= pkg.name %>.css.map'
+          outputSourceFiles: true
         },
-        src: 'less/bootstrap.less',
-        dest: 'style.css'
+        src: 'assets/css/kad_framework_less/kad-framework.less',
+        dest: 'assets/css/pinnacle.css'
       }
     },
 
@@ -343,20 +337,12 @@ module.exports = function (grunt) {
     },
 
     watch: {
-      // src: {
-      //   files: '<%= jshint.core.src %>',
-      //   tasks: ['jshint:core', 'qunit', 'concat']
-      // },
-      // test: {
-      //   files: '<%= jshint.test.src %>',
-      //   tasks: ['jshint:test', 'qunit']
-      // },
       less: {
-        files: 'less/**/*.less',
+        files: 'assets/css/kad_framework_less/*.less',
         tasks: 'less'
       },
       js: {
-        files: ["dist/js/<%= pkg.name %>.js", "js/functions.js", "js/plugins.js"],
+        files: ["assets/js/functions.js", "assets/js/plugins.js"],
         tasks: ["uglify"]
       }
     },

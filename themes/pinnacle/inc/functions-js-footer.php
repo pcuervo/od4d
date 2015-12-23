@@ -13,6 +13,7 @@ function footer_scripts(){
 			$( document ).ready(function() {
 
 				<?php if( is_archive( 'results' ) ) : ?>
+					runIsotope('.js-filter-container', '.js-filter');
 					runIsotope('.isotope-container', '.post');
 					filterIsotope('.isotope-container', '.post');
 				<?php endif; ?>
@@ -20,7 +21,7 @@ function footer_scripts(){
 				<?php if( is_page( 'network' ) ) : ?>
 					addAllMarkers();
 				<?php endif; ?>
-				
+
 			});
 		</script>
 <?php
