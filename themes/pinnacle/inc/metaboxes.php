@@ -19,6 +19,7 @@ add_action('add_meta_boxes', function(){
 		case 'implementing_partner':
 			add_meta_box( 'official_website', 'Official Website Url', 'metabox_official_website', 'implementing_partner', 'advanced', 'high' );
 			add_meta_box( 'rss_link', 'RSS Link', 'metabox_rss_link', 'implementing_partner', 'advanced', 'high' );
+			add_meta_box( 'twitter_username', 'Twitter Username', 'metabox_twitter_username', 'implementing_partner', 'advanced', 'high' );
 		default:
 			
 	}
@@ -112,6 +113,15 @@ function metabox_rss_link( $post ){
 	echo "<input type='text' class='[ widefat ]' name='_rss_link_meta' value='$rss_link'>";
 }// metabox_rss_link
 
+function metabox_twitter_username( $post ){
+	$twitter_username = get_post_meta($post->ID, '_twitter_username_meta', true);
+
+	wp_nonce_field(__FILE__, '_twitter_username_meta_nonce');
+
+	echo "<label><small>URL format: http://google.com</small></label>";
+	echo "<input type='text' class='[ widefat ]' name='_twitter_username_meta' value='$twitter_username'>";
+}// metabox_twitter_username
+
 
 /*
  * Save metaboxes data
@@ -154,6 +164,9 @@ add_action('save_post', function( $post_id ){
 	}
 	if ( isset($_POST['_rss_link_meta']) and check_admin_referer(__FILE__, '_rss_link_meta_nonce') ){
 		update_post_meta($post_id, '_rss_link_meta', $_POST['_rss_link_meta']);
+	}
+	if ( isset($_POST['_twitter_username_meta']) and check_admin_referer(__FILE__, '_twitter_username_meta_nonce') ){
+		update_post_meta($post_id, '_twitter_username_meta', $_POST['_twitter_username_meta']);
 	}
 
 });

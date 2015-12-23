@@ -36,6 +36,7 @@
 					$sector = get_sector( $post->ID ); 
 					$region = get_region( $post->ID ); 
 					$focus_areas_of_impact = get_focus_areas_of_impact( $post->ID ); 
+					$implementing_partner = get_implementing_partner( $post->ID ); 
 
 					// $thumb = get_implementing_partner( $post->ID, '_abstract_meta' ); //Implementing partner
 					// $thumb = get_result_meta( $post->ID, '_abstract_meta' ); //File (PDF, Word, Excel, graphics)
@@ -67,6 +68,36 @@
 					</div>
 				</article>
 			<?php endwhile; ?>
+	
+			<?php 
+				$related_projects = get_related_projects( $implementing_partner, $region, $sector, 3 );
+				if( $related_projects ) : ?>
+					<h2>Related projects</h2>
+					<div class="[ row ]">
+						<?php foreach ( $related_projects as $name => $project ) : ?>
+							<div class="[ col-sm-12 col-md-6 col-lg-4 ][ related-project ]">
+						   		<a href="<?php echo $project['permalink'] ?>">
+							   		<img class="[ size-medium ][ wp-image-<?php echo get_the_id(); ?> ]" src="<?php echo $project['img_url']; ?>" alt="<?php echo $name; ?>">
+							   		<h3><?php echo $name; ?></h3>
+							   	</a>
+							</div>
+						<?php endforeach; ?>
+					</div>
+				<?php else : 
+					$latest_projects = get_latest_projects( 3 ); ?>
+					<h2>Latest projects</h2>
+					<div class="[ row ]">
+						<?php foreach ( $latest_projects as $name => $project ) : ?>
+							<div class="[ col-sm-12 col-md-6 col-lg-4 ][ related-project ]">
+						   		<a href="<?php echo $project['permalink'] ?>">
+							   		<img class="[ size-medium ][ wp-image-<?php echo get_the_id(); ?> ]" src="<?php echo $project['img_url']; ?>" alt="<?php echo $name; ?>">
+							   		<h3><?php echo $name; ?></h3>
+							   	</a>
+							</div>
+						<?php endforeach; ?>
+					</div>
+				<?php endif; ?>
+				<div class="[ related-projects ]"></div>
 		</div>
 		<div class="main col-lg-3 col-md-4">
 			<p>Abstract: <?php echo $abstract; ?></p>

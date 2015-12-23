@@ -283,7 +283,7 @@ function get_implementing_partners_coordinates(){
 }// get_implementing_partners_coordinates
 
 /**
- * Jalar la latitud de un post tipo 'foto-jg'
+ * Get latitude from project (Result)
  * @param int $post_id
  * @return int $lat
  */
@@ -292,13 +292,84 @@ function get_lat( $post_id ){
 }// get_lat
 
 /**
- * Jalar la latitud de un post tipo 'foto-jg'
+ * Get longitude from project (Result)
  * @param int $post_id
  * @return int $lng
  */
 function get_lng( $post_id ){
 	return get_post_meta( $post_id, '_lng_meta', true );
 }// get_lng
+
+/**
+ * Get related projects (Results) based on Implementing Partner
+ * Region or Sector
+ * @param string $implementing_partner
+ * @param string $region
+ * @param string $sector
+ * @param string $num_posts
+ * @return mixed $related_projects
+ */
+function get_related_projects( $implementing_partner, $region, $sector, $num_posts ){
+
+	global $post;
+	$related_projects = array();
+	$projects_args = array(
+		'post_type' 		=> 'result',
+		'posts_per_page' 	=> $num_posts,
+		'orderby'			=> 'rand',
+		'tax_query' => array(
+			'relation'	=> 'OR',
+			array(
+				'taxonomy' => 'implementing_partner',
+				'field'    => 'name',
+				'terms'    => array( $implementing_partner ),
+			),
+			array(
+				'taxonomy' => 'region',
+				'field'    => 'name',
+				'terms'    => array( $region ),
+			),
+		),
+	);
+	$query_projects = new WP_Query( $projects_args );
+
+	if ( $query_projects->have_posts() ) : while( $query_projects->have_posts() ) : $query_projects->the_post();
+		$img_url = wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ), 'medium' ); 
+		$related_projects[$post->post_title] = array(
+			'img_url'	=> $img_url[0],
+			'permalink'	=> get_permalink( $post->ID ),
+			);
+	endwhile; endif; wp_reset_query();
+
+	return $related_projects;
+
+}// get_related_projects
+
+/**
+ * Get latest projects (Results) 
+ * @param string $num_posts
+ * @return mixed $latest_projects
+ */
+function get_latest_projects( $num_posts ){
+
+	global $post;
+	$latest_projects = array();
+	$projects_args = array(
+		'post_type' 		=> 'result',
+		'posts_per_page' 	=> $num_posts
+	);
+	$query_projects = new WP_Query( $projects_args );
+	if ( $query_projects->have_posts() ) : while( $query_projects->have_posts() ) : $query_projects->the_post();
+		$img_url = wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ), 'medium' ); 
+		$latest_projects[$post->post_title] = array(
+			'img_url'	=> $img_url[0],
+			'permalink'	=> get_permalink( $post->ID ),
+			);
+	endwhile; endif; wp_reset_query();
+
+	return $latest_projects;
+
+}// get_latest_projects
 
 
 /*------------------------------------*\
