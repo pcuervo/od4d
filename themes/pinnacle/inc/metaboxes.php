@@ -118,7 +118,7 @@ function metabox_twitter_username( $post ){
 
 	wp_nonce_field(__FILE__, '_twitter_username_meta_nonce');
 
-	echo "<label><small>URL format: http://google.com</small></label>";
+	echo "<label><small>Do not include '@'.</small></label>";
 	echo "<input type='text' class='[ widefat ]' name='_twitter_username_meta' value='$twitter_username'>";
 }// metabox_twitter_username
 
