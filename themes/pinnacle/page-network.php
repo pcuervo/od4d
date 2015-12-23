@@ -17,17 +17,15 @@ get_header();
 	</div><!--container-->
 </div><!--titleclass-->
 
-<div id="content" class="container">
-	<div class="row">
-			<div id="main" class="main col-md-12" role="main">
-				<div class="postclass pageclass">
-					<div id="map" class="[ network-map ]" style="height: 500px"></div>
-					<?php the_content(); ?>
-				</div>
-				<div class="[ our-partners ]">
-					<?php get_template_part('templates/implementing-partners', 'logos'); ?>
-				</div>
-			</div>
+<div id="content" class="[ container ]">
+	<div class="[ rowtight ][ postclass pageclass clearfix entry-content ]">
+		<article class="[ tcol-ss-12 tcol-md-6 ][ margin-top margin-bottom ]">
+			<div id="map" class="[ network-map ][ margin-bottom ]" style="height: 350px"></div>
+			<?php the_content(); ?>
+		</article>
+		<aside class="[ tcol-ss-12 tcol-md-6 ][ our-partners ]">
+			<?php get_template_part('templates/implementing-partners', 'logos'); ?>
+		</aside>
 	</div><!-- /.row-->
 </div><!-- /.content -->
 
