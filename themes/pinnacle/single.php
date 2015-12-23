@@ -4,4 +4,5 @@
 	    	</div><!-- /.row-->
 		</div><!-- /.content -->
 	</div><!-- /.wrap -->
+	<?php get_template_part('templates/implementing-partner', 'projects'); ?>
 	<?php get_footer(); ?>
