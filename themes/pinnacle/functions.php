@@ -191,6 +191,16 @@ function get_result_meta( $post_id, $meta_field ){
 }// get_result_meta
 
 /**
+ * Get meta from post type Results
+ * @param integer $post_id
+ * @param string $meta_field
+ * @return string $meta
+ */
+function get_implementing_partner_meta( $post_id, $meta_field ){
+	return get_post_meta( $post_id, $meta_field, true );
+}// get_implementing_partner_meta
+
+/**
  * Get name of implementing partner for a given result
  * @param integer $post_id
  * @return string $implementing_partner
@@ -328,6 +338,11 @@ function get_related_projects( $implementing_partner, $region, $sector, $num_pos
 				'taxonomy' => 'region',
 				'field'    => 'name',
 				'terms'    => array( $region ),
+			),
+			array(
+				'taxonomy' => 'sector',
+				'field'    => 'name',
+				'terms'    => array( $sector ),
 			),
 		),
 	);

@@ -7,14 +7,13 @@ $projects_args = array(
 		array(
 			'taxonomy' => 'implementing_partner',
 			'field'    => 'name',
-			'terms'    => array('World Wide Web Foundation' ),
+			'terms'    => array( $post->post_title ),
 		),
 	),
 );
 $query_projects = new WP_Query( $projects_args );
 if ( $query_projects->have_posts() ) : ?>
 	<div class="row">
-		<h3>Latest projects</h3>
 		<?php while ( $query_projects->have_posts() ) : $query_projects->the_post(); ?>
 			<div class="[ col-sm-12 col-md-6 col-lg-4 ][ implementing-partner ]">
 		   		<a href="<?php echo the_permalink(); ?>">
