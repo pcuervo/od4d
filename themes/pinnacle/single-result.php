@@ -33,6 +33,9 @@
 					$institution = get_result_meta( $post->ID, '_institution_meta' ); //Institution
 					$city = get_result_meta( $post->ID, '_city_meta' ); //City
 					$url = get_result_meta( $post->ID, '_url_meta' ); //URL
+					$sector = get_sector( $post->ID ); 
+					$region = get_region( $post->ID ); 
+					$focus_areas_of_impact = get_focus_areas_of_impact( $post->ID ); 
 
 					// $thumb = get_implementing_partner( $post->ID, '_abstract_meta' ); //Implementing partner
 					// $thumb = get_result_meta( $post->ID, '_abstract_meta' ); //File (PDF, Word, Excel, graphics)
@@ -73,7 +76,9 @@
 			<p><?php echo $institution; ?></p>
 			<p><?php echo $city; ?></p>
 			<p><?php echo $url; ?></p>
-			?>
+			<p><?php echo $sector; ?></p>
+			<p><?php echo $region; ?></p>
+			<p><?php echo $focus_areas_of_impact; ?></p>
 		</div>
 	</div>
 </div>

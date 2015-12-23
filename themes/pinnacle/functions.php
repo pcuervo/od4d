@@ -206,6 +206,51 @@ function get_implementing_partner( $post_id ){
 }// get_implementing_partner
 
 /**
+ * Get name of implementing partner for a given result
+ * @param integer $post_id
+ * @return string $sector
+ */
+function get_sector( $post_id ){
+	
+	$terms = wp_get_post_terms( $post_id, 'sector' );
+
+	if( empty( $terms ) ) return '';
+
+	return $terms[0]->name;
+
+}// get_sector
+
+/**
+ * Get name of implementing partner for a given result
+ * @param integer $post_id
+ * @return string $region
+ */
+function get_region( $post_id ){
+	
+	$terms = wp_get_post_terms( $post_id, 'region' );
+
+	if( empty( $terms ) ) return '';
+
+	return $terms[0]->name;
+
+}// get_region
+
+/**
+ * Get name of implementing partner for a given result
+ * @param integer $post_id
+ * @return string $focus_areas_of_impact
+ */
+function get_focus_areas_of_impact( $post_id ){
+	
+	$terms = wp_get_post_terms( $post_id, 'focus_areas_of_impact' );
+
+	if( empty( $terms ) ) return '';
+
+	return $terms[0]->name;
+
+}// get_focus_areas_of_impact
+
+/**
  * Extracts latitude and longitude from
  * Implementing Partners' posts
  * @return JSON $ip_coordinates
