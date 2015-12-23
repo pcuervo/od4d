@@ -18,6 +18,7 @@ html{font-family:sans-serif;-ms-text-size-adjust:100%;-webkit-text-size-adjust:1
 .margin-bottom{ margin-bottom: 20px; }
 
 .block{ display: block; }
+.inline-block{ display: inline-block; }
 
 /*------------------------------------*\
     #Buttons
@@ -74,7 +75,10 @@ html{font-family:sans-serif;-ms-text-size-adjust:100%;-webkit-text-size-adjust:1
 **/
 .posts-container{}
 
-.post{ margin-bottom: 10px; }
+.post{
+	margin-top: 5px;
+	margin-bottom: 5px;
+}
 
 .post__card{
 	display: block;
