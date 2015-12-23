@@ -62,8 +62,8 @@
 								<a href="<?php the_permalink(); ?>">
 									<?php the_post_thumbnail( 'medium', array( 'class' => '[ post__image ][ image-responsive ]' ) ); ?>
 								</a>
-								<p class="[ post__implementing-partner ]">Implementing partner: <a href="#">Ilda</a> <?php  ?></p>
-								<p class="[ post__type ]">Publication type: Magazine<?php  ?></p>
+								<p class="[ post__implementing-partner ]">Implementing partner: <?php echo get_implementing_partner( $post->ID ); ?></p>
+								<!-- <p class="[ post__type ]">Publication type: Magazine </p> -->
 							</div>
 						</div>
 					<?php endwhile; endif; ?>

@@ -18,6 +18,10 @@ function footer_scripts(){
 					filterIsotope('.isotope-container', '.post');
 				<?php endif; ?>
 
+				<?php if( is_page( 'network' ) ) : ?>
+					addAllMarkers();
+				<?php endif; ?>
+
 			});
 		</script>
 <?php

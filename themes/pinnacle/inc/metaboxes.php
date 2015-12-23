@@ -73,16 +73,16 @@ function metabox_institution( $post ){
 function metabox_city( $post ){
 	$city 		= get_post_meta($post->ID, '_city_meta', true);
 	$lat 	 	= get_post_meta($post->ID, '_lat_meta', true);
-	$lon 		= get_post_meta($post->ID, '_lon_meta', true);
+	$lng 		= get_post_meta($post->ID, '_lng_meta', true);
 
 	wp_nonce_field(__FILE__, '_city_meta_nonce');
 	wp_nonce_field(__FILE__, '_lat_meta_nonce');
-	wp_nonce_field(__FILE__, '_lon_meta_nonce');
+	wp_nonce_field(__FILE__, '_lng_meta_nonce');
 
 	echo "<label><small>This part is powered by Google Maps to save coordinates for the map.</small></label>";
 	echo "<input type='text' class='[ widefat ]' id='geo-autocomplete' name='_city_meta' value='$city'>";
 	echo "<input type='hidden' class='[ widefat ]' id='lat' name='_lat_meta' value='$lat' data-geo='lat' />";
-	echo "<input type='hidden' class='[ widefat ]' id='lon' name='_lon_meta' value='$lon' data-geo='lng' />";
+	echo "<input type='hidden' class='[ widefat ]' id='lng' name='_lng_meta' value='$lng' data-geo='lng' />";
 }// metabox_city
 
 function metabox_url( $post ){
@@ -90,6 +90,7 @@ function metabox_url( $post ){
 
 	wp_nonce_field(__FILE__, '_url_meta_nonce');
 
+	echo "<label><small>URL format: http://google.com</small></label>";
 	echo "<input type='text' class='[ widefat ]' name='_url_meta' value='$url'>";
 }// metabox_url
 
@@ -136,6 +137,15 @@ add_action('save_post', function( $post_id ){
 	}
 	if ( isset($_POST['_url_meta']) and check_admin_referer(__FILE__, '_url_meta_nonce') ){
 		update_post_meta($post_id, '_url_meta', $_POST['_url_meta']);
+	}
+	if ( isset($_POST['_city_meta']) and check_admin_referer(__FILE__, '_city_meta_nonce') ){
+		update_post_meta($post_id, '_city_meta', $_POST['_city_meta']);
+	}
+	if ( isset($_POST['_lat_meta']) and check_admin_referer(__FILE__, '_lat_meta_nonce') ){
+		update_post_meta($post_id, '_lat_meta', $_POST['_lat_meta']);
+	}
+	if ( isset($_POST['_lng_meta']) and check_admin_referer(__FILE__, '_lng_meta_nonce') ){
+		update_post_meta($post_id, '_lng_meta', $_POST['_lng_meta']);
 	}
 
 	// Save metaboxes for post type Implementing Partners

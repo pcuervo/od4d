@@ -83,6 +83,7 @@ add_action( 'wp_enqueue_scripts', function(){
 	// scripts
 	wp_enqueue_script( 'plugins', JSPATH.'plugins.js', array('jquery'), '1.0', true );
 	wp_enqueue_script( 'functions', JSPATH.'functions.js', array('plugins'), '1.0', true );
+	wp_localize_script( 'functions', 'implementingPartnersCoordinates', get_implementing_partners_coordinates() );
 
 });
 /**
@@ -128,6 +129,8 @@ function show_filters( $taxonomy ){
  */
 function update_dynamic_taxonomies( $post_id ){
 	global $post;
+
+	if( ! isset( $post ) ) return; 
 
 	if( 'implementing_partner' == $post->post_type )
 
@@ -177,9 +180,80 @@ function get_result_slug( $post_id, $taxonomy ){
 	return $slug;
 }// get_result_slug
 
-function get_abstract( $post_id ){
-	return get_post_meta( $post_id, '_abstract_meta', true );
-}
+/**
+ * Get meta from post type Results
+ * @param integer $post_id
+ * @param string $meta_field
+ * @return string $meta
+ */
+function get_result_meta( $post_id, $meta_field ){
+	return get_post_meta( $post_id, $meta_field, true );
+}// get_result_meta
+
+/**
+ * Get name of implementing partner for a given result
+ * @param integer $post_id
+ * @return string $implementing_partner
+ */
+function get_implementing_partner( $post_id ){
+	
+	$terms = wp_get_post_terms( $post_id, 'implementing_partner' );
+
+	if( empty( $terms ) ) return '';
+
+	return $terms[0]->name;
+
+}// get_implementing_partner
+
+/**
+ * Extracts latitude and longitude from
+ * Implementing Partners' posts
+ * @return JSON $ip_coordinates
+ */
+function get_implementing_partners_coordinates(){
+
+	$ip_coordinates = array();
+	$args_implementing_partners = array(
+		'post_type' 		=> 'result',
+		'posts_per_page' 	=> -1
+	);
+
+	$query_implementing_partners = new WP_Query( $args_implementing_partners );
+	if ( $query_implementing_partners->have_posts() ) : while ( $query_implementing_partners->have_posts() ) : $query_implementing_partners->the_post();
+		global $post;
+
+		$lat = get_lat( $post->ID );
+		$lng = get_lng( $post->ID );
+		$ip_coordinates[$post->post_name] = array(
+			'lat'					=> $lat,
+			'lng'					=> $lng,
+			'permalink'				=> get_permalink( $post->ID ),
+			'implementingPartner'	=> get_the_title(),
+			);
+
+	endwhile; endif; wp_reset_query();
+
+	return json_encode( $ip_coordinates );
+
+}// get_implementing_partners_coordinates
+
+/**
+ * Jalar la latitud de un post tipo 'foto-jg'
+ * @param int $post_id
+ * @return int $lat
+ */
+function get_lat( $post_id ){
+	return get_post_meta( $post_id, '_lat_meta', true );
+}// get_lat
+
+/**
+ * Jalar la latitud de un post tipo 'foto-jg'
+ * @param int $post_id
+ * @return int $lng
+ */
+function get_lng( $post_id ){
+	return get_post_meta( $post_id, '_lng_meta', true );
+}// get_lng
 
 
 /*------------------------------------*\
