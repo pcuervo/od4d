@@ -1,6 +1,25 @@
 <?php
 	global $post;
 	get_header();
+
+	$thumb = get_post_thumbnail_id();
+	$img_url = wp_get_attachment_url( $thumb,'full' );
+	$image = $img_url;
+
+	$abstract = get_result_meta( $post->ID, '_abstract_meta' ); // Abstract
+	$context = get_result_meta( $post->ID, '_context_meta' ); //Context
+	$year_of_publication = get_result_meta( $post->ID, '_year_of_publication_meta' ); //Year of Publicaction
+	$authors = get_result_meta( $post->ID, '_authors_meta' ); //Authors
+	$institution = get_result_meta( $post->ID, '_institution_meta' ); //Institution
+	$city = get_result_meta( $post->ID, '_city_meta' ); //City
+	$url = get_result_meta( $post->ID, '_url_meta' ); //URL
+	$implementing_partner = get_implementing_partner( $post->ID ); //Implementing partner
+	$region = get_region( $post->ID ); //Implementing partner
+	$sector = get_sector( $post->ID ); //Implementing partner
+
+	// $thumb = get_result_meta( $post->ID, '_abstract_meta' ); //File (PDF, Word, Excel, graphics)
+	// $thumb = get_result_meta( $post->ID, '_abstract_meta' ); //Related projects
+	// $thumb = get_result_meta( $post->ID, '_abstract_meta' ); //Categories
 ?>
 
 <div id="pageheader" class="titleclass">
@@ -17,33 +36,12 @@
 </div><!--titleclass-->
 
 <div id="content" class="container">
-	<div class="row single-article" itemscope="">
-		<div class="main col-lg-9 col-md-8" role="main">
-			<?php while ( have_posts()) : the_post(); ?>
-				<article <?php post_class('postclass'); ?>
-					<?php
-					$thumb = get_post_thumbnail_id();
-					$img_url = wp_get_attachment_url( $thumb,'full' );
-					$image = $img_url;
 
-					$abstract = get_result_meta( $post->ID, '_abstract_meta' ); // Abstract
-					$context = get_result_meta( $post->ID, '_context_meta' ); //Context
-					$year_of_publication = get_result_meta( $post->ID, '_year_of_publication_meta' ); //Year of Publicaction
-					$authors = get_result_meta( $post->ID, '_authors_meta' ); //Authors
-					$institution = get_result_meta( $post->ID, '_institution_meta' ); //Institution
-					$city = get_result_meta( $post->ID, '_city_meta' ); //City
-					$url = get_result_meta( $post->ID, '_url_meta' ); //URL
-					$sector = get_sector( $post->ID ); 
-					$region = get_region( $post->ID ); 
-					$focus_areas_of_impact = get_focus_areas_of_impact( $post->ID ); 
-					$implementing_partner = get_implementing_partner( $post->ID ); 
-
-					// $thumb = get_implementing_partner( $post->ID, '_abstract_meta' ); //Implementing partner
-					// $thumb = get_result_meta( $post->ID, '_abstract_meta' ); //File (PDF, Word, Excel, graphics)
-					// $thumb = get_result_meta( $post->ID, '_abstract_meta' ); //Related projects
-					// $thumb = get_result_meta( $post->ID, '_abstract_meta' ); //Categories
-
-					if($image) : ?>
+	<div <?php post_class('postclass'); ?>>
+		<div class="[ main row single-article ]">
+			<div class="col-lg-9 col-md-8" role="main">
+				<article>
+					<?php if($image) : ?>
 						<section class="postfeat">
 							<div class="imghoverclass post-single-img" itemprop="image">
 								<a href="<?php echo esc_url($img_url); ?>" data-rel="lightbox" class="">
@@ -67,9 +65,8 @@
 						<?php wp_link_pages(array('before' => '<nav class="page-nav"><p>' . __('Pages:', 'pinnacle'), 'after' => '</p></nav>')); ?>
 					</div>
 				</article>
-			<?php endwhile; ?>
-	
-			<?php 
+
+				<?php 
 				$related_projects = get_related_projects( $implementing_partner, $region, $sector, 3 );
 				if( $related_projects ) : ?>
 					<h2>Related projects</h2>
@@ -98,18 +95,18 @@
 					</div>
 				<?php endif; ?>
 				<div class="[ related-projects ]"></div>
-		</div>
-		<div class="main col-lg-3 col-md-4">
-			<p>Abstract: <?php echo $abstract; ?></p>
-			<p><?php echo $context; ?></p>
-			<p><?php echo $year_of_publication; ?></p>
-			<p><?php echo $authors; ?></p>
-			<p><?php echo $institution; ?></p>
-			<p><?php echo $city; ?></p>
-			<p><?php echo $url; ?></p>
-			<p><?php echo $sector; ?></p>
-			<p><?php echo $region; ?></p>
-			<p><?php echo $focus_areas_of_impact; ?></p>
+			</div>
+			<div class="[ col-lg-3 col-md-4 ][ margin-top ]">
+				<p><strong>Context:</strong> <?php echo $context; ?></p>
+				<p><strong>Year of publication:</strong> <?php echo $year_of_publication; ?></p>
+				<p><strong>Authors:</strong> <?php echo $authors; ?></p>
+				<p><strong>Institution:</strong> <?php echo $institution; ?></p>
+				<p><strong>Region:</strong> <?php echo $region; ?></p>
+				<p><strong>Sector:</strong> <?php echo $sector; ?></p>
+				<p><strong>City:</strong> <?php echo $city; ?></p>
+				<p><strong>URL:</strong> <a href="<?php echo $url; ?>"> link</a></p>
+				<p><strong>Implementing partner:</strong> <?php echo $implementing_partner; ?></p>
+			</div>
 		</div>
 	</div>
 </div>
