@@ -5,8 +5,21 @@
 	$website_link = get_implementing_partner_meta( $post->ID, '_official_website_meta' );
 	$twitter_username = get_implementing_partner_meta( $post->ID, '_twitter_username_meta' );
 	$rss_link = get_implementing_partner_meta( $post->ID, '_rss_link_meta' );
-
 ?>
+
+	<div id="pageheader" class="titleclass">
+		<div class="header-color-overlay"></div>
+		<div class="container">
+			<div class="page-header">
+				<div class="row">
+					<div class="col-md-12">
+						<h1 class="kad-page-title entry-title" itemprop="name headline">Implementing partner</h1>
+					</div>
+				</div>
+			</div>
+		</div><!--container-->
+	</div>
+	<br />
 	<div class="[ container ]">
 		<div class="[ rowtight ][ postclass pageclass clearfix entry-content ]">
 			<div class="[ tcol-ss-12 tcol-md-8 ]">
@@ -14,7 +27,7 @@
 				<div class="[ margin-bottom ]">
 					<?php the_content(); ?>
 				</div>
-				<h4 class="[ hometitle ]">Recents Projects</h4>
+				<h4 class="[ hometitle ]">Recents Results</h4>
 				<?php get_template_part('templates/implementing-partner', 'projects'); ?>
 			</div>
 			<aside class="[ tcol-ss-12 tcol-md-4 ]">
@@ -30,7 +43,7 @@
 				<div class="[ margin-bottom ]">
 					<h4 class="[ hometitle ]">RSS</h4>
 				</div>
-				
+
 			</aside>
 		</div>
 	</div>
