@@ -36,9 +36,8 @@
 					<p><a href="<?php echo $website_link; ?>">Official Website</a></p>
 				</div>
 				<div class="[ margin-bottom ]">
-					<h4 class="[ hometitle ]">Tweets</h4>
-					https://twitter.com/<?php echo $twitter_username; ?>
-					<a class="twitter-timeline"  href="https://twitter.com/<?php echo $twitter_username; ?>" data-widget-id="678012125193723904"></a>
+					<h4 class="[ hometitle ]">Twitter username</h4>
+					<a href="https://twitter.com/<?php echo $twitter_username; ?>" target="_blank">@<?php echo $twitter_username; ?></a>
 				</div>
 				<div class="[ margin-bottom ]">
 					<h4 class="[ hometitle ]">RSS</h4>
