@@ -101,9 +101,6 @@
 				<div class="[ related-projects ]"></div>
 			</div>
 			<div class="[ col-lg-3 col-md-4 ][ margin-top ]">
-				<?php if ( ! empty( $context ) ) { ?>
-					<p><strong>Context:</strong> <?php echo $context; ?></p>
-				<?php } ?>
 				<?php if ( ! empty( $year_of_publication ) ) { ?>
 					<p><strong>Year of publication:</strong> <?php echo $year_of_publication; ?></p>
 				<?php } ?>

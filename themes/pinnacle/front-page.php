@@ -34,8 +34,27 @@
 							} ?>
 
 							<div class="home-what-is home-margin home-padding kad-animation" data-animation="fade-in" data-delay="0">
+								<div class="home-margin [ rowtight ]">
+									<div class="[ tcol-ss-12 tcol-sm-8 tcol-lg-6 ][ tcol-sm-offset-2 tcol-lg-offset-3 ][ all ][ p-item ]" style="">
+										<form action="//od4d.us12.list-manage.com/subscribe/post?u=8161fc94b2c0a5e5eaadf957b&amp;id=b6e447a697" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
+											<div id="mc_embed_signup_scroll">
+												<h3 class="hometitle"><label for="mce-EMAIL">Subscribe to our mailing list</label></h3>
+												<p><input type="email" value="" name="EMAIL" class="email" id="mce-EMAIL" placeholder="email address" required></p>
+												<!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups-->
+												<div style="position: absolute; left: -5000px;" aria-hidden="true">
+													<input type="text" name="b_8161fc94b2c0a5e5eaadf957b_b6e447a697" tabindex="-1" value="">
+												</div>
+												<div class="[ clear ][ text-center ]">
+													<p><input type="submit" value="Subscribe" name="subscribe" id="mc-embedded-subscribe" class="[ kad-btn kad-btn-primary ]"></p>
+												</div>
+											</div>
+										</form>
+									</div>
+								</div>
+							</div>
+
+							<div class="home-what-is home-margin home-padding kad-animation" data-animation="fade-in" data-delay="0">
 								<div class="clearfix">
-									<h2 class="hometitle">What is OD4D?</h2>
 									<h4 class="[ text-center ]">Open data for development</h4>
 								</div>
 								<div class="home-margin [ rowtight ]">
@@ -192,11 +211,6 @@
 										<div id="post-85" class="blog_item postclass kad_blog_fade_in grid_item" itemscope="" itemtype="http://schema.org/BlogPosting">
 											<div class="img-margin-center">
 												<a href="" title="">
-													<img src="<?php echo THEMEPATH; ?>assets/img/implementing-partners/ilda.jpg" alt="" itemprop="image" class="iconhover" style="display:block;">
-												</a>
-											</div>
-											<div class="img-margin-center">
-												<a href="" title="">
 													<img src="<?php echo THEMEPATH; ?>assets/img/implementing-partners/caribbean-open-institute.jpg" alt="" itemprop="image" class="iconhover" style="display:block;">
 												</a>
 											</div>
@@ -213,6 +227,11 @@
 											<div class="img-margin-center">
 												<a href="" title="">
 													<img src="<?php echo THEMEPATH; ?>assets/img/implementing-partners/odi.jpg" alt="" itemprop="image" class="iconhover" style="display:block;">
+												</a>
+											</div>
+											<div class="img-margin-center">
+												<a href="" title="">
+													<img src="<?php echo THEMEPATH; ?>assets/img/implementing-partners/ilda.jpg" alt="" itemprop="image" class="iconhover" style="display:block;">
 												</a>
 											</div>
 										</div> <!-- Blog Item -->
