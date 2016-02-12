@@ -1,0 +1,118 @@
+//Isotope Styles
+/**** Isotope Filtering ****/
+
+.isotope-item {
+  z-index: 2;
+}
+.isotope.infinite-scrolling {
+-webkit-transition: none;
+-moz-transition: none;
+-ms-transition: none;
+-o-transition: none;
+transition: none;
+}
+.isotope-hidden.isotope-item {
+  pointer-events: none;
+  z-index: 1;
+}
+
+/**** Isotope CSS3 transitions ****/
+
+.isotope,
+.isotope .isotope-item {
+  -webkit-transition-duration: 0.8s;
+     -moz-transition-duration: 0.8s;
+      -ms-transition-duration: 0.8s;
+       -o-transition-duration: 0.8s;
+          transition-duration: 0.8s;
+}
+
+.isotope {
+  -webkit-transition-property: height, width;
+     -moz-transition-property: height, width;
+      -ms-transition-property: height, width;
+       -o-transition-property: height, width;
+          transition-property: height, width;
+}
+
+.isotope .isotope-item {
+  -webkit-transition-property: -webkit-transform, opacity;
+     -moz-transition-property:    -moz-transform, opacity;
+      -ms-transition-property:     -ms-transform, opacity;
+       -o-transition-property:      -o-transform, opacity;
+          transition-property:         transform, opacity;
+}
+#infscr-loading {
+  position: absolute;
+  bottom: 0px;
+  width: 100%;
+  text-align: center;
+}
+//Filter
+.filter-trigger {
+    display: none;
+  }
+//Filter
+#portfolio-options {
+   text-align: center;
+}
+#filters {
+  list-style:none;
+margin: 0 0 15px;
+  padding: 0;
+  width:auto;
+  text-align: center;
+}
+#filters li {
+  display: inline-block;
+  margin: 5px 8px;
+     border-radius: 3px;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+}
+#filters li a {
+  display:block;
+  color:#444;
+  border:solid 0px transparent;
+   border-radius: 3px;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+        -webkit-transition: background 0.3s linear;
+    -moz-transition: background 0.3s linear;
+    -o-transition: background 0.3s linear;
+    -ms-transition: background 0.3s linear;
+    transition: background 0.3s linear;
+    box-shadow: 0 -1px rgba(0,0,0,0.1) inset;
+-moz-box-shadow: 0 -1px rgba(0,0,0,0.1) inset;
+-webkit-box-shadow: 0 -1px rgba(0,0,0,0.1) inset;
+-o-box-shadow: 0 -1px rgba(0,0,0,0.1) inset;
+}
+#filters li a.selected, #filters li a:hover {
+  border-color:@primary;
+  background: @primary;
+  color: #fff;
+}
+#filters li a.selected h5, #filters li a:hover h5 {
+  color: #fff;
+}
+#filters li h5 {
+  padding:6px 9px 4px;
+  margin:0;
+}
+#filters li a .arrow-up {
+  width: 0; 
+  height: 0; 
+  border-left: 3px solid transparent;
+  border-right: 3px solid transparent;
+  border-bottom: 3px solid transparent;
+  margin:0 auto;
+        -webkit-transition: all 0.5s linear;
+    -moz-transition: all 0.5s linear;
+    -o-transition: all 0.5s linear;
+    -ms-transition: all 0.5s linear;
+    transition: all 0.5s linear;
+}
+#filters li a.selected .arrow-up, #filters li a:hover .arrow-up {
+  border-bottom-color: #f2f2f2;
+  border-bottom-color: rgba(0,0,0,0.01);
+}

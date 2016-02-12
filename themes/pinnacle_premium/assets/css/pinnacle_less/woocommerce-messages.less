@@ -1,0 +1,136 @@
+.woocommerce-message,
+.woocommerce-error,
+.woocommerce-info {
+  padding: 15px 15px 15px 55px;
+  margin: 0 0 30px;
+  position: relative;
+  background: @primary;
+  list-style: none outside;
+  width: auto;
+  color:#fff;
+  font-size: 15px;
+  line-height:40px;
+    -webkit-border-radius: 4px; 
+  -moz-border-radius: 4px;
+border-radius: 4px;
+}
+.woocommerce-message:after,
+.woocommerce-error:after,
+.woocommerce-info:after {
+  content: "";
+  display: block;
+  clear: both;
+}
+.woocommerce-message:before,
+.woocommerce-error:before,
+.woocommerce-info:before {
+  height: 40px;
+width: 30px;
+display: block;
+position: absolute;
+top: 15px;
+left: 15px;
+font-size: 18px;
+line-height: 40px;
+text-align: center;
+color: #fff;
+vertical-align: middle;
+}
+.woocommerce-message .button,
+.woocommerce-error .button,
+.woocommerce-info .button {
+  float: right;
+  font-size: 14px;
+padding: 0px 18px;
+background: transparent;
+color: #fff;
+line-height: 36px;
+    box-shadow: none;
+-moz-box-shadow: none;
+-webkit-box-shadow: none;
+-o-box-shadow: none;
+border: 2px solid #fff;
+}
+.woocommerce-message li,
+.woocommerce-error li,
+.woocommerce-info li {
+  list-style: none outside;
+  padding-left: 0;
+  margin-left: 0;
+  line-height: 40px;
+  font-size: 15px;
+}
+.woocommerce-message:before {
+  background-color: transparent;
+  font-family: "kt-icon";
+   content: "\e370";
+   speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+.woocommerce-info {
+  border: 2px solid @primary;
+  background: transparent;
+  color: #444;
+  padding: 5px 5px 5px 55px;
+}
+.woocommerce-info:before {
+  background-color: transparent;
+  font-family: "kt-icon";
+  color: @primary;
+  content: "\e362";
+  top: 5px;
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+.woocommerce-error {
+  background: red;
+  color: #fff;
+}
+.woocommerce-error a {
+  color:#fff;
+  text-decoration: underline;
+}
+.woocommerce-error:before {
+  background: transparent;
+  font-family: "kt-icon";
+  content: "\e36b";
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+.woocommerce-breadcrumb {
+  margin: 0;
+  padding: 0;
+  font-size: 0.92em;
+  color: #777777;
+  float: right;
+  display: block;
+}
+.woocommerce-breadcrumb a {
+  color: #777777;
+}
+.woocommerce-message .button {
+  line-height: 20px;
+  float: right;
+  padding: 10px 14px;
+}
