@@ -6,7 +6,16 @@
   			if ($footer_layout == "fourc") {
   				if (is_active_sidebar('footer_1') ) { ?>
 					<div class="col-md-3 col-sm-6 footercol1">
-					<?php dynamic_sidebar('footer_1'); ?>
+						<div class="widget-1 widget-first footer-widget">
+							<aside id="kadence_simple_image-3" class="widget kadence_simple_image">
+								<div class="kad_img_upload_widget">
+									<span class="[ pull-left ][ text-left ]">Hosted by</span>
+									<a href="http://pcuervo.com/od4d/wp-content/uploads/2015/12/IDRC-logo-blue-full-name.png" data-rel="lightbox">
+										<img src="http://pcuervo.com/od4d/wp-content/uploads/2015/12/IDRC-logo-blue-full-name.png" alt="">
+									</a>
+								</div>
+							</aside>
+						</div>
 					</div>
             	<?php }; ?>
 				<?php if (is_active_sidebar('footer_2') ) { ?>
@@ -85,6 +94,45 @@
 		            <?php }; ?>
 		        <?php } ?>
         </div> <!-- Row -->
+
+		<div class="row">
+			<div class="col-md-3 col-sm-6 footercol1">
+				<div class="widget-1 widget-last footer-widget">
+					<aside id="widget_kadence_social-3" class="widget widget_kadence_social">
+						<div class="kadence_social_widget clearfix">
+							<div class="[ text-left ]">
+								<a href="https://www.facebook.com/OpenData4D/" class="facebook_link" title="" target="_blank" data-toggle="tooltip" data-placement="top" data-original-title="Facebook"><i class="kt-icon-facebook2"></i></a>
+								<a href="https://twitter.com/od4_d" class="twitter_link" title="" target="_blank" data-toggle="tooltip" data-placement="top" data-original-title="Twitter"><i class="kt-icon-twitter2"></i></a>
+								<a href="http://linkedin.com" class="linkedin_link" title="" target="_blank" data-toggle="tooltip" data-placement="top" data-original-title="LinkedIn"><i class="kt-icon-linkedin2"></i></a>
+							</div>
+						</div>
+					</aside>
+				</div>
+			</div>
+			<div class="col-md-3 col-sm-6 footercol2">
+				<div class="widget-2 widget footer-widget">
+				</div>
+			</div>
+			<div class="col-md-3 col-sm-6 footercol3">
+				<div class="widget-3 widget footer-widget">
+					<aside id="text-4" class="widget widget_text [ text-left ]">
+						<div class="textwidget">
+							<a href="mailto:contact@od4d.net">contact@od4d.net</a>
+						</div>
+					</aside>
+				</div>
+			</div>
+			<div class="col-md-3 col-sm-6 footercol4">
+				<div class="widget-4 widget footer-widget">
+					<aside id="text-4" class="widget widget_text [ text-left ]">
+						<div class="textwidget">
+							<a href="http://opendataresearch.org/">opendataresearch.org</a>
+						</div>
+					</aside>
+				</div>
+			</div>
+		</div> <!-- row -->
+
         <div class="footercredits clearfix">
 
     		<?php if (has_nav_menu('footer_navigation')) :
