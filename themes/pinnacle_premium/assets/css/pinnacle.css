@@ -52,6 +52,32 @@
 	color: #fff;
 }
 
+
+
+/*------------------------------------*\
+    #Blockquote
+\*------------------------------------*/
+.blockquote-full{
+	border-left: none;
+	margin: 15px 30px;
+	//background: #f0f0f0;
+}
+.blockquote-full h4{
+	padding: 20px 20px;
+	border-left: 3px solid #656565;
+	font-family: 'Lora'; font-style: italic; font-weight: 400;
+	color: #454545;
+}
+.blockquote-full p{
+	padding: 20px 20px;
+	font-family: 'Roboto', sans-serif;
+	float: right;
+	text-align: right;
+	background: #d25e1b;
+	color: #fff;
+}
+
+
 /*------------------------------------*\
     #Sign up form
 \*------------------------------------*/
