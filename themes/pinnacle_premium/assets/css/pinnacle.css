@@ -58,23 +58,33 @@
     #Blockquote
 \*------------------------------------*/
 .blockquote-full{
-	border-left: none;
+	padding: 0; border-left: none;
 	margin: 15px 30px;
-	//background: #f0f0f0;
+
+	-webkit-border-radius: 40px;
+	-webkit-border-bottom-right-radius: 0;
+	-moz-border-radius: 40px;
+	-moz-border-radius-bottomright: 0;
+	border-radius: 40px;
+	border-bottom-right-radius: 0;
 }
 .blockquote-full h4{
 	padding: 20px 20px;
-	border-left: 3px solid #656565;
 	font-family: 'Lora'; font-style: italic; font-weight: 400;
 	color: #454545;
 }
 .blockquote-full p{
+	width: 100%;
 	padding: 20px 20px;
 	font-family: 'Roboto', sans-serif;
 	float: right;
 	text-align: right;
-	background: #d25e1b;
+	background: #656565;
 	color: #fff;
+
+	-webkit-border-bottom-left-radius: 40px;
+	-moz-border-radius-bottomleft: 40px;
+	border-bottom-left-radius: 40px;
 }
 
 

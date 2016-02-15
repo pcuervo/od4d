@@ -85,7 +85,7 @@
 					<div class="clearfix">
 						<h4 class="[ text-center ]">Open data for development</h4>
 					</div>
-					<div class="home-margin [ rowtight ]">
+					<div class="home-margin[ rowtight ]">
 						<div class="[ tcol-ss-12 tcol-sm-8 tcol-lg-6 ][ tcol-sm-offset-2 tcol-lg-offset-3 ][ all ][ p-item ]" style="">
 							<?php $whatIs = get_page_by_title('What is OD4D?'); ?>
 							<p class=""><?php echo $whatIs->post_content; ?></p>
@@ -100,7 +100,7 @@
 				<div class="clearfix"></div>
 
 				<div class="quote-is home-margin home-padding kad-animation" data-animation="fade-in" data-delay="0">
-					<div class="home-margin">
+					<div class="[ home-margin ][ rowtight ]">
 						<div class="[ tcol-ss-12 tcol-sm-8 tcol-lg-6 ][ tcol-sm-offset-2 tcol-lg-offset-3 ][ all ][ p-item ]" style="">
 							<?php
 								$quote = get_page_by_title('Quote');
