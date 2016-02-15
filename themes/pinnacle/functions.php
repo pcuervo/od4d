@@ -391,6 +391,12 @@ function get_latest_projects( $num_posts ){
 	#HELPER FUNCTIONS
 \*------------------------------------*/
 
+function limit_posts_per_archive_page() {
+	//if ( is_category() )
+		set_query_var('posts_per_archive_page', -1); // or use variable key: posts_per_page
+}
+add_filter('pre_get_posts', 'limit_posts_per_archive_page');
+
 
 /*------------------------------------*\
 	#FORMAT FUNCTIONS

@@ -20,7 +20,7 @@ function runIsotope( container, item ){
 
 
 /**
- * Filster in Isotope plugin
+ * Filter in Isotope plugin
  * @container element cointaining items
  * @item element inside the container
 **/
