@@ -70,7 +70,7 @@
 				$related_projects = get_related_projects( $implementing_partner, $region, $sector, 3 );
 				if( $related_projects ) : ?>
 					<article>
-						<h2>Related projects</h2>
+						<h2>Related Work</h2>
 						<div class="[ row ]">
 							<?php foreach ( $related_projects as $name => $project ) : ?>
 								<div class="[ col-sm-12 col-md-6 col-lg-4 ][ related-project ]">
