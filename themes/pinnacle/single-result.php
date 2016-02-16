@@ -127,6 +127,7 @@
 				<?php } ?>
 				<?php $pdfs = get_result_pdfs( $post->ID ); ?>
 				<?php if( ! empty( $pdfs ) ) ?>
+					<h3>Accountability</h3>
 					<ul>
 						<?php foreach ( $pdfs as $key => $pdf ) : ?>
 							<li>

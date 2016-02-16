@@ -405,6 +405,7 @@ function get_result_pdfs( $post_id ){
         'post_status' 		=> 'inherit',
         'post_type'			=> 'attachment',
         'post_mime_type' 	=> 'application/pdf',
+        'post_per_page'		=> -1,
 	    );
 	$query_pdf = new WP_Query( $query_pdf_args );
 	foreach ( $query_pdf->posts as $file) {
