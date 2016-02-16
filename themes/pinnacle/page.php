@@ -10,6 +10,9 @@
 			</div><!-- /.main -->
 			<?php get_sidebar(); ?>
 		</div><!-- /.row-->
+		<?php if ( is_page() && $post->post_parent ) : ?>
+			<?php get_template_part('templates/open-data-for', 'sector'); ?>
+		<?php endif; ?>
 	</div><!-- /.content -->
 </div><!-- /.wrap -->
 <?php get_footer(); ?>

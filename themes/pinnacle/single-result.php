@@ -126,8 +126,7 @@
 					<p><strong>Implementing partner:</strong> <?php echo $implementing_partner; ?></p>
 				<?php } ?>
 				<?php $pdfs = get_result_pdfs( $post->ID ); ?>
-				<?php if( ! empty( $pdfs ) ) ?>
-					<h3>Accountability</h3>
+				<?php if( ! empty( $pdfs ) ) : ?>
 					<ul>
 						<?php foreach ( $pdfs as $key => $pdf ) : ?>
 							<li>
@@ -135,6 +134,7 @@
 							</li>
 						<?php endforeach; ?>
 					</ul>
+				<?php endif; ?>
 			</div>
 		</div>
 	</div>
