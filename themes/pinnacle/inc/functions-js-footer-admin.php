@@ -11,18 +11,31 @@
 					"use strict";
 					$(function(){
 
-						/**
-						 * On load
-						**/
-
 						$('#geo-autocomplete').geocomplete({
-							details: "#post",
+							detailsScope: "#post",
+							details: ".details",
 							detailsAttribute: "data-geo"
 						});
+						$('#geo-autocomplete-2').geocomplete({
+							detailsScope: "#post",
+							details: ".details",
+							detailsAttribute: "data-geo"
+						});
+						// $('#geo-autocomplete-3').geocomplete({
+						// 	details: "#post",
+						// 	detailsAttribute: "data-geo"
+						// });
+						// $('#geo-autocomplete-4').geocomplete({
+						// 	details: "#post",
+						// 	detailsAttribute: "data-geo"
+						// });
+						// $('#geo-autocomplete-5').geocomplete({
+						// 	details: "#post",
+						// 	detailsAttribute: "data-geo"
+						// });
 
 					});
 				}(jQuery));
 			</script>
-
 <?php 
 	}// footer_admin_scripts

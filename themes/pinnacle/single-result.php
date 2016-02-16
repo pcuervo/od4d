@@ -28,7 +28,7 @@
 		<div class="page-header">
 			<div class="row">
 				<div class="col-md-12">
-					<h1 class="post_page_title entry-title" itemprop="name headline"><?php echo get_the_title(); ?></h1>
+					<h1 class="post_page_title entry-title" itemprop="name headline">Result - <?php echo get_the_title(); ?></h1>
 				</div>
 			</div>
 		</div>
@@ -66,46 +66,74 @@
 					</div>
 				</article>
 
-				<?php 
+				<?php
 				$related_projects = get_related_projects( $implementing_partner, $region, $sector, 3 );
 				if( $related_projects ) : ?>
-					<h2>Related projects</h2>
-					<div class="[ row ]">
-						<?php foreach ( $related_projects as $name => $project ) : ?>
-							<div class="[ col-sm-12 col-md-6 col-lg-4 ][ related-project ]">
-						   		<a href="<?php echo $project['permalink'] ?>">
-							   		<img class="[ size-medium ][ wp-image-<?php echo get_the_id(); ?> ]" src="<?php echo $project['img_url']; ?>" alt="<?php echo $name; ?>">
-							   		<h3><?php echo $name; ?></h3>
-							   	</a>
-							</div>
-						<?php endforeach; ?>
-					</div>
-				<?php else : 
+					<article>
+						<h2>Related projects</h2>
+						<div class="[ row ]">
+							<?php foreach ( $related_projects as $name => $project ) : ?>
+								<div class="[ col-sm-12 col-md-6 col-lg-4 ][ related-project ]">
+									<a href="<?php echo $project['permalink'] ?>">
+										<img class="[ image-responsive ]" src="<?php echo $project['img_url']; ?>" alt="<?php echo $name; ?>">
+										<h3><?php echo $name; ?></h3>
+									</a>
+								</div>
+							<?php endforeach; ?>
+						</div>
+					</article>
+				<?php else :
 					$latest_projects = get_latest_projects( 3 ); ?>
-					<h2>Latest projects</h2>
-					<div class="[ row ]">
-						<?php foreach ( $latest_projects as $name => $project ) : ?>
-							<div class="[ col-sm-12 col-md-6 col-lg-4 ][ related-project ]">
-						   		<a href="<?php echo $project['permalink'] ?>">
-							   		<img class="[ size-medium ][ wp-image-<?php echo get_the_id(); ?> ]" src="<?php echo $project['img_url']; ?>" alt="<?php echo $name; ?>">
-							   		<h3><?php echo $name; ?></h3>
-							   	</a>
-							</div>
-						<?php endforeach; ?>
-					</div>
+					<article>
+						<h2>Latest projects</h2>
+						<div class="[ row ]">
+							<?php foreach ( $latest_projects as $name => $project ) : ?>
+								<div class="[ col-sm-12 col-md-6 col-lg-4 ][ related-project ]">
+									<a href="<?php echo $project['permalink'] ?>">
+										<img class="[ image-responsive ]" src="<?php echo $project['img_url']; ?>" alt="<?php echo $name; ?>">
+										<h3><?php echo $name; ?></h3>
+									</a>
+								</div>
+							<?php endforeach; ?>
+						</div>
+					</article>
 				<?php endif; ?>
 				<div class="[ related-projects ]"></div>
 			</div>
 			<div class="[ col-lg-3 col-md-4 ][ margin-top ]">
-				<p><strong>Context:</strong> <?php echo $context; ?></p>
-				<p><strong>Year of publication:</strong> <?php echo $year_of_publication; ?></p>
-				<p><strong>Authors:</strong> <?php echo $authors; ?></p>
-				<p><strong>Institution:</strong> <?php echo $institution; ?></p>
-				<p><strong>Region:</strong> <?php echo $region; ?></p>
-				<p><strong>Sector:</strong> <?php echo $sector; ?></p>
-				<p><strong>City:</strong> <?php echo $city; ?></p>
-				<p><strong>URL:</strong> <a href="<?php echo $url; ?>"> link</a></p>
-				<p><strong>Implementing partner:</strong> <?php echo $implementing_partner; ?></p>
+				<?php if ( ! empty( $year_of_publication ) ) { ?>
+					<p><strong>Year of publication:</strong> <?php echo $year_of_publication; ?></p>
+				<?php } ?>
+				<?php if ( ! empty( $authors ) ) { ?>
+					<p><strong>Authors:</strong> <?php echo $authors; ?></p>
+				<?php } ?>
+				<?php if ( ! empty( $institution ) ) { ?>
+					<p><strong>Institution:</strong> <?php echo $institution; ?></p>
+				<?php } ?>
+				<?php if ( ! empty( $region ) ) { ?>
+					<p><strong>Region:</strong> <?php echo $region; ?></p>
+				<?php } ?>
+				<?php if ( ! empty( $sector ) ) { ?>
+					<p><strong>Sector:</strong> <?php echo $sector; ?></p>
+				<?php } ?>
+				<?php if ( ! empty( $city ) ) { ?>
+					<p><strong>City:</strong> <?php echo $city; ?></p>
+				<?php } ?>
+				<?php if ( ! empty( $url ) ) { ?>
+					<p><strong>URL:</strong> <a href="<?php echo $url; ?>"> click here</a></p>
+				<?php } ?>
+				<?php if ( ! empty( $implementing_partner ) ) { ?>
+					<p><strong>Implementing partner:</strong> <?php echo $implementing_partner; ?></p>
+				<?php } ?>
+				<?php $pdfs = get_result_pdfs( $post->ID ); ?>
+				<?php if( ! empty( $pdfs ) ) ?>
+					<ul>
+						<?php foreach ( $pdfs as $key => $pdf ) : ?>
+							<li>
+								<a href="<?php echo $pdf['url'] ?>" target="_blank"><?php echo $pdf['title'] ?></a>
+							</li>
+						<?php endforeach; ?>
+					</ul>
 			</div>
 		</div>
 	</div>

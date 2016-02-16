@@ -1,0 +1,160 @@
+
+/* General Tweaks */
+.customize-control-select select { min-width: 100% }
+.customize-control {
+  padding: 10px 0;
+}
+/* Slider UI */
+li.customize-control.customize-control-kt_slider input[type=text] { width: 20%; float: left; text-align: center; }
+
+li.customize-control.customize-control-kt_slider .ui-slider-horizontal.kt-slider-ui {
+	float: right;
+	width: 70%;
+	height: 9px;
+	margin-top: 9px;
+		border-color: #eee;
+	background: #eee;
+	border-radius: 4px;
+	position: relative;
+}
+li.customize-control.customize-control-kt_slider .ui-slider-horizontal .ui-slider-handle {
+	position: absolute; 
+	z-index: 2; 
+	width: 16px;
+  	height: 16px;
+	cursor: default; 
+	top: -4px;
+	border-radius: 4px;
+	margin-left: -10px;
+	border-color: #00B5E2;
+	background: #00B5E2;
+	border: 1px solid #00B5E2;
+}
+
+.customize-control-switch .kt_switch {
+  position: relative;
+  width: 80px;
+  height: 30px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  display: block;
+  overflow: hidden;
+  cursor: pointer;
+  border-radius: 11px;
+}
+  .customize-control-switch .kt_switch .kt_toggle {
+    position: absolute;
+display: block; width: 20px; margin: 5px;
+    background: #FFFFFF;
+    border: 2px solid #FFFFF; border-radius: 11px;
+    position: absolute; top: 0; bottom: 0; right: 50px;
+    -moz-transition: all 0.3s ease-in 0s; -webkit-transition: all 0.3s ease-in 0s;
+    -o-transition: all 0.3s ease-in 0s; transition: all 0.3s ease-in 0s; 
+  z-index: 999;
+}
+  .customize-control-switch .kt_switch .On,
+  .customize-control-switch .kt_switch .Off {
+      display: block;
+        border-radius: 11px;
+      float: left;
+      width: 100%; height: 30px; padding: 0; line-height: 30px;
+    font-size: 16px; color: white;
+     font-weight: bold;
+    -moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: border-box;
+    -moz-transition: opacity 0.2s ease-in; -webkit-transition: opacity 0.2s ease-in;
+    -o-transition: opacity 0.2s ease-in; transition: opacity 0.2s ease-in; 
+  	}
+  .customize-control-switch .kt_switch .On {
+      padding-left: 10px;
+    background-color: #00B5E2; color: #FFFFFF;
+       }
+       .customize-control-switch .kt_switch .Off {
+      padding-right: 10px;
+    background-color: #EEEEEE; color: #999999;
+    text-align: right;
+    position: absolute;
+    top: 0;
+    left:0;
+       }
+       .customize-control-switch .kt_switch.On .On, .customize-control-switch .kt_switch.Off .Off{
+       	opacity: 1;
+       }
+       .customize-control-switch .kt_switch.Off .On, .customize-control-switch .kt_switch.On .Off {
+       	opacity: 0;
+       }
+  .customize-control-switch .kt_switch.On .kt_toggle {
+    left: 54%; 
+	}
+  .customize-control-switch .kt_switch.Off .kt_toggle {
+    left: 2%;
+	}
+
+.kt_tooltip {
+  right: 0px;
+    cursor: pointer;
+    float: right;
+  width: 16px;
+  height: 16px;
+}
+.hint,
+[data-hint] {
+  position: relative;
+  display: inline-block; }
+  .hint:before, .hint:after,
+  [data-hint]:before,
+  [data-hint]:after {
+    position: absolute;
+    -webkit-transform: translate3d(0, 0, 0);
+    -moz-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+    visibility: hidden;
+    opacity: 0;
+      z-index: 9000;
+    pointer-events: none;
+    transition: 0.3s ease;
+    transition-delay: 250ms; }
+  .hint:hover:before, .hint:hover:after, .hint:focus:before, .hint:focus:after,
+  [data-hint]:hover:before,
+  [data-hint]:hover:after,
+  [data-hint]:focus:before,
+  [data-hint]:focus:after {
+    visibility: visible;
+    opacity: 1; }
+  .hint:hover:before, .hint:hover:after,
+  [data-hint]:hover:before,
+  [data-hint]:hover:after {
+    transition-delay: 0; }
+  .hint:before,
+  [data-hint]:before {
+    content: '';
+    position: absolute;
+    background: transparent;
+    border: none;
+    z-index: 999;
+    width: 0;
+    height: 0;
+    border-top: 5px solid transparent;
+    border-bottom: 5px solid transparent;
+    border-left: 5px solid #333;
+    left: -5px;
+    top: 5px; }
+  .hint:after,
+  [data-hint]:after {
+    content: attr(data-hint);
+    background: #333;
+    color: white;
+    padding: 5px 10px;
+    font-size: 12px;
+    line-height: 14px;
+    height: auto;
+    margin-bottom: -14px;
+    width: 170px;
+    max-width: 170px;
+    display: block;
+    white-space: normal;
+    text-align: right;
+    position: relative;
+    top: -22px;
+    left: -195px; }
+

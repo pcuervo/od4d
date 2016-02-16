@@ -164,6 +164,7 @@ function get_result_filter_info( $post_id ){
 		'sector'				=> get_result_slug( $post_id, 'sector' ),
 		'publication_type'		=> get_result_slug( $post_id, 'publication_type' ),
 		'implementing_partner'	=> get_result_slug( $post_id, 'implementing_partner' ),
+		'year_of_publication'	=> get_result_slug( $post_id, 'year_of_publication' ),
 		);
 	return $result_info;
 }// get_result_filter_info
@@ -277,28 +278,37 @@ function get_implementing_partners_coordinates(){
 	if ( $query_implementing_partners->have_posts() ) : while ( $query_implementing_partners->have_posts() ) : $query_implementing_partners->the_post();
 		global $post;
 
-		$lat = get_lat( $post->ID );
-		$lng = get_lng( $post->ID );
-		$ip_coordinates[$post->post_name] = array(
-			'lat'					=> $lat,
-			'lng'					=> $lng,
-			'permalink'				=> get_permalink( $post->ID ),
-			'implementingPartner'	=> get_the_title(),
-			);
-
+		for( $i=1; $i <= 5; $i++ ){
+			$lat = get_lat( $post->ID, $i );
+			if( is_null( $lat ) ) continue;
+			$ip_coordinates[$post->post_name . $i] = get_city_coordinates( $post->ID, $i );
+		}
 	endwhile; endif; wp_reset_query();
 
 	return json_encode( $ip_coordinates );
 
 }// get_implementing_partners_coordinates
 
+function get_city_coordinates( $post_id, $i ){
+	$lat = get_lat( $post_id, $i );
+	$lng = get_lng( $post_id, $i );
+	return array(
+		'lat'					=> $lat,
+		'lng'					=> $lng,
+		'permalink'				=> get_permalink( $post_id ),
+		'implementingPartner'	=> get_the_title(),
+		);
+}// get_city_coordinates
+
 /**
  * Get latitude from project (Result)
  * @param int $post_id
+ * @param int $i
  * @return int $lat
  */
-function get_lat( $post_id ){
-	return get_post_meta( $post_id, '_lat_meta', true );
+function get_lat( $post_id, $i ){
+	if( 1 === $i ) return get_post_meta( $post_id, '_lat_meta', true );
+	return get_post_meta( $post_id, '_lat' . $i . '_meta', true );
 }// get_lat
 
 /**
@@ -306,8 +316,9 @@ function get_lat( $post_id ){
  * @param int $post_id
  * @return int $lng
  */
-function get_lng( $post_id ){
-	return get_post_meta( $post_id, '_lng_meta', true );
+function get_lng( $post_id, $i ){
+	if( 1 === $i ) return get_post_meta( $post_id, '_lng_meta', true );
+	return get_post_meta( $post_id, '_lng' . $i . '_meta', true );
 }// get_lng
 
 /**
@@ -385,6 +396,25 @@ function get_latest_projects( $num_posts ){
 	return $latest_projects;
 
 }// get_latest_projects
+
+function get_result_pdfs( $post_id ){
+
+	$pdfs = array();
+	$query_pdf_args = array(
+		'post_parent'		=> $post_id,
+        'post_status' 		=> 'inherit',
+        'post_type'			=> 'attachment',
+        'post_mime_type' 	=> 'application/pdf',
+	    );
+	$query_pdf = new WP_Query( $query_pdf_args );
+	foreach ( $query_pdf->posts as $file) {
+		$pdfs[$file->post_name] = array(
+			'title' => $file->post_title,
+			'url' 	=> $file->guid
+		);
+	}
+	return $pdfs;
+}// get_result_pdfs
 
 
 /*------------------------------------*\

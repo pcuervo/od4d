@@ -19,6 +19,7 @@ add_action('init', function(){
 	insert_sector_taxonomy_terms();
 	$results_pt->add_taxonomy( 'Publication Type' );	
 	insert_publication_type_taxonomy_terms();
+	$results_pt->add_taxonomy( array('Year of publication', 'Year of publication') );	
 
 	// IMPLEMENTING PARTNERS
 	$implementin_partners_pt = register_cuztom_post_type( 'Implementing Partner' );

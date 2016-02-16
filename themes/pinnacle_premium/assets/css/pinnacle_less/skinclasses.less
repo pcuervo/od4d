@@ -1,0 +1,51 @@
+//skin classes
+
+.topclass {
+	background: @topclass;
+}
+.contentclass {
+	background: @contentclass;
+}
+.postclass, .woocommerce-tabs .panel {
+	background: @postclass;
+}
+.titleclass {
+	background-color: @titleclass;
+}
+.featclass {
+	background: @featclass;
+}
+.headerclass {
+	background: transparent;
+		transition: background .4s ease-out, border .4s ease-out;
+-webkit-transition: background .4s ease-out, border .4s ease-out;
+-moz-transition: background .4s ease-out, border .4s ease-out;
+-o-transition: background .4s ease-out, border .4s ease-out;
+border-bottom: 1px solid rgba(255,255,255,0.5);
+}
+.is-sticky .headerclass {
+	background: @headerclass;
+	border-bottom: 1px solid transparent;
+}
+.none-trans-header .headerclass {
+	background: @headerclass;
+	border-bottom: 0;
+}
+.footerclass {
+	background: @footerclass;
+}
+.navclass {
+	background: @navclass;
+}
+.mobileclass {
+	background: @topclass;
+}
+.bg_primary {
+	background: @primary;
+}
+.color_primary {
+	color: @primary;
+}
+.color_gray {
+	color:#555;
+}

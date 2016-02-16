@@ -39,9 +39,22 @@
 					<h5>Sector:</h5>
 					<?php show_filters( 'sector' ); ?>
 				</div>
+				<div class="[ tcol-ss-12 tcol-xs-4 tcol-md-12 ][ js-filter ]">
+					<h5>Year of publication:</h5>
+					<?php show_filters( 'year_of_publication' ); ?>
+				</div>
 			</div>
 		</aside>
 		<section class="[ tcol-ss-12 tcol-md-9 ][ posts-container ]">
+			<select name="sort" id="">
+				<option value="" disabled="disabled" selected="selected">Sory by:</option>
+				<option value="title" data-order="asc">Title (ascending)</option>
+				<option value="title" data-order="desc">Title (descending)</option>
+				<option value="implementingPartner" data-order="asc">Implementing Partner (ascending)</option>
+				<option value="implementingPartner" data-order="desc">Implementing (descending)</option>
+				<option value="publishedDate" data-order="asc">Most Recent</option>
+				<option value="publishedDate" data-order="desc">Oldest</option>
+			</select>
 			<div class="[ isotope-container ]">
 				<div class="[ rowtight ]">
 					<?php
@@ -63,7 +76,7 @@
 									<?php the_post_thumbnail( 'medium', array( 'class' => '[ post__image ][ image-responsive ]' ) ); ?>
 								</a>
 								<p class="[ post__implementing-partner ]">Implementing partner: <?php echo get_implementing_partner( $post->ID ); ?></p>
-								<!-- <p class="[ post__type ]">Publication type: Magazine </p> -->
+								<p class="[ post__published_date ][ hidden ]">Publication type: <?php echo get_the_time('U'); ?></p>
 							</div>
 						</div>
 					<?php endwhile; endif; ?>

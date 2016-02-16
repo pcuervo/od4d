@@ -1,0 +1,205 @@
+//Header
+.trans-header #kad-banner {
+	position: absolute;
+	width: 100%;
+	z-index: 1020;
+}
+.stickyheader #kad-banner {
+	width: 100%;
+	left: 0px;
+	z-index: 1020;
+	top:0;
+	margin: 0 auto;
+}
+.stickyheader.trans-header #kad-banner {
+	position: fixed;
+}
+.admin-bar.stickyheader #kad-banner {
+	top:32px;
+}
+.trans-header #kad-banner-sticky-wrapper{height:0px !important;}
+//Header Logo
+
+#logo {
+margin-left: 5px;
+padding: 10px 0;
+}
+.col-md-12 > #logo{
+	text-align: center;
+}
+#kad-banner #logo .kad-retina-logo, .trans-header #kad-banner #logo .kad-retina-logo {
+	display: none;
+}
+.kad-lg {
+background-size: contain !important;
+background-position: left center !important;;
+background-repeat: no-repeat !important;;
+max-width: 100%;
+}
+.mobile-nav-container {
+	min-height: 0;
+}
+#logo a.brand {
+	color: #444;
+	font-size: 38px;
+	line-height: normal;
+}
+#logo a.brand:hover {
+	text-decoration: none;
+}
+#kad-banner #logo .kad-standard-logo {
+	-webkit-transition: opacity 0.3s ease-in-out;
+-moz-transition: opacity 0.3s ease-in-out;
+-ms-transition: opacity 0.3s ease-in-out;
+-o-transition: opacity 0.3s ease-in-out;
+transition: opacity 0.3s ease-in-out;
+}
+.trans-header #kad-banner #logo .kad-standard-logo {
+	opacity: 0;
+	display: none;
+}
+.trans-header .is-sticky #kad-banner #logo .kad-standard-logo {
+	opacity: 1;
+	display: block
+}
+#kad-banner #logo .kad-standard-logo-tranbg, #kad-banner #logo .kad-retina-logo-tranbg {
+	display: none;
+	-webkit-transition: opacity 0.3s ease-in-out;
+-moz-transition: opacity 0.3s ease-in-out;
+-ms-transition: opacity 0.3s ease-in-out;
+-o-transition: opacity 0.3s ease-in-out;
+transition: opacity 0.3s ease-in-out;
+}
+.trans-header #kad-banner #logo .kad-standard-logo-tranbg {
+	display: block;
+	opacity: 1;
+}
+.trans-header .is-sticky #kad-banner #logo .kad-standard-logo-tranbg, .trans-header .is-sticky #kad-banner #logo .kad-retina-logo-tranbg {
+	opacity: 0;
+	display: none;
+}
+.kad-header-style-basic #logo #thelogo {
+position: relative;
+}
+// Style Baisc
+.kad-header-style-basic #logo, .kad-header-style-basic .kad-primary-nav, .kad-header-style-basic .nav-main {
+margin: 0px;
+padding: 0px;
+}
+.kad-header-style-basic #logo #thelogo {
+display: table-cell;
+    vertical-align: middle;
+    max-width: 100%
+}
+.kad-header-style-basic #thelogo img {
+padding: 5px 0;
+display: block;
+height: auto;
+}
+.kad-header-style-basic  #logo a.brand {
+display: table !important;
+table-layout: fixed;
+max-width: 100%;
+width: 100%;
+}
+.kad-header-style-basic .kad-primary-nav ul.sf-menu > li > a {
+margin: 0;
+padding: 0 20px;
+}
+.kad-header-style-basic .kad-primary-nav ul.sf-menu>li.sf-dropdown>a {
+padding: 0 30px 0 20px;
+}
+.kad-header-style-basic #kad-banner #kad-shrinkheader {
+overflow: visible!important;
+}
+.kad-header-style-basic.kad-header-center-logo .kad-primary-nav ul.sf-menu > li {
+width: 33.33%;
+}
+.kad-header-style-basic.kad-header-center-logo .kad-primary-nav ul.sf-menu > li > a {
+padding: 0px;
+}
+.kad-header-style-basic.kad-header-center-logo .kad-primary-nav ul.sf-menu {
+float: none;
+width: 100%;
+}
+.kad-header-logo .kad-lg {
+	margin: 0 auto;
+background-size: contain!important;
+background-position: center center!important;
+}
+.kad-header-center-logo #logo a.brand {
+text-align: center;
+}
+@media (min-width: 992px) {
+.kad-header-style-basic.kad-header-center-logo #thelogo img {
+margin: 0 auto;
+}
+}
+.kad-header-center-logo .kad-primary-nav .sf-menu>.kt-lgmenu>ul {
+width: auto;
+}
+@media (min-width: 992px) {
+.kt-menu-left.kt-logo-25, .kt-menu-right.kt-logo-25 {
+width: 37.5%;
+}
+.kad-header-logo.kt-logo-25 {
+width: 25%;
+}
+}
+// Page Header
+.page-header {
+padding-top: 35px;
+padding-bottom: 35px;
+margin: 0;
+text-align: center;
+}
+.kad-parallax {
+background-attachment: fixed !important;
+background-size: cover !important;
+-moz-background-size: cover !important;
+-webkit-background-size: cover !important;
+}
+.subtitle {
+	margin-bottom: 10px;
+}
+.subtitle p {
+	margin-bottom: 0px;
+}
+
+//color overlay
+.header-color-overlay {
+position: absolute;
+width: 100%;
+height: 100%;
+left: 0;
+top: 0;
+opacity: .4;
+background: transparent;
+}
+
+// slider arrow
+
+// Slider above header 
+.sliderclass {
+position: relative;
+}
+.sliderclass .kad_fullslider_arrow {
+position: absolute;
+z-index: 1000;
+left: 50%;
+bottom: 55px;
+margin-left: -18px;
+}
+@media (max-width: 767px) { 
+.sliderclass .kad_fullslider_arrow {
+bottom: 25px;
+}
+	}
+.sliderclass .kad_fullslider_arrow a {
+font-size: 36px;
+-webkit-animation: hoverup 2s infinite linear;
+-moz-animation: hoverup 2s infinite linear;
+-ms-animation: hoverup 2s infinite linear;
+-o-animation: hoverup 2s infinite linear;
+color: #FFF;
+}
