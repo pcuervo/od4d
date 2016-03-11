@@ -40,7 +40,17 @@
 					<a href="https://twitter.com/<?php echo $twitter_username; ?>" target="_blank">@<?php echo $twitter_username; ?></a>
 				</div>
 				<div class="[ margin-bottom ]">
-					<h4 class="[ hometitle ]">RSS</h4>
+					<?php $pdfs = get_result_pdfs( $post->ID ); ?>
+					<?php if( ! empty( $pdfs ) ) : ?>
+						<h4 class="[ hometitle ]">Accountability</h4>
+						<ul>
+							<?php foreach ( $pdfs as $key => $pdf ) : ?>
+								<li>
+									<a href="<?php echo $pdf['url'] ?>" target="_blank"><?php echo $pdf['title'] ?></a>
+								</li>
+							<?php endforeach; ?>
+						</ul>
+					<?php endif; ?>
 				</div>
 
 			</aside>

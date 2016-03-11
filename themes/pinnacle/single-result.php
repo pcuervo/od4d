@@ -125,6 +125,16 @@
 				<?php if ( ! empty( $implementing_partner ) ) { ?>
 					<p><strong>Implementing partner:</strong> <?php echo $implementing_partner; ?></p>
 				<?php } ?>
+				<?php $pdfs = get_result_pdfs( $post->ID ); ?>
+				<?php if( ! empty( $pdfs ) ) : ?>
+					<ul>
+						<?php foreach ( $pdfs as $key => $pdf ) : ?>
+							<li>
+								<a href="<?php echo $pdf['url'] ?>" target="_blank"><?php echo $pdf['title'] ?></a>
+							</li>
+						<?php endforeach; ?>
+					</ul>
+				<?php endif; ?>
 			</div>
 		</div>
 	</div>

@@ -1,4 +1,5 @@
 var $=jQuery.noConflict();
+var infoWindow = null;
 
 /**
  * Run Isotope plugin
@@ -20,7 +21,7 @@ function runIsotope( container, item ){
 
 
 /**
- * Filster in Isotope plugin
+ * Filter in Isotope plugin
  * @container element cointaining items
  * @item element inside the container
 **/
@@ -32,6 +33,11 @@ function filterIsotope( container, item ){
             layoutMode: 'masonry',
             masonry: {
                 columnWidth: item
+            },
+            getSortData: {
+                title:                  '.post__title',
+                implementingPartner:    '.post__implementing-partner',
+                publishedDate:          '.post__published_date'
             }
         });
     });
@@ -64,12 +70,21 @@ function filterIsotope( container, item ){
     });
 }// filterIsotope
 
+function sortResults( container, attribute, order ){
+    $( container ).isotope({ 
+      sortBy : attribute,
+      sortAscending : order == 'asc' ? true : false
+    });
+}
+
 // flatten object by concatting values
 function concatValues( obj ) {
     var value = '';
     for ( var prop in obj ) value += obj[ prop ];
     return value;
 }
+
+
 
 /**
  * Creates a Google Map without Markers
@@ -166,14 +181,13 @@ function autoCenter( map, markers ) {
 **/
 function createInfoWindow( map, marker, title, permalink ){
 
-    var infoWindow = new google.maps.InfoWindow({ maxWidth: 200 });
+    infoWindow = new google.maps.InfoWindow({ maxWidth: 200 });
     infoWindow.setContent( '<a class="" href="' + permalink + '">' + title + '<a/>' );
-
+    console.log( infoWindow );
     //infoWindows.push( infoWindow );
 
     google.maps.event.addListener( marker, 'click', function() {
         infoWindow.open( map, this );
-        //styleInfoWindow();
-     });
+    });
 
 }// createInfoWindow
