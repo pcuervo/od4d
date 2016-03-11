@@ -113,6 +113,25 @@
 
 				<div class="clearfix"></div>
 
+				<div class="key-concepts home-margin home-padding kad-animation" data-animation="fade-in" data-delay="0">
+					<div class="[ home-margin ][ rowtight ]">
+						<?php
+							$key_concepts = get_page_by_title('Key concepts');
+							$key_concepts_ID = $key_concepts->ID;
+							$post = get_post($key_concepts_ID);
+							$content = apply_filters('the_content', $post->post_content);
+
+							$key_concepts_args = array(
+								'page_id' => $key_concepts_ID
+							);
+							$query_key_concepts = new WP_Query( $key_concepts_args );
+							if ( $query_key_concepts->have_posts() ) : while( $query_key_concepts->have_posts() ) : $query_key_concepts->the_post();
+								the_content();
+							endwhile; endif; wp_reset_query();
+						?>
+					</div>
+				</div>
+
 				<?php if ($layout):
 					foreach ($layout as $key=>$value) {
 
