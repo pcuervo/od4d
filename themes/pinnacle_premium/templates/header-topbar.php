@@ -5,18 +5,6 @@
 		<div class="[ col-ss-10 col-md-6 ][ kad-topbar-left ]">
 			<div class="topbar_social_area topbar-widget clearfix">
 
-			<form action="//od4d.us12.list-manage.com/subscribe/post?u=8161fc94b2c0a5e5eaadf957b&amp;id=b6e447a697" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
-				<div id="mc_embed_signup_scroll">
-					<label class="[ inline-block ][ margin-right--xs ]" for="mce-EMAIL">newsletter</label>
-					<input type="email" value="" name="EMAIL" class="email [ inline-block ][ margin-right--xs ]" id="mce-EMAIL" placeholder="your email" required>
-					<!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups-->
-					<div style="position: absolute; left: -5000px;" aria-hidden="true">
-						<input type="text" name="b_8161fc94b2c0a5e5eaadf957b_b6e447a697" tabindex="-1" value="">
-					</div>
-					<input type="submit" value="join" name="subscribe" id="mc-embedded-subscribe" class="[ kad-btn kad-btn-primary kad-btn--small ][ inline-block ][ margin-right--xs ]">
-				</div>
-			</form>
-
 			<?php if(kadence_display_topbar_widget()) { if(is_active_sidebar('topbarright')) { dynamic_sidebar('topbarright'); } } ?>
 			<?php if(kadence_display_topbar_icons()) : ?>
 			<div class="topbar_social">
