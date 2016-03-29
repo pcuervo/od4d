@@ -18,7 +18,7 @@ function footer_scripts(){
 					filterIsotope('.isotope-container', '.post');
 				<?php endif; ?>
 
-				<?php if( is_page( 'network' ) ) : ?>
+				<?php if( is_page( 'network' ) or is_page( 'the-program' ) ) : ?>
 					addAllMarkers();
 				<?php endif; ?>
 

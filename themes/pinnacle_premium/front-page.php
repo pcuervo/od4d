@@ -83,30 +83,12 @@
 
 				<div class="home-what-is home-margin home-padding kad-animation" data-animation="fade-in" data-delay="0">
 					<div class="clearfix">
-						<h4 class="[ text-center ]">Open data for development</h4>
+						<h4 class="[ text-center ][ widget-title ]">What we do</h4>
 					</div>
 					<div class="home-margin[ rowtight ]">
 						<div class="[ tcol-ss-12 tcol-sm-8 tcol-lg-6 ][ tcol-sm-offset-2 tcol-lg-offset-3 ][ all ][ p-item ]" style="">
-							<?php $whatIs = get_page_by_title('What is OD4D?'); ?>
+							<?php $whatIs = get_page_by_title('What we do'); ?>
 							<p class=""><?php echo $whatIs->post_content; ?></p>
-						</div>
-					</div>
-				</div>
-
-				<div class="clearfix"></div>
-
-				<!-- SLIDER -->
-
-				<div class="quote-is home-margin home-padding kad-animation" data-animation="fade-in" data-delay="0">
-					<div class="[ home-margin ][ rowtight ]">
-						<div class="[ tcol-ss-12 tcol-sm-8 tcol-lg-6 ][ tcol-sm-offset-2 tcol-lg-offset-3 ][ all ][ p-item ]" style="">
-							<?php
-								$quote = get_page_by_title('Quote');
-								$quoteID = $quote->ID;
-								$post = get_post($quoteID);
-								$content = apply_filters('the_content', $post->post_content);
-								echo $content;
-							?>
 						</div>
 					</div>
 				</div>
@@ -347,39 +329,7 @@
 
 				<div class="home_blog home-margin clearfix home-padding">
 					<div id="kad-blog-grid" class="rowtight init-masonry" data-masonry-selector=".b_item">
-						<div class="tcol-md-4 tcol-sm-4 tcol-xs-6 tcol-ss-12 b_item kad_blog_item">
-							<div class="clearfix">
-								<h5 class="hometitle">Implementing partners</h5>
-							</div>
-							<div id="post-85" class="blog_item postclass kad_blog_fade_in grid_item" itemscope="" itemtype="http://schema.org/BlogPosting">
-								<div class="img-margin-center">
-									<a href="" title="">
-										<img src="<?php echo THEMEPATH; ?>assets/img/implementing-partners/caribbean-open-institute.jpg" alt="" itemprop="image" class="iconhover" style="display:block;">
-									</a>
-								</div>
-								<div class="img-margin-center">
-									<a href="" title="">
-										<img src="<?php echo THEMEPATH; ?>assets/img/implementing-partners/www-foundation.jpg" alt="" itemprop="image" class="iconhover" style="display:block;">
-									</a>
-								</div>
-								<div class="img-margin-center">
-									<a href="" title="">
-										<img src="<?php echo THEMEPATH; ?>assets/img/implementing-partners/open-knowledge.jpg" alt="" itemprop="image" class="iconhover" style="display:block;">
-									</a>
-								</div>
-								<div class="img-margin-center">
-									<a href="" title="">
-										<img src="<?php echo THEMEPATH; ?>assets/img/implementing-partners/odi.jpg" alt="" itemprop="image" class="iconhover" style="display:block;">
-									</a>
-								</div>
-								<div class="img-margin-center">
-									<a href="" title="">
-										<img src="<?php echo THEMEPATH; ?>assets/img/implementing-partners/ilda.jpg" alt="" itemprop="image" class="iconhover" style="display:block;">
-									</a>
-								</div>
-							</div> <!-- Blog Item -->
-						</div>
-						<div class="tcol-md-4 tcol-sm-4 tcol-xs-6 tcol-ss-12 b_item kad_blog_item">
+						<div class="tcol-xs-6 tcol-ss-12 b_item kad_blog_item">
 							<div class="clearfix">
 								<h5 class="hometitle">@Od4_d</h5>
 							</div>
@@ -388,7 +338,7 @@
 								<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
 							</div> <!-- Blog Item -->
 						</div>
-						<div class="tcol-md-4 tcol-sm-4 tcol-xs-6 tcol-ss-12 b_item kad_blog_item">
+						<div class="tcol-xs-6 tcol-ss-12 b_item kad_blog_item">
 							<div class="clearfix">
 								<h5 class="hometitle">#opendata</h5>
 							</div>

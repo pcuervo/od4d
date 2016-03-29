@@ -15,7 +15,6 @@
 }
 
 .margin-top{ margin-top: 20px; }
-
 .margin-bottom{ margin-bottom: 20px; }
 
 .margin-right{ margin-right: 20px; }
@@ -25,9 +24,38 @@
 .block{ display: block; }
 .inline-block{ display: inline-block; }
 
+
+
+
+
+
+
+/*------------------------------------*\
+    #Aside
+\*------------------------------------*/
+aside{
+    padding-top: 20px;
+}
+
+
+
+/*------------------------------------*\
+    #Footer
+\*------------------------------------*/
+
+.footerclass{
+	border-top: 2px solid #00a5b1;
+}
+
+
 /*------------------------------------*\
     #Buttons
 \*------------------------------------*/
+
+.kad-btn--xs{
+    padding: 1px 6px;
+    font-size: 11px;
+}
 
 .kad-btn--small{
     padding: 1px 10px;
@@ -87,13 +115,17 @@
     border-bottom-left-radius: 40px;
 }
 
-
 /*------------------------------------*\
-    #Aside
+    #8 key concepts grid
 \*------------------------------------*/
-aside{
-    padding-top: 20px;
+.panel-grid .widget, .panel-grid-cell{ margin: 0 !important; }
+
+img.kad-circle-iconclass{
+	display: block;
+	margin: 0 auto; padding: 20px; border-radius: 33%;
+	background: #fff;
 }
+
 
 
 /*------------------------------------*\

@@ -65,6 +65,12 @@ function kadence_slider_metaboxes( array $meta_boxes ) {
 					'type' => 'checkbox'
 				),
 				array(
+					'name' => __('Respect Image Aspect Ratio', 'kadence_slider'),
+					'desc' => __('This will ignore the full height and display the images based on the uploaded ratio once they fall below the max height. You can not use with fullheight or parallax', 'kadence_slider'),
+					'id' => $prefix . 'respect_ratio',
+					'type' => 'checkbox'
+				),
+				array(
 					'name' => __('Auto Play', 'kadence_slider'),
 					'desc' => __('Scroll through slides automatically.', 'kadence_slider'),
 					'id'   => $prefix . 'auto_play',
@@ -76,7 +82,7 @@ function kadence_slider_metaboxes( array $meta_boxes ) {
 		    	),
 				array(
 					'name' => __('Slide Pause Time', 'kadence_slider'),
-					'desc' => __('This sets the time each slide is displayed in milliseconds. default: 9000', 'kadence_slider'),
+					'desc' => __('This sets the time each slide is displayed in milliseconds.', 'kadence_slider'),
 					'id'   => $prefix . 'pause_time',
 					'type' => 'text_number',
 					'default' => '9000',
