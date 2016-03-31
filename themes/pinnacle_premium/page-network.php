@@ -10,7 +10,6 @@ get_header();
 			<div class="row">
 				<div class="col-md-12">
 					<h1 class="kad-page-title entry-title" itemprop="name headline">Network</h1>
-					<div class="subtitle"> Active OD4D Projects </div>
 				</div>
 			</div>
 		</div>

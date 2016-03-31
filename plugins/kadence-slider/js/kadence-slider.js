@@ -55,7 +55,54 @@ jQuery(document).ready(function ($) {
             var windowHeight = jQuery(window).height();
             jQuery('.kad-slider-wrapper .kad-slider').height(windowHeight);
             jQuery('.kad-slider-wrapper .kad-slider .kad-slider-canvas').height(windowHeight);
+    }
+    function kad_slide_ratio_Height() {
+
+    		var imageHeight = jQuery('.kad-slider .kad-slide img').height(),
+    		kt_height = jQuery('.kad-slider-wrapper').attr('data-ktslider-height');
+    		if(imageHeight > kt_height) {
+    			var setheight = kt_height;
+    			var top = '50%';
+    			var mtop = - +imageHeight/2;
+    		} else {
+    			var setheight = imageHeight;
+    			var top = 0;
+    			var mtop = 0;
+    		}
+            jQuery('.kad-slider-wrapper .kad-slider').height(setheight);
+            jQuery('.kad-slider-wrapper .kad-slider .kad-slider-canvas').height(setheight);
+            jQuery('.kad-slider .kad-slide img').css('top', top);
+            jQuery('.kad-slider .kad-slide img').css('margin-top', mtop);
+    }
+    function kad_slide_ratio_resize_Height() {
+    	var count = jQuery('.kad-slider-wrapper').attr('data-ktslider-count');
+
+    	if (count == '1') {
+    		var imageHeight = jQuery('.kad-slider .kad-slide img').height();
+    	} else {
+            var imageHeight = jQuery('.kad-slider .seq-in .kad-slide img').height();
         }
+        var kt_height = $('.kad-slider-wrapper').attr('data-ktslider-height');
+    		if(imageHeight > kt_height) {
+    			var setheight = kt_height;
+    			var top = '50%';
+    			var mtop = - +imageHeight/2;
+    		} else {
+    			var setheight = imageHeight;
+    			var top = 0;
+    			var mtop = 0;
+    		}
+            jQuery('.kad-slider-wrapper .kad-slider').height(setheight);
+            jQuery('.kad-slider-wrapper .kad-slider .kad-slider-canvas').height(setheight);
+            if (count == '1') {
+    			jQuery('.kad-slider .kad-slide img').css('top', top);
+            	jQuery('.kad-slider .kad-slide img').css('margin-top', mtop);
+	    	} else {
+	            jQuery('.kad-slider .seq-in .kad-slide img').css('top', top);
+            	jQuery('.kad-slider .seq-in .kad-slide img').css('margin-top', mtop);
+	        }
+         
+    }
 
     $('.kad-slider-parallax .kad-slider .kad-slide').each(function(){
 	 	$(this).css({ backgroundPosition: '50% '+ '0px' });
@@ -85,24 +132,39 @@ jQuery(document).ready(function ($) {
         kt_pausetime = this_slider.attr('data-ktslider-pause-time'),
         kt_id = this_slider.attr('data-ktslider-id'),
         kt_height = this_slider.attr('data-ktslider-height');
+        kt_height_type = this_slider.attr('data-ktslider-height-type');
 
         var kt_id_name = 'kad-slider-'+kt_id;
 
-        if(kt_height == 'full') {
-        kad_slideHeight();
+        if(kt_height_type == 'full') {
+	        kad_slideHeight();
 
-        if( !isMobile_kt_slider.any() ) {
-	        var kadresizeTimer;
-	        $(window).resize(function() {
-	            clearTimeout(kadresizeTimer);
-	            kadresizeTimer = setTimeout(kad_slideHeight, 100);
-	        });
-	    } else {
-	    	$(window).on("orientationchange",function(){
-	    		kad_slideHeight();
-	    	});
-	    }
-    }
+	        if( !isMobile_kt_slider.any() ) {
+		        var kadresizeTimer;
+		        $(window).resize(function() {
+		            clearTimeout(kadresizeTimer);
+		            kadresizeTimer = setTimeout(kad_slideHeight, 100);
+		        });
+		    } else {
+		    	$(window).on("orientationchange",function(){
+		    		kad_slideHeight();
+		    	});
+		    }
+    	} else if(kt_height_type == 'ratio') {
+    		kad_slide_ratio_Height();
+
+	        if( !isMobile_kt_slider.any() ) {
+		        var kadresizeTimer;
+		        $(window).resize(function() {
+		            clearTimeout(kadresizeTimer);
+		            kadresizeTimer = setTimeout(kad_slide_ratio_resize_Height, 100);
+		        });
+		    } else {
+		    	$(window).on("orientationchange",function(){
+		    		kad_slide_ratio_resize_Height();
+		    	});
+		    }
+    	}
 
         if(kt_autoplay == "true") {
         	kt_autoplay = true;
@@ -125,6 +187,14 @@ jQuery(document).ready(function ($) {
         //var sequenceElement = $(".kad-slider");
 
         var kadenceslider = sequence(sequenceElement, options);
+        if(kt_height_type == 'ratio') {
+        	kadenceslider.preloaded = function() {
+	        	kad_slide_ratio_resize_Height();
+	        }
+	        kadenceslider.nextPhaseEnded = function() {
+	        	kad_slide_ratio_resize_Height();
+	        }
+    	}
 
     });
 });

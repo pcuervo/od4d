@@ -7,7 +7,6 @@
 			<div class="row">
 				<div class="col-md-12">
 					<h1 class="kad-page-title entry-title" itemprop="name headline">Results</h1>
-					<div class="subtitle"> Lorem ipsum</div>
 				</div>
 			</div>
 		</div>
@@ -20,24 +19,24 @@
 			<h4>Filters</h4>
 			<div class="[ rowtight ][ js-filter-container ]">
 				<div class="[ tcol-ss-12 tcol-xs-4 tcol-md-12 ][ js-filter ]">
-					<h5>Publication Type:</h5>
-					<?php show_filters( 'publication_type' ); ?>
+					<h5>Sector:</h5>
+					<?php show_filters( 'sector' ); ?>
 				</div>
 				<div class="[ tcol-ss-12 tcol-xs-4 tcol-md-12 ][ js-filter ]">
 					<h5>Region:</h5>
 					<?php show_filters( 'region' ); ?>
 				</div>
 				<div class="[ tcol-ss-12 tcol-xs-4 tcol-md-12 ][ js-filter ]">
-					<h5>Implementing Partner:</h5>
-					<?php show_filters( 'implementing_partner' ); ?>
-				</div>
-				<div class="[ tcol-ss-12 tcol-xs-4 tcol-md-12 ][ js-filter ]">
 					<h5>Focus / Areas of impact:</h5>
 					<?php show_filters( 'focus_areas_of_impact' ); ?>
 				</div>
 				<div class="[ tcol-ss-12 tcol-xs-4 tcol-md-12 ][ js-filter ]">
-					<h5>Sector:</h5>
-					<?php show_filters( 'sector' ); ?>
+					<h5>Publication Type:</h5>
+					<?php show_filters( 'publication_type' ); ?>
+				</div>
+				<div class="[ tcol-ss-12 tcol-xs-4 tcol-md-12 ][ js-filter ]">
+					<h5>Implementing Partner:</h5>
+					<?php show_filters( 'implementing_partner' ); ?>
 				</div>
 			</div>
 		</aside>
