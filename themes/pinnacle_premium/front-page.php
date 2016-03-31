@@ -81,21 +81,10 @@
 					$layout = array("block_one" => "block_one", "block_four" => "block_four");
 				} ?>
 
-				<div class="home-what-is home-margin home-padding kad-animation" data-animation="fade-in" data-delay="0">
+				<article class="key-concepts home-margin home-padding kad-animation" data-animation="fade-in" data-delay="0">
 					<div class="clearfix">
 						<h4 class="[ text-center ][ widget-title ]">What we do</h4>
 					</div>
-					<div class="home-margin[ rowtight ]">
-						<div class="[ tcol-ss-12 tcol-sm-8 tcol-lg-6 ][ tcol-sm-offset-2 tcol-lg-offset-3 ][ all ][ p-item ]" style="">
-							<?php $whatIs = get_page_by_title('What we do'); ?>
-							<p class=""><?php echo $whatIs->post_content; ?></p>
-						</div>
-					</div>
-				</div>
-
-				<div class="clearfix"></div>
-
-				<div class="key-concepts home-margin home-padding kad-animation" data-animation="fade-in" data-delay="0">
 					<div class="[ home-margin ][ rowtight ]">
 						<?php
 							$key_concepts = get_page_by_title('Key concepts');
@@ -112,7 +101,7 @@
 							endwhile; endif; wp_reset_query();
 						?>
 					</div>
-				</div>
+				</article>
 
 				<?php if ($layout):
 					foreach ($layout as $key=>$value) {
