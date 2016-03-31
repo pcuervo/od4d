@@ -3,7 +3,7 @@ Contributors: Kadence Themes
 Tags: 
 Requires at least: 3.8
 Tested up to: 4.4
-Stable tag: 1.5.1
+Stable tag: 1.5.3
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -20,9 +20,14 @@ Install the plugin into the `/wp-content/plugins/` folder, and activate it.
 
 == Changelog ==
 
+= 1.5.3 =
+* Fix: Height Issue.
+
+= 1.5.2 =
+* Add: option for ratio respect.
+
 = 1.5.1 =
 * Small CSS update
-
 
 = 1.5.0 =
 * Getting Ready for Kadence slider 2.0
