@@ -65,6 +65,7 @@ function filterIsotope( container, item ){
 }// filterIsotope
 
 function sortResults( container, attribute, order ){
+    console.log(attribute);
     $( container ).isotope({ 
       sortBy : attribute,
       sortAscending : order == 'asc' ? true : false
