@@ -64,6 +64,14 @@ function filterIsotope( container, item ){
     });
 }// filterIsotope
 
+function sortResults( container, attribute, order ){
+    $( container ).isotope({ 
+      sortBy : attribute,
+      sortAscending : order == 'asc' ? true : false
+    });
+}
+
+
 // flatten object by concatting values
 function concatValues( obj ) {
     var value = '';
