@@ -1,5 +1,4 @@
 var $=jQuery.noConflict();
-
 /**
  * Run Isotope plugin
  * @container element cointaining items
