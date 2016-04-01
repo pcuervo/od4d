@@ -79,7 +79,7 @@ function concatValues( obj ) {
 function createEmptyMap( id ){
 
     var map = new google.maps.Map(document.getElementById( id ), {
-        zoom: 18,
+        zoom: 20,
         mapTypeId: google.maps.MapTypeId.ROADMAP,
         mapTypeControl: false,
         streetViewControl: false,
@@ -103,7 +103,7 @@ function createEmptyMap( id ){
 /**
  * Add Markers of Implementing Partners to an empty map
 **/
-function addAllMarkers(){
+function initMapProjects(){
 
     var map = createEmptyMap( 'map' );
     var markers = [];
@@ -120,7 +120,7 @@ function addAllMarkers(){
     });
     autoCenter( map, markers );
 
-}// addAllMarkers
+}// initMapProjects
 
 /**
  * Creates a new markers
@@ -149,7 +149,6 @@ function autoCenter( map, markers ) {
     var bounds = new google.maps.LatLngBounds();
     $.each(markers, function (index, marker) { bounds.extend(marker.position); });
     map.fitBounds(bounds);
-
     var listener = google.maps.event.addListener(map, "idle", function() {
         if (map.getZoom() > 16) map.setZoom(16);
         google.maps.event.removeListener(listener);

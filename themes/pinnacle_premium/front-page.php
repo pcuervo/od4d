@@ -82,12 +82,9 @@
 				} ?>
 
 				<article class="key-concepts home-margin home-padding kad-animation" data-animation="fade-in" data-delay="0">
-					<div class="clearfix">
-						<h4 class="[ text-center ][ widget-title ]">What we do</h4>
-					</div>
 					<div class="[ home-margin ][ rowtight ]">
 						<?php
-							$key_concepts = get_page_by_title('Key concepts');
+							$key_concepts = get_page_by_title('What we do');
 							$key_concepts_ID = $key_concepts->ID;
 							$post = get_post($key_concepts_ID);
 							$content = apply_filters('the_content', $post->post_content);
@@ -96,11 +93,17 @@
 								'page_id' => $key_concepts_ID
 							);
 							$query_key_concepts = new WP_Query( $key_concepts_args );
-							if ( $query_key_concepts->have_posts() ) : while( $query_key_concepts->have_posts() ) : $query_key_concepts->the_post();
-								the_content();
-							endwhile; endif; wp_reset_query();
+							if ( $query_key_concepts->have_posts() ) : while( $query_key_concepts->have_posts() ) : $query_key_concepts->the_post(); ?>
+								<h4 class="[ text-center ][ widget-title ]"><?php the_title(); ?></h4>
+								<?php the_content(); ?>
+							<?php endwhile; endif; wp_reset_query();
 						?>
 					</div>
+				</article>
+
+				<article class="key-concepts home-margin home-padding kad-animation" data-animation="fade-in" data-delay="0">
+					<h4 class="[ text-center ][ widget-title ]">Our Projects around the world</h4>
+					<div id="map" class="[ projects-map ][ margin-bottom ]" style="height: 350px"></div>
 				</article>
 
 				<?php if ($layout):

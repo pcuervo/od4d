@@ -17,9 +17,8 @@ function footer_scripts(){
 					runIsotope('.isotope-container', '.post');
 					filterIsotope('.isotope-container', '.post');
 				<?php endif; ?>
-
-				<?php if( is_page( 'network' ) or is_page( 'the-program' ) ) : ?>
-					addAllMarkers();
+				<?php if( is_front_page() ) : ?>
+					initMapProjects();
 				<?php endif; ?>
 
 			});
