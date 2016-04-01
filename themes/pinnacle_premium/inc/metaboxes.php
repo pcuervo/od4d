@@ -161,11 +161,16 @@ function metabox_rss_link( $post ){
 
 function metabox_twitter_username( $post ){
 	$twitter_username = get_post_meta($post->ID, '_twitter_username_meta', true);
+	$widget_id = get_post_meta($post->ID, '_widget_id_meta', true);
+
 
 	wp_nonce_field(__FILE__, '_twitter_username_meta_nonce');
 
 	echo "<label><small>Do not include '@'.</small></label>";
 	echo "<input type='text' class='[ widefat ]' name='_twitter_username_meta' value='$twitter_username'>";
+
+	echo "<label>Widget ID</label>";
+	echo "<input type='text' class='[ widefat ]' name='_widget_id_meta' value='$widget_id'>";
 }// metabox_twitter_username
 
 
@@ -236,6 +241,8 @@ add_action('save_post', function( $post_id ){
 	}
 	if ( isset($_POST['_twitter_username_meta']) and check_admin_referer(__FILE__, '_twitter_username_meta_nonce') ){
 		update_post_meta($post_id, '_twitter_username_meta', $_POST['_twitter_username_meta']);
+		update_post_meta($post_id, '_widget_id_meta', $_POST['_widget_id_meta']);
+		
 	}
 
 });
