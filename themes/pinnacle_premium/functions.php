@@ -132,7 +132,7 @@ add_action( 'wp_enqueue_scripts', function(){
 
 	// scripts
 	wp_enqueue_script( 'plugins', JSPATH.'plugins.js', array('jquery'), '1.0', true );
-	wp_enqueue_script( 'gmaps', 'http://maps.googleapis.com/maps/api/js', array('jquery'), '1.0', true );
+	wp_enqueue_script( 'gmaps', 'http://maps.googleapis.com/maps/api/js?sensor=false&libraries=places', array('jquery'), '1.0', true );
 	wp_enqueue_script( 'functions', JSPATH.'functions.js', array('plugins'), '1.0', true );
 	wp_localize_script( 'functions', 'implementingPartnersCoordinates', get_implementing_partners_coordinates() );
 
@@ -327,15 +327,19 @@ function get_implementing_partners_coordinates(){
 	$query_implementing_partners = new WP_Query( $args_implementing_partners );
 	if ( $query_implementing_partners->have_posts() ) : while ( $query_implementing_partners->have_posts() ) : $query_implementing_partners->the_post();
 		global $post;
+		$arr = array('','_b','_c','_d','_e');
+		for ($i=0; $i < 5; $i++) { 
+			$lat = get_lat( $post->ID, '_lat_meta'.$arr[$i] );
+			$lng = get_lng( $post->ID, '_lng_meta'.$arr[$i] );
 
-		$lat = get_lat( $post->ID );
-		$lng = get_lng( $post->ID );
-		$ip_coordinates[$post->post_name] = array(
-			'lat'					=> $lat,
-			'lng'					=> $lng,
-			'permalink'				=> get_permalink( $post->ID ),
-			'implementingPartner'	=> get_the_title(),
-			);
+			$ip_coordinates[$post->post_name.$arr[$i]] = array(
+				'lat'					=> $lat,
+				'lng'					=> $lng,
+				'permalink'				=> get_permalink( $post->ID ),
+				'implementingPartner'	=> get_the_title(),
+				);
+		}
+		
 
 	endwhile; endif; wp_reset_query();
 
@@ -348,8 +352,8 @@ function get_implementing_partners_coordinates(){
  * @param int $post_id
  * @return int $lat
  */
-function get_lat( $post_id ){
-	return get_post_meta( $post_id, '_lat_meta', true );
+function get_lat( $post_id, $meta ){
+	return get_post_meta( $post_id, $meta, true );
 }// get_lat
 
 /**
@@ -357,8 +361,8 @@ function get_lat( $post_id ){
  * @param int $post_id
  * @return int $lng
  */
-function get_lng( $post_id ){
-	return get_post_meta( $post_id, '_lng_meta', true );
+function get_lng( $post_id, $meta ){
+	return get_post_meta( $post_id, $meta, true );
 }// get_lng
 
 /**
