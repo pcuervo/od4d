@@ -320,25 +320,20 @@
 				endif; ?>
 
 				<div class="home_blog home-margin clearfix home-padding">
-					<div id="kad-blog-grid" class="rowtight init-masonry" data-masonry-selector=".b_item">
-						<div class="tcol-xs-6 tcol-ss-12 b_item kad_blog_item">
-							<div class="clearfix">
-								<h5 class="hometitle">@Od4_d</h5>
-							</div>
+					<div class="[ tcol-xs-6 tcol-md-4 tcol-ss-12 ]">
+						<?php get_template_part('templates/home/blog', 'home'); ?>
+					</div>
+					<div class="[ tcol-xs-6 tcol-md-4 tcol-ss-12 ]">
+						<div id="kad-blog-grid">
+							<h3 class="hometitle">@Od4_d</h3>
 							<div id="post-85" class="blog_item postclass kad_blog_fade_in grid_item" itemscope="" itemtype="http://schema.org/BlogPosting">
 								<a class="twitter-timeline" href="https://twitter.com/OD4D" data-widget-id="678012125193723904">Tweets por el @OD4D.</a>
 								<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
 							</div> <!-- Blog Item -->
 						</div>
-						<div class="tcol-xs-6 tcol-ss-12 b_item kad_blog_item">
-							<div class="clearfix">
-								<h5 class="hometitle">#opendata</h5>
-							</div>
-							<div id="post-85" class="blog_item postclass kad_blog_fade_in grid_item" itemscope="" itemtype="http://schema.org/BlogPosting">
-								<a class="twitter-timeline"  href="https://twitter.com/hashtag/opendata" data-widget-id="678017565562642432">Tweets sobre #opendata</a>
-								<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
-							</div> <!-- Blog Item -->
-						</div>
+					</div>
+					<div class="[ tcol-xs-6 tcol-md-4 tcol-ss-12 ]">
+						<h3 class="hometitle">Links</h3>
 					</div>
 				</div>
 			</div><!-- /.main -->
