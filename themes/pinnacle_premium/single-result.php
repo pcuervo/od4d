@@ -12,6 +12,10 @@
 	$authors = get_result_meta( $post->ID, '_authors_meta' ); //Authors
 	$institution = get_result_meta( $post->ID, '_institution_meta' ); //Institution
 	$city = get_result_meta( $post->ID, '_city_meta' ); //City
+	$cityb = get_result_meta( $post->ID, '_city_meta_b' );
+	$cityc = get_result_meta( $post->ID, '_city_meta_c' );
+	$cityd = get_result_meta( $post->ID, '_city_meta_d' );
+	$citye = get_result_meta( $post->ID, '_city_meta_e' );
 	$url = get_result_meta( $post->ID, '_url_meta' ); //URL
 	$implementing_partner = get_implementing_partner( $post->ID ); //Implementing partner
 	$region = get_region( $post->ID ); //Implementing partner
@@ -118,6 +122,18 @@
 				<?php } ?>
 				<?php if ( ! empty( $city ) ) { ?>
 					<p><strong>City:</strong> <?php echo $city; ?></p>
+				<?php } ?>
+				<?php if ( ! empty( $cityb ) ) { ?>
+					<p><strong>City 2:</strong> <?php echo $cityb; ?></p>
+				<?php } ?>
+				<?php if ( ! empty( $cityc ) ) { ?>
+					<p><strong>City 3:</strong> <?php echo $cityc; ?></p>
+				<?php } ?>
+				<?php if ( ! empty( $cityd ) ) { ?>
+					<p><strong>City 4:</strong> <?php echo $cityd; ?></p>
+				<?php } ?>
+				<?php if ( ! empty( $citye ) ) { ?>
+					<p><strong>City 5:</strong> <?php echo $citye; ?></p>
 				<?php } ?>
 				<?php if ( ! empty( $url ) ) { ?>
 					<p><strong>URL:</strong> <a href="<?php echo $url; ?>"> click here</a></p>

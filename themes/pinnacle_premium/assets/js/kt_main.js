@@ -193,7 +193,7 @@ jQuery(document).ready(function ($) {
 		}
 		var select2select = $('body').attr('data-jsselect');
 		if( $(window).width() > 790 && !kt_isMobile.any() && (select2select == 1 )) {
-			$('select').select2({minimumResultsForSearch: -1 });
+			// $('select').select2({minimumResultsForSearch: -1 });
 			$('select.country_select').select2();
 			$('select.state_select').select2();
 		}

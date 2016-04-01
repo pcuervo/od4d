@@ -1,5 +1,4 @@
 var $=jQuery.noConflict();
-
 /**
  * Run Isotope plugin
  * @container element cointaining items
@@ -63,6 +62,15 @@ function filterIsotope( container, item ){
         });
     });
 }// filterIsotope
+
+function sortResults( container, attribute, order ){
+    console.log(attribute);
+    $( container ).isotope({ 
+      sortBy : attribute,
+      sortAscending : order == 'asc' ? true : false
+    });
+}
+
 
 // flatten object by concatting values
 function concatValues( obj ) {
