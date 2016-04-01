@@ -41,7 +41,7 @@
 
 					<div id="post-85" class="blog_item postclass" itemscope="" itemtype="http://schema.org/BlogPosting">
 						
-						<a class="twitter-timeline" href="https://twitter.com/<?php echo $twitter_username; ?>" data-widget-id="3399528776">Tweets por el @<?php echo $twitter_username; ?>.</a>
+						<a class="twitter-timeline" href="https://twitter.com/<?php echo $twitter_username; ?>" data-widget-id="2493098023">Tweets por el @<?php echo $twitter_username; ?>.</a>
 						<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
 					</div> <!-- Blog Item -->
 					

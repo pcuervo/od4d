@@ -1,4 +1,4 @@
-	<?php get_header(); ?>
+<?php get_header(); ?>
 	<?php get_template_part('templates/page', 'header'); ?>
 	
     <div id="content" class="container">
@@ -8,5 +8,6 @@
 			<?php get_template_part('templates/content', 'page'); ?>
 		</div>
 		<?php do_action('kt_after_pagecontent'); ?>
+
 </div><!-- /.main -->
   <?php get_footer(); ?>
