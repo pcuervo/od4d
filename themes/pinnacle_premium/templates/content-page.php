@@ -27,13 +27,14 @@ if (isset($posts->posts)):
 		<div class="[ post ][ tcol-ss-6 tcol-sm-4 tcol-lg-3 ]">
 			<div class="[ post__card ]">
 				<h4 class="[ post__title ]">
-					<a href="">
+					<a href="<?php echo get_the_permalink($post->ID); ?>">
 						<?php echo $post->post_title; ?>
 					</a>
 				</h4>
-				<a href="">
-					<?php //the_post_thumbnail( 'medium', array( 'class' => '[ post__image ][ image-responsive ]' ) ); ?>
+				<a href="<?php echo get_the_permalink($post->ID); ?>">
+					<?php echo get_the_post_thumbnail($post->ID, 'medium', array( 'class' => '[ post__image ][ image-responsive ]' ) ); ?>
 				</a>
+				<p class="[ post__implementing-partner ]">Implementing partner: <?php echo get_implementing_partner( $post->ID ); ?></p>
 				<!-- <p class="[ post__type ]">Publication type: Magazine </p> -->
 			</div>
 		</div>
