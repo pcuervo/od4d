@@ -320,10 +320,10 @@
 				endif; ?>
 
 				<div class="home_blog home-margin clearfix home-padding">
-					<div class="[ tcol-xs-6 tcol-md-4 tcol-ss-12 ]">
+					<div class="[ tcol-xs-12 tcol-md-4 ]">
 						<?php get_template_part('templates/home/blog', 'home'); ?>
 					</div>
-					<div class="[ tcol-xs-6 tcol-md-4 tcol-ss-12 ]">
+					<div class="[ tcol-xs-12 tcol-md-4 ]">
 						<div id="kad-blog-grid">
 							<h3 class="hometitle">@Od4_d</h3>
 							<div id="post-85" class="blog_item postclass kad_blog_fade_in grid_item" itemscope="" itemtype="http://schema.org/BlogPosting">
@@ -332,7 +332,7 @@
 							</div> <!-- Blog Item -->
 						</div>
 					</div>
-					<div class="[ tcol-xs-6 tcol-md-4 tcol-ss-12 ]">
+					<div class="[ tcol-xs-12 tcol-md-4 ]">
 						<h3 class="hometitle">Links</h3>
 					</div>
 				</div>
