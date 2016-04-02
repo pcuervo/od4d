@@ -30,6 +30,17 @@ function footer_scripts(){
 					initMapProjects();
 				<?php endif; ?>
 
+				<?php if( is_page( 'the-program' ) ) : ?>
+					addAllMarkers();
+					addAllMarkersPartners();
+				<?php endif;
+
+				if( is_page( 'network' ) ): ?>
+					addAllMarkersPartners();
+				<?php endif;
+				if( is_front_page() ) : ?>
+
+
 				<?php if( is_page() ) : ?>
 					if ( $('.isotope-container').length > 0 ){
 						runIsotope('.isotope-container', '.post');

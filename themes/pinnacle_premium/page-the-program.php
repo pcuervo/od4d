@@ -24,6 +24,8 @@ the_post();
 				<a class="[ kad-btn kad-btn--small kad-btn-border-primary ][ inline-block ]" href="http://pcuervo.com/od4d/le-programme">français</a><a class="[ kad-btn kad-btn--small kad-btn-border-primary ][ inline-block ]" href="http://pcuervo.com/od4d/el-programa">español</a>
 			</p>
 			<div id="map" class="[ network-map ][ margin-bottom ]" style="height: 350px"></div>
+			<p>Mapa partners</p>
+			<div id="map_partners" class="[ network-map ][ margin-bottom ]" style="height: 350px"></div>
 			<?php the_content(); ?>
 		</article>
 	</div><!-- /.row-->

@@ -126,9 +126,9 @@ function metabox_city( $post ){
 		echo "<input type='hidden' class='[ widefat ]' id='lng-e' name='_lng_meta_e' value='$lng_e' /><br><br>";
 	}else{
 		echo "<label><small>This part is powered by Google Maps to save coordinates for the map.</small></label>";
-		echo "<input type='text' class='[ widefat ]' id='geo-autocomplete-f' name='_city_meta' value='$city'>";
-		echo "<input type='hidden' class='[ widefat ]' id='lat' name='_lat_meta' value='$lat' data-geo='lat' />";
-		echo "<input type='hidden' class='[ widefat ]' id='lng' name='_lng_meta' value='$lng' data-geo='lng' /><br><br>";
+		echo "<input type='text' class='[ widefat ]' id='geo-autocomplete-a' name='_city_meta' value='$city'>";
+		echo "<input type='hidden' class='[ widefat ]' id='lat-a' name='_lat_meta' value='$lat' />";
+		echo "<input type='hidden' class='[ widefat ]' id='lng-a' name='_lng_meta' value='$lng' /><br><br>";
 	}
 }// metabox_city
 
@@ -162,7 +162,6 @@ function metabox_rss_link( $post ){
 function metabox_twitter_username( $post ){
 	$twitter_username = get_post_meta($post->ID, '_twitter_username_meta', true);
 	$widget_id = get_post_meta($post->ID, '_widget_id_meta', true);
-
 
 	wp_nonce_field(__FILE__, '_twitter_username_meta_nonce');
 
@@ -242,7 +241,7 @@ add_action('save_post', function( $post_id ){
 	if ( isset($_POST['_twitter_username_meta']) and check_admin_referer(__FILE__, '_twitter_username_meta_nonce') ){
 		update_post_meta($post_id, '_twitter_username_meta', $_POST['_twitter_username_meta']);
 		update_post_meta($post_id, '_widget_id_meta', $_POST['_widget_id_meta']);
-		
+
 	}
 
 });
