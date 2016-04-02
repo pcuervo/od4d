@@ -193,7 +193,7 @@ function autoCenter( map, markers ) {
     map.fitBounds(bounds);
     var listener = google.maps.event.addListener(map, "idle", function() {
         if (map.getZoom() > 2){
-            map.setZoom(11);
+            map.setZoom();
         }else{
            map.setZoom(2); 
         } 
