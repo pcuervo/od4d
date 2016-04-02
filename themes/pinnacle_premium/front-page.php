@@ -334,6 +334,12 @@
 					</div>
 					<div class="[ tcol-xs-12 tcol-md-4 ]">
 						<h3 class="hometitle">Links</h3>
+						<a class="[ kad-btn kad-btn--primary kad-btn--xlarge ][ margin-bottom ]" href="http://pcuervo.com/od4d/le-programme">
+							AR
+						</a>
+						<a class="[ kad-btn kad-btn--primary kad-btn--xlarge ]" href="http://pcuervo.com/od4d/le-programme">
+							Program document
+						</a>
 					</div>
 				</div>
 			</div><!-- /.main -->

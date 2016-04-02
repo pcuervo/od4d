@@ -63,6 +63,23 @@ aside{
     font-size: 13px;
 }
 
+.kad-btn--xlarge{
+	width: 100%; height: 200px;
+	text-align: center;
+	line-height: 180px;
+	font-size: 200%;
+}
+
+.kad-btn--primary{
+	background: #d25e1b;
+	color: #fff;
+}
+
+.kad-btn--primary:hover{
+	background: #f46721;
+	color: #fff;
+}
+
 .kad-btn-border-primary{
     border:2px solid #d25e1b; margin: 0 5px 5px 0;
     color: #d25e1b;
