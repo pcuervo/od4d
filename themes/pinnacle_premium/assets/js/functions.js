@@ -87,7 +87,7 @@ function concatValues( obj ) {
 function createEmptyMap( id ){
 
     var map = new google.maps.Map(document.getElementById( id ), {
-        zoom: 18,
+        zoom: 20,
         mapTypeId: google.maps.MapTypeId.ROADMAP,
         mapTypeControl: false,
         streetViewControl: false,
@@ -111,6 +111,24 @@ function createEmptyMap( id ){
 /**
  * Add Markers of Implementing Partners to an empty map
 **/
+function initMapProjects(){
+
+    var map = createEmptyMap( 'map' );
+    var markers = [];
+    // implementingResult comes from WP functions.php
+    var coordinates = $.parseJSON( implementingResult );
+    $.each( coordinates, function( slug, coord ){
+
+        // Skip if Implementing Partner doesn't have coordinates
+        if( '' === coord.lat ) return true;
+
+        var marker = createMarker( map, coord.lat, coord.lng );
+        createInfoWindow( map, marker, coord.implementingPartner, coord.permalink );
+        markers.push( marker );
+    });
+    autoCenter( map, markers );
+
+}// initMapProjects
 function addAllMarkers(){
 
     var map = createEmptyMap( 'map' );
@@ -128,8 +146,7 @@ function addAllMarkers(){
     });
     autoCenter( map, markers );
 
-}// addAllMarkers
-
+}
 function addAllMarkersPartners(){
     var map = createEmptyMap( 'map_partners' );
     var markers = [];
@@ -174,7 +191,6 @@ function autoCenter( map, markers ) {
     var bounds = new google.maps.LatLngBounds();
     $.each(markers, function (index, marker) { bounds.extend(marker.position); });
     map.fitBounds(bounds);
-
     var listener = google.maps.event.addListener(map, "idle", function() {
         map.setZoom();
         google.maps.event.removeListener(listener);

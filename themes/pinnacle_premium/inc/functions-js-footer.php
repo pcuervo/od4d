@@ -25,7 +25,6 @@ function footer_scripts(){
 					})
 					
 				<?php endif; ?>
-
 				<?php if( is_page( 'the-program' ) ) : ?>
 					addAllMarkers();
 					addAllMarkersPartners();
@@ -33,6 +32,9 @@ function footer_scripts(){
 
 				if( is_page( 'network' ) ): ?>
 					addAllMarkersPartners();
+				<?php endif; 
+				if( is_front_page() ) : ?>
+					initMapProjects();
 				<?php endif; ?>
 
 			});
