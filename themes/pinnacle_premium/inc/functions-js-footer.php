@@ -23,10 +23,18 @@ function footer_scripts(){
 						console.log( $sortOrder );
 						sortResults( '.isotope-container', $sortAttribute, $sortOrder );
 					})
-					
+
 				<?php endif; ?>
+
 				<?php if( is_front_page() ) : ?>
 					initMapProjects();
+				<?php endif; ?>
+
+				<?php if( is_page() ) : ?>
+					if ( $('.isotope-container').length > 0 ){
+						runIsotope('.isotope-container', '.post');
+					}
+
 				<?php endif; ?>
 
 			});

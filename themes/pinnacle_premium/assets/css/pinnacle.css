@@ -225,8 +225,10 @@ img.kad-circle-iconclass{
 }
 
 .post__image{
+	max-width: auto !important;
     margin-bottom: 10px;
 }
+
 
 .post__implementing-partner,
 .post__type{
