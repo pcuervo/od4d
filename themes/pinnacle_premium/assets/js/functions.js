@@ -192,7 +192,11 @@ function autoCenter( map, markers ) {
     $.each(markers, function (index, marker) { bounds.extend(marker.position); });
     map.fitBounds(bounds);
     var listener = google.maps.event.addListener(map, "idle", function() {
-        map.setZoom();
+        if (map.getZoom() > 2){
+            map.setZoom(11);
+        }else{
+           map.setZoom(2); 
+        } 
         google.maps.event.removeListener(listener);
     });
 
