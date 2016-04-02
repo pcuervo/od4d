@@ -26,8 +26,13 @@ function footer_scripts(){
 					
 				<?php endif; ?>
 
-				<?php if( is_page( 'network' ) or is_page( 'the-program' ) ) : ?>
+				<?php if( is_page( 'the-program' ) ) : ?>
 					addAllMarkers();
+					addAllMarkersPartners();
+				<?php endif;
+
+				if( is_page( 'network' ) ): ?>
+					addAllMarkersPartners();
 				<?php endif; ?>
 
 			});

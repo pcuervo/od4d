@@ -132,9 +132,11 @@ add_action( 'wp_enqueue_scripts', function(){
 
 	// scripts
 	wp_enqueue_script( 'plugins', JSPATH.'plugins.js', array('jquery'), '1.0', true );
-	wp_enqueue_script( 'gmaps', 'http://maps.googleapis.com/maps/api/js?sensor=false&libraries=places', array('jquery'), '1.0', true );
+	wp_enqueue_script( 'gmaps', 'http://maps.googleapis.com/maps/api/js', array('jquery'), '1.0', true );
 	wp_enqueue_script( 'functions', JSPATH.'functions.js', array('plugins'), '1.0', true );
+	wp_localize_script( 'functions', 'implementingResult', get_implementing_result_coordinates() );
 	wp_localize_script( 'functions', 'implementingPartnersCoordinates', get_implementing_partners_coordinates() );
+
 
 });
 /**
@@ -316,16 +318,16 @@ function get_focus_areas_of_impact( $post_id ){
  * Implementing Partners' posts
  * @return JSON $ip_coordinates
  */
-function get_implementing_partners_coordinates(){
+function get_implementing_result_coordinates(){
 
 	$ip_coordinates = array();
-	$args_implementing_partners = array(
+	$args_result = array(
 		'post_type' 		=> 'result',
 		'posts_per_page' 	=> -1
 	);
 
-	$query_implementing_partners = new WP_Query( $args_implementing_partners );
-	if ( $query_implementing_partners->have_posts() ) : while ( $query_implementing_partners->have_posts() ) : $query_implementing_partners->the_post();
+	$query_result = new WP_Query( $args_result );
+	if ( $query_result->have_posts() ) : while ( $query_result->have_posts() ) : $query_result->the_post();
 		global $post;
 		$arr = array('','_b','_c','_d','_e');
 		for ($i=0; $i < 5; $i++) { 
@@ -345,7 +347,34 @@ function get_implementing_partners_coordinates(){
 
 	return json_encode( $ip_coordinates );
 
-}// get_implementing_partners_coordinates
+}// get_implementing_result_coordinates
+
+
+function get_implementing_partners_coordinates(){
+	$ip_coordinates = array();
+	$args_implementing_partners = array(
+		'post_type' 		=> 'implementing_partner',
+		'posts_per_page' 	=> -1
+	);
+
+	$query_implementing_partners = new WP_Query( $args_implementing_partners );
+	if ( $query_implementing_partners->have_posts() ) : while ( $query_implementing_partners->have_posts() ) : $query_implementing_partners->the_post();
+		global $post;
+		$lat = get_lat( $post->ID, '_lat_meta' );
+		$lng = get_lng( $post->ID, '_lng_meta' );
+
+		$ip_coordinates[$post->post_name] = array(
+			'lat'					=> $lat,
+			'lng'					=> $lng,
+			'permalink'				=> get_permalink( $post->ID ),
+			'implementingPartner'	=> get_the_title(),
+			);
+		
+
+	endwhile; endif; wp_reset_query();
+
+	return json_encode( $ip_coordinates );
+}
 
 /**
  * Get latitude from project (Result)

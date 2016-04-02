@@ -115,8 +115,8 @@ function addAllMarkers(){
 
     var map = createEmptyMap( 'map' );
     var markers = [];
-    // implementingPartnersCoordinates comes from WP functions.php
-    var coordinates = $.parseJSON( implementingPartnersCoordinates );
+    // implementingResult comes from WP functions.php
+    var coordinates = $.parseJSON( implementingResult );
     $.each( coordinates, function( slug, coord ){
 
         // Skip if Implementing Partner doesn't have coordinates
@@ -129,6 +129,23 @@ function addAllMarkers(){
     autoCenter( map, markers );
 
 }// addAllMarkers
+
+function addAllMarkersPartners(){
+    var map = createEmptyMap( 'map_partners' );
+    var markers = [];
+    // implementingResult comes from WP functions.php
+    var coordinates = $.parseJSON( implementingPartnersCoordinates );
+    $.each( coordinates, function( slug, coord ){
+
+        // Skip if Implementing Partner doesn't have coordinates
+        if( '' === coord.lat ) return true;
+
+        var marker = createMarker( map, coord.lat, coord.lng );
+        createInfoWindow( map, marker, coord.implementingPartner, coord.permalink );
+        markers.push( marker );
+    });
+    autoCenter( map, markers );
+}
 
 /**
  * Creates a new markers
@@ -159,7 +176,7 @@ function autoCenter( map, markers ) {
     map.fitBounds(bounds);
 
     var listener = google.maps.event.addListener(map, "idle", function() {
-        if (map.getZoom() > 16) map.setZoom(16);
+        map.setZoom();
         google.maps.event.removeListener(listener);
     });
 

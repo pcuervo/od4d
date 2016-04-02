@@ -19,7 +19,7 @@ get_header();
 <div id="content" class="[ container ]">
 	<div class="[ rowtight ][ postclass pageclass clearfix entry-content ]">
 		<article class="[ tcol-ss-12 tcol-md-6 ][ margin-top margin-bottom ]">
-			<div id="map" class="[ network-map ][ margin-bottom ]" style="height: 350px"></div>
+			<div id="map_partners" class="[ network-map ][ margin-bottom ]" style="height: 350px"></div>
 			<?php the_content(); ?>
 		</article>
 		<aside class="[ tcol-ss-12 tcol-md-6 ][ our-partners ]">
