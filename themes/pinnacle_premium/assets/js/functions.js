@@ -65,7 +65,7 @@ function filterIsotope( container, item ){
 
 function sortResults( container, attribute, order ){
     console.log(attribute);
-    $( container ).isotope({ 
+    $( container ).isotope({
       sortBy : attribute,
       sortAscending : order == 'asc' ? true : false
     });
@@ -129,24 +129,7 @@ function initMapProjects(){
     autoCenter( map, markers );
 
 }// initMapProjects
-function addAllMarkers(){
 
-    var map = createEmptyMap( 'map' );
-    var markers = [];
-    // implementingResult comes from WP functions.php
-    var coordinates = $.parseJSON( implementingResult );
-    $.each( coordinates, function( slug, coord ){
-
-        // Skip if Implementing Partner doesn't have coordinates
-        if( '' === coord.lat ) return true;
-
-        var marker = createMarker( map, coord.lat, coord.lng );
-        createInfoWindow( map, marker, coord.implementingPartner, coord.permalink );
-        markers.push( marker );
-    });
-    autoCenter( map, markers );
-
-}
 function addAllMarkersPartners(){
     var map = createEmptyMap( 'map_partners' );
     var markers = [];
@@ -195,8 +178,8 @@ function autoCenter( map, markers ) {
         if (map.getZoom() > 2){
             map.setZoom();
         }else{
-           map.setZoom(2); 
-        } 
+           map.setZoom(2);
+        }
         google.maps.event.removeListener(listener);
     });
 

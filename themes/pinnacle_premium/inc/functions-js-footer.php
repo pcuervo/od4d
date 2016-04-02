@@ -6,9 +6,7 @@
 function footer_scripts(){
 	global $post;
 
-	if( wp_script_is( 'functions', 'done' ) ) :
-
-?>
+	if( wp_script_is( 'functions', 'done' ) ) : ?>
 		<script type="text/javascript">
 			$( document ).ready(function() {
 
@@ -22,7 +20,7 @@ function footer_scripts(){
 						$sortOrder = $( "option:selected" ).data( 'order' );
 						console.log( $sortOrder );
 						sortResults( '.isotope-container', $sortAttribute, $sortOrder );
-					})
+					});
 
 				<?php endif; ?>
 
@@ -30,27 +28,18 @@ function footer_scripts(){
 					initMapProjects();
 				<?php endif; ?>
 
-				<?php if( is_page( 'the-program' ) ) : ?>
-					addAllMarkers();
+				<?php if( is_page( 'the-program' ) OR is_page( 'network' ) ) : ?>
 					addAllMarkersPartners();
-				<?php endif;
-
-				if( is_page( 'network' ) ): ?>
-					addAllMarkersPartners();
-				<?php endif;
-				if( is_front_page() ) : ?>
-
+				<?php endif; ?>
 
 				<?php if( is_page() ) : ?>
 					if ( $('.isotope-container').length > 0 ){
 						runIsotope('.isotope-container', '.post');
 					}
-
 				<?php endif; ?>
 
 			});
 		</script>
-<?php
-	endif;
-}// footer_scripts
+	<?php endif;
+	} // footer_scripts
 ?>
