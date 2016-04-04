@@ -163,8 +163,8 @@ add_action( 'admin_footer', 'footer_admin_scripts', 22 );
 function show_filters( $taxonomy ){
 
 	$args = array(
-	    'orderby'                => 'name',
-	    'hide_empty'             => true,
+		'orderby'                => 'name',
+		'hide_empty'             => true,
 	);
 	$filters = get_terms( $taxonomy, $args );
 	if( empty( $filters ) ) return;
@@ -469,6 +469,25 @@ function get_latest_projects( $num_posts ){
 	return $latest_projects;
 
 }// get_latest_projects
+
+function get_result_pdfs( $post_id ){
+	$pdfs = array();
+	$query_pdf_args = array(
+		'post_parent'		=> $post_id,
+		'post_status' 		=> 'inherit',
+		'post_type'			=> 'attachment',
+		'post_mime_type' 	=> 'application/pdf',
+		'post_per_page'		=> -1,
+	);
+	$query_pdf = new WP_Query( $query_pdf_args );
+	foreach ( $query_pdf->posts as $file) {
+		$pdfs[$file->post_name] = array(
+			'title' => $file->post_title,
+			'url' 	=> $file->guid
+		);
+	}
+	return $pdfs;
+}// get_result_pdfs
 
 
 /*------------------------------------*\

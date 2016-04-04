@@ -62,6 +62,16 @@
 
 					<div class="entry-content clearfix" itemprop="description articleBody">
 						<?php the_content(); ?>
+						<?php $pdfs = get_result_pdfs( $post->ID ); ?>
+						<?php if( ! empty( $pdfs ) ) : ?>
+							<ul>
+								<?php foreach ( $pdfs as $key => $pdf ) : ?>
+									<li>
+										<a href="<?php echo $pdf['url'] ?>" target="_blank"><?php echo $pdf['title'] ?></a>
+									</li>
+								<?php endforeach; ?>
+							</ul>
+						<?php endif; ?>
 						<?php wp_link_pages(array('before' => '<nav class="page-nav"><p>' . __('Pages:', 'pinnacle'), 'after' => '</p></nav>')); ?>
 					</div>
 				</article>

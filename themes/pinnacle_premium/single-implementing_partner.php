@@ -6,6 +6,7 @@
 	$twitter_username = get_implementing_partner_meta( $post->ID, '_twitter_username_meta' );
 	$rss_link = get_implementing_partner_meta( $post->ID, '_rss_link_meta' );
 	$widget_id = get_post_meta($post->ID, '_widget_id_meta', true);
+	$pdfs = get_result_pdfs( $post->ID );
 ?>
 
 	<div id="pageheader" class="titleclass">
@@ -51,10 +52,18 @@
 						</div> <!-- Blog Item -->
 					</div>
 				<?php } ?>
-				<div class="[ margin-bottom ]">
-					<h4 class="[ hometitle ]">Accountability</h4>
-				</div>
-
+				<?php if( ! empty( $pdfs ) ) : ?>
+					<div class="[ margin-bottom ]">
+						<h4 class="[ hometitle ]">Accountability</h4>
+							<ul>
+								<?php foreach ( $pdfs as $key => $pdf ) : ?>
+									<li>
+										<a href="<?php echo $pdf['url'] ?>" target="_blank"><?php echo $pdf['title'] ?></a>
+									</li>
+								<?php endforeach; ?>
+							</ul>
+						</div>
+				<?php endif; ?>
 			</aside>
 		</div>
 	</div>
