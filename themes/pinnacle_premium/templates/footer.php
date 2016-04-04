@@ -1,6 +1,8 @@
 <?php global $pinnacle; if(isset($pinnacle['sitewide_calltoaction']) && $pinnacle['sitewide_calltoaction'] == 1) { get_template_part('templates/sitewide', 'action'); } ?>
 <footer id="containerfooter" class="footerclass">
   <div class="container">
+  	<span class="[ pull-left ][ text-left ]">Funded by</span>
+  	<div class="clearfix"></div>
 	<div class="row">
 		<?php if(isset($pinnacle['footer_layout'])) { $footer_layout = $pinnacle['footer_layout']; } else { $footer_layout = 'fourc'; }
 			if ($footer_layout == "fourc") {
@@ -87,12 +89,11 @@
 
 
 			<div class="col-md-3 col-sm-6 footercol1">
-				<div class="widget-1 widget-first footer-widget">
-					<aside id="kadence_simple_image-3" class="widget kadence_simple_image">
+				<div class="widget-1 footer-widget">
+					<aside id="kadence_simple_image-3" class="kadence_simple_image">
 						<div class="kad_img_upload_widget">
-							<span class="[ pull-left ][ text-left ]">Funded by</span>
 							<a href="www.idrc.ca" target="_blank">
-								<img src="<?php echo THEMEPATH; ?>assets/img/hosted-and-funded/idrc.png" alt="IDRC">
+								<img src="<?php echo THEMEPATH; ?>assets/img/hosted-and-funded/idrc.jpg" alt="IDRC">
 							</a>
 						</div>
 					</aside>
@@ -100,11 +101,11 @@
 			</div>
 
 			<div class="col-md-3 col-sm-6 footercol1">
-				<div class="widget-1 widget-first footer-widget">
-					<aside id="kadence_simple_image-3" class="widget kadence_simple_image">
+				<div class="widget-1 footer-widget">
+					<aside id="kadence_simple_image-3" class="kadence_simple_image">
 						<div class="kad_img_upload_widget">
 							<a href="http://www.international.gc.ca/" target="_blank">
-								<img src="<?php echo THEMEPATH; ?>assets/img/hosted-and-funded/goc.png" alt="Government of Canada">
+								<img src="<?php echo THEMEPATH; ?>assets/img/hosted-and-funded/goc.jpg" alt="Government of Canada">
 							</a>
 						</div>
 					</aside>
@@ -112,12 +113,12 @@
 			</div>
 
 			<div class="col-md-3 col-sm-6 footercol1">
-				<div class="widget-1 widget-first footer-widget">
-					<aside id="kadence_simple_image-3" class="widget kadence_simple_image">
+				<div class="widget-1 footer-widget">
+					<aside id="kadence_simple_image-3" class="kadence_simple_image">
 						<div class="kad_img_upload_widget">
 							<span class="[ pull-left ][ text-left ]"></span>
 							<a href="http://www.worldbank.org/" target="_blank">
-								<img src="<?php echo THEMEPATH; ?>assets/img/hosted-and-funded/twb.png" alt="The World Bank">
+								<img src="<?php echo THEMEPATH; ?>assets/img/hosted-and-funded/twb.jpg" alt="The World Bank">
 							</a>
 						</div>
 					</aside>
@@ -125,8 +126,8 @@
 			</div>
 
 			<div class="col-md-3 col-sm-6 footercol1">
-				<div class="widget-1 widget-first footer-widget">
-					<aside id="kadence_simple_image-3" class="widget kadence_simple_image">
+				<div class="widget-1 footer-widget">
+					<aside id="kadence_simple_image-3" class="kadence_simple_image">
 						<div class="kad_img_upload_widget">
 							<span class="[ pull-left ][ text-left ]"></span>
 							<a href="http://pcuervo.com/od4d/wp-content/uploads/2015/12/dfid-uk-aid-logo1.jpg" target="_blank">

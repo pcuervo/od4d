@@ -2,7 +2,7 @@
 	<?php global $pinnacle, $postcolumn;
 	$blog_title = $pinnacle['blog_title'];
 	if(isset($pinnacle['pinnacle_animate_in']) && $pinnacle['pinnacle_animate_in'] == 1) {$animate = 1;} else {$animate = 0;}
-		if($blog_title != '') {$btitle = $blog_title; } else { $btitle = __('Latest from the Blog', 'pinnacle'); } ?>
+		if($blog_title != '') {$btitle = $blog_title; } else { $btitle = __('News', 'pinnacle'); } ?>
 		<div class="clearfix">
 			<h3 class="hometitle"><?php echo $btitle; ?></h3>
 		</div>

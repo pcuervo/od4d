@@ -60,7 +60,7 @@
 							$result_filter_classes .= $value . ' ';
 						}
 					?>
-						<div class="[ post ][ tcol-ss-6 tcol-sm-4 tcol-lg-3 ][ <?php echo $result_filter_classes; ?>]">
+						<div class="[ post ][ tcol-xs-12 tcol-ss-6 tcol-sm-4 tcol-lg-3 ][ <?php echo $result_filter_classes; ?>]">
 							<div class="[ post__card ]">
 								<h4 class="[ post__title ]">
 									<a href="<?php the_permalink(); ?>">
@@ -75,7 +75,7 @@
 								<!-- <p class="[ post__type ]">Publication type: Magazine </p> -->
 							</div>
 						</div>
-						
+
 					<?php endwhile; endif; ?>
 				</div>
 			</div>

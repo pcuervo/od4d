@@ -27,7 +27,7 @@ if (isset($posts->posts)): ?>
 	<div class="[ isotope-container ]">
 	<?php foreach ($posts->posts as $key => $post): ?>
 		<div class="[ rowtight ]">
-			<div class="[ post ][ tcol-ss-6 tcol-sm-3 ]">
+			<div class="[ post ][ tcol-ss-12 tcol-md-4 tcol-lg-3 ]">
 				<div class="[ post__card ]">
 					<h4 class="[ post__title ]">
 						<a href="<?php echo get_the_permalink($post->ID); ?>">
