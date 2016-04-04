@@ -13,7 +13,7 @@
 			<div class="page-header">
 				<div class="row">
 					<div class="col-md-12">
-						<h1 class="kad-page-title entry-title" itemprop="name headline">Implementing partner</h1>
+						<h1 class="kad-page-title entry-title" itemprop="name headline"><?php the_title( ); ?></h1>
 					</div>
 				</div>
 			</div>
@@ -23,7 +23,7 @@
 	<div class="[ container ]">
 		<div class="[ rowtight ][ postclass pageclass clearfix entry-content ]">
 			<div class="[ tcol-ss-12 tcol-md-8 ]">
-				<?php the_post_thumbnail( 'full', array( 'class' => '[ margin-bottom ][ image-responsive ]' ) ); ?>
+				<?php the_post_thumbnail( 'full', array( 'class' => '[ margin-bottom ][ image-responsive image-centered ][ padding ]' ) ); ?>
 				<div class="[ margin-bottom ]">
 					<?php the_content(); ?>
 				</div>
