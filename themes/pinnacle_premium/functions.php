@@ -170,9 +170,9 @@ function show_filters( $taxonomy ){
 	if( empty( $filters ) ) return;
 
 	echo '<div class="[ button-group ]" data-filter-group="' . $taxonomy . '">';
-	echo '<a class="[ kad-btn kad-btn-small kad-btn-border-primary ]" href="#" data-filter="">All</a>';
+	echo '<a class="[ kad-btn kad-btn--small kad-btn-border-primary ]" href="#" data-filter="">All</a>';
 	foreach ( $filters as $filter ) {
-		echo '<a class="[ kad-btn kad-btn-small kad-btn-border-primary ]" href="#" data-filter=".' . $filter->slug . '">' . $filter->name . '</a>';
+		echo '<a class="[ kad-btn kad-btn--small kad-btn-border-primary ][ text-center ]" href="#" data-filter=".' . $filter->slug . '">' . $filter->name . '</a>';
 	}
 	echo '</div>';
 }
@@ -330,7 +330,7 @@ function get_implementing_result_coordinates(){
 	if ( $query_result->have_posts() ) : while ( $query_result->have_posts() ) : $query_result->the_post();
 		global $post;
 		$arr = array('','_b','_c','_d','_e');
-		for ($i=0; $i < 5; $i++) { 
+		for ($i=0; $i < 5; $i++) {
 			$lat = get_lat( $post->ID, '_lat_meta'.$arr[$i] );
 			$lng = get_lng( $post->ID, '_lng_meta'.$arr[$i] );
 
@@ -341,7 +341,7 @@ function get_implementing_result_coordinates(){
 				'implementingPartner'	=> get_the_title(),
 				);
 		}
-		
+
 
 	endwhile; endif; wp_reset_query();
 
@@ -369,7 +369,7 @@ function get_implementing_partners_coordinates(){
 			'permalink'				=> get_permalink( $post->ID ),
 			'implementingPartner'	=> get_the_title(),
 			);
-		
+
 
 	endwhile; endif; wp_reset_query();
 

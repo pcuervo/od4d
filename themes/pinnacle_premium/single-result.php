@@ -20,10 +20,6 @@
 	$implementing_partner = get_implementing_partner( $post->ID ); //Implementing partner
 	$region = get_region( $post->ID ); //Implementing partner
 	$sector = get_sector( $post->ID ); //Implementing partner
-
-	// $thumb = get_result_meta( $post->ID, '_abstract_meta' ); //File (PDF, Word, Excel, graphics)
-	// $thumb = get_result_meta( $post->ID, '_abstract_meta' ); //Related projects
-	// $thumb = get_result_meta( $post->ID, '_abstract_meta' ); //Categories
 ?>
 
 <div id="pageheader" class="titleclass">
@@ -74,13 +70,12 @@
 				$related_projects = get_related_projects( $implementing_partner, $region, $sector, 3 );
 				if( $related_projects ) : ?>
 					<article>
-						<h2>Related Work</h2>
+						<h4 class="[ hometitle ]">Related Work</h4>
 						<div class="[ row ]">
 							<?php foreach ( $related_projects as $name => $project ) : ?>
 								<div class="[ col-sm-12 col-md-6 col-lg-4 ][ related-project ]">
 									<a href="<?php echo $project['permalink'] ?>">
-										<img class="[ image-responsive ]" src="<?php echo $project['img_url']; ?>" alt="<?php echo $name; ?>">
-										<h3><?php echo $name; ?></h3>
+										<?php echo $name; ?>
 									</a>
 								</div>
 							<?php endforeach; ?>
@@ -89,13 +84,12 @@
 				<?php else :
 					$latest_projects = get_latest_projects( 3 ); ?>
 					<article>
-						<h2>Latest projects</h2>
+						<h4 class="[ hometitle ]">Latest projects</h4>
 						<div class="[ row ]">
 							<?php foreach ( $latest_projects as $name => $project ) : ?>
 								<div class="[ col-sm-12 col-md-6 col-lg-4 ][ related-project ]">
 									<a href="<?php echo $project['permalink'] ?>">
-										<img class="[ image-responsive ]" src="<?php echo $project['img_url']; ?>" alt="<?php echo $name; ?>">
-										<h3><?php echo $name; ?></h3>
+										<?php echo $name; ?>
 									</a>
 								</div>
 							<?php endforeach; ?>
