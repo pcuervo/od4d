@@ -61,16 +61,22 @@
 					?>
 
 					<div class="entry-content clearfix" itemprop="description articleBody">
-						<?php the_content(); ?>
-						<?php $pdfs = get_result_pdfs( $post->ID ); ?>
-						<?php if( ! empty( $pdfs ) ) : ?>
-							<ul>
-								<?php foreach ( $pdfs as $key => $pdf ) : ?>
-									<li>
-										<a href="<?php echo $pdf['url'] ?>" target="_blank"><?php echo $pdf['title'] ?></a>
-									</li>
-								<?php endforeach; ?>
-							</ul>
+						<?php
+							the_content();
+							$pdfs = get_result_pdfs( $post->ID );
+							if( ! empty( $pdfs ) ) : ?>
+							<h5>Documentos</h5>
+							<div class="[ isotope-container ]">
+								<div class="[ rowtight ]">
+									<?php foreach ( $pdfs as $key => $pdf ) : ?>
+										<div class="[ post ][ tcol-ss-12 tcol-sm-6 tcol-md-4 ][ margin-bottom ]">
+											<div class="[ post__card ]">
+												<a class="[ text-ellipsis ]" href="<?php echo $pdf['url'] ?>" target="_blank"><?php echo $pdf['title'] ?></a>
+											</div>
+										</div>
+									<?php endforeach; ?>
+								</div>
+							</div>
 						<?php endif; ?>
 						<?php wp_link_pages(array('before' => '<nav class="page-nav"><p>' . __('Pages:', 'pinnacle'), 'after' => '</p></nav>')); ?>
 					</div>
@@ -83,7 +89,7 @@
 						<h4 class="[ hometitle ]">Related Work</h4>
 						<div class="[ row ]">
 							<?php foreach ( $related_projects as $name => $project ) : ?>
-								<div class="[ col-sm-12 col-md-6 col-lg-4 ][ related-project ]">
+								<div class="[ col-sm-12 col-md-4 ][ related-project ]">
 									<a href="<?php echo $project['permalink'] ?>">
 										<?php echo $name; ?>
 									</a>

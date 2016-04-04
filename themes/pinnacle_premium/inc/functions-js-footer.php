@@ -32,7 +32,7 @@ function footer_scripts(){
 					addAllMarkersPartners();
 				<?php endif; ?>
 
-				<?php if( is_page() ) : ?>
+				<?php if( is_singular() ) : ?>
 					if ( $('.isotope-container').length > 0 ){
 						runIsotope('.isotope-container', '.post');
 					}

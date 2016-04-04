@@ -42,8 +42,6 @@
 				<?php if ( $twitter_username != '' AND $widget_id != ''){ ?>
 					<div class="[ margin-bottom ]">
 						<h4 class="[ hometitle ]">Twitter feed</h4>
-						<a href="https://twitter.com/<?php echo $twitter_username; ?>" target="_blank">@<?php echo $twitter_username; ?></a>
-
 						<div id="post-85" class="blog_item postclass" itemscope="" itemtype="http://schema.org/BlogPosting">
 							<?php if ($widget_id != ''): ?>
 								<a class="twitter-timeline" href="https://twitter.com/<?php echo $twitter_username; ?>" data-widget-id="716012088699686912">Tweets por el @<?php echo $twitter_username; ?>.</a>
@@ -55,14 +53,18 @@
 				<?php if( ! empty( $pdfs ) ) : ?>
 					<div class="[ margin-bottom ]">
 						<h4 class="[ hometitle ]">Accountability</h4>
-							<ul>
+						<div class="[ isotope-container ]">
+							<div class="[ rowtight ]">
 								<?php foreach ( $pdfs as $key => $pdf ) : ?>
-									<li>
-										<a href="<?php echo $pdf['url'] ?>" target="_blank"><?php echo $pdf['title'] ?></a>
-									</li>
+									<div class="[ post ][ tcol-ss-12 tcol-sm-6 tcol-md-12 ][ margin-bottom ]">
+										<div class="[ post__card ]">
+											<a class="[ text-ellipsis ]" href="<?php echo $pdf['url'] ?>" target="_blank"><?php echo $pdf['title'] ?></a>
+										</div>
+									</div>
 								<?php endforeach; ?>
-							</ul>
+							</div>
 						</div>
+					</div>
 				<?php endif; ?>
 			</aside>
 		</div>
