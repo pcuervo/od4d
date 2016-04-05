@@ -334,11 +334,11 @@
 					</div>
 					<div class="[ tcol-xs-12 tcol-md-4 ]">
 						<h3 class="hometitle">Links</h3>
-						<a class="[ kad-btn kad-btn--primary kad-btn--xlarge ][ margin-bottom ]" href="http://pcuervo.com/od4d/le-programme">
-							AR
+						<a target="_blank" class="[ kad-btn kad-btn--primary kad-btn--xlarge ][ margin-bottom ]" href="https://drive.google.com/file/d/0B1rNRR2dIVU_STNFRWkyVksyc0E/view">
+							Open Data for Development Program Document
 						</a>
-						<a class="[ kad-btn kad-btn--primary kad-btn--xlarge ]" href="http://pcuervo.com/od4d/le-programme">
-							Program document
+						<a target="_blank" class="[ kad-btn kad-btn--primary kad-btn--xlarge ]" href="https://docs.google.com/document/d/13YxHK3sgx-7TPFjWkl5x2Qmk4nSpHdXVjOZA4KJpDGM/edit">
+							OD4D Mid-Term Progress Report, 2015
 						</a>
 					</div>
 				</div>
