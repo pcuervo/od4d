@@ -13,19 +13,19 @@ add_action('init', function(){
 	insert_region_taxonomy_terms();
 	$results_pt->add_taxonomy( 'Implementing Partner' );
 	insert_implementing_partner_taxonomy_terms();
-	$results_pt->add_taxonomy( 'Focus / Areas of Impact' );	
+	$results_pt->add_taxonomy( 'Focus / Areas of Impact' );
 	insert_focus_area_impact_taxonomy_terms();
-	$results_pt->add_taxonomy( 'Sector' );	
+	$results_pt->add_taxonomy( 'Sector' );
 	insert_sector_taxonomy_terms();
-	$results_pt->add_taxonomy( 'Publication Type' );	
+	$results_pt->add_taxonomy( 'Publication Type' );
 	insert_publication_type_taxonomy_terms();
-	$results_pt->add_taxonomy( 'Proyecto' );	
+	$results_pt->add_taxonomy( 'Proyecto' );
 
-
-	// IMPLEMENTING PARTNERS
 	$implementin_partners_pt = register_cuztom_post_type( 'Implementing Partner' );
 
 	$implementin_partners_pt = register_cuztom_post_type( 'Proyecto' );
+
+	$implementin_partners_pt = register_cuztom_post_type( 'Slider' );
 
 });
 
@@ -114,7 +114,3 @@ function create_terms_proyecto( $post_id, $post ) {
 
 }
 add_action( 'wp_insert_post', 'create_terms_proyecto', 10, 3 );
-
-
-
-

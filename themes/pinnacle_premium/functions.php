@@ -177,6 +177,53 @@ function show_filters( $taxonomy ){
 	echo '</div>';
 }
 
+/**
+ * Show related results
+ * @param $nae
+*/
+function show_related_results( $name ){
+	$projects_args = array(
+		'post_type' 		=> 'result',
+		'posts_per_page' 	=> 4,
+		'tax_query' => array(
+			'relation' => 'OR',
+			array(
+				'taxonomy' => 'sector',
+				'field'    => 'slug',
+				'terms'    => $name,
+			),
+			array(
+				'taxonomy' => 'focus_areas_of_impact',
+				'field'    => 'slug',
+				'terms'    => $name,
+			)
+		),
+	);
+	$results_query = new WP_Query( $projects_args );
+	if (! empty($results_query->posts)): ?>
+		<h5 class="hometitle">Related Results</h5>
+		<div class="[ isotope-container ]">
+			<?php foreach ($results_query->posts as $key => $post): ?>
+				<div class="[ rowtight ]">
+					<div class="[ post ][ tcol-ss-12 tcol-sm-6 tcol-md-12 ]">
+						<div class="[ post__card ]">
+							<h4 class="[ post__title ][ no-margin ]">
+								<a href="<?php echo get_the_permalink($post->ID); ?>">
+									<?php echo $post->post_title; ?>
+								</a>
+							</h4>
+							<?php if ( ! empty(get_implementing_partner( $post->ID )) ) { ?>
+								<p class="[ post__implementing-partner ]">Implementing partner: <?php echo get_implementing_partner( $post->ID ); ?></p>
+							<?php } ?>
+						</div>
+					</div>
+				</div>
+			<?php endforeach; ?>
+		</div>
+	<?php endif;
+} //show_related_results
+
+
 /*
  * Insert dynamic taxonomy terms after a post has been created/saved.
  */

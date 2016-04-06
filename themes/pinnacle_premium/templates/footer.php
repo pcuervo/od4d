@@ -92,7 +92,7 @@
 				<div class="widget-1 footer-widget">
 					<aside id="kadence_simple_image-3" class="kadence_simple_image">
 						<div class="kad_img_upload_widget">
-							<a href="www.idrc.ca" target="_blank">
+							<a href="http://www.idrc.ca/" target="_blank">
 								<img src="<?php echo THEMEPATH; ?>assets/img/hosted-and-funded/idrc.jpg" alt="IDRC">
 							</a>
 						</div>

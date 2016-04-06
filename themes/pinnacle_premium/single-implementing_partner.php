@@ -4,7 +4,6 @@
 
 	$website_link = get_implementing_partner_meta( $post->ID, '_official_website_meta' );
 	$twitter_username = get_implementing_partner_meta( $post->ID, '_twitter_username_meta' );
-	$rss_link = get_implementing_partner_meta( $post->ID, '_rss_link_meta' );
 	$widget_id = get_post_meta($post->ID, '_widget_id_meta', true);
 	$pdfs = get_result_pdfs( $post->ID );
 ?>
@@ -29,7 +28,7 @@
 				<div class="[ margin-bottom ]">
 					<?php the_content(); ?>
 				</div>
-				<h4 class="[ hometitle ]">Recents Results</h4>
+				<h4 class="[ hometitle ]">Recent Results</h4>
 				<?php get_template_part('templates/implementing-partner', 'projects'); ?>
 			</div>
 			<aside class="[ tcol-ss-12 tcol-md-4 ]">
@@ -37,17 +36,6 @@
 					<div class="[ margin-bottom ]">
 						<h4 class="[ hometitle ]">Official website</h4>
 						<p class="[ text-center ]"><a href="<?php echo $website_link; ?>"><?php echo $website_link; ?></a></p>
-					</div>
-				<?php } ?>
-				<?php if ( $twitter_username != '' AND $widget_id != ''){ ?>
-					<div class="[ margin-bottom ]">
-						<h4 class="[ hometitle ]">Twitter feed</h4>
-						<div id="post-85" class="blog_item postclass" itemscope="" itemtype="http://schema.org/BlogPosting">
-							<?php if ($widget_id != ''): ?>
-								<a class="twitter-timeline" href="https://twitter.com/<?php echo $twitter_username; ?>" data-widget-id="716012088699686912">Tweets por el @<?php echo $twitter_username; ?>.</a>
-								<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
-							<?php endif; ?>
-						</div> <!-- Blog Item -->
 					</div>
 				<?php } ?>
 				<?php if( ! empty( $pdfs ) ) : ?>
@@ -66,6 +54,14 @@
 						</div>
 					</div>
 				<?php endif; ?>
+				<?php if ( ! empty($twitter_username)  AND ! empty($widget_id)  ){ ?>
+					<div class="[ margin-bottom ]">
+						<div id="post-85" class="blog_item postclass" itemscope="" itemtype="http://schema.org/BlogPosting">
+							<a class="twitter-timeline" href="https://twitter.com/<?php echo $twitter_username; ?>" data-widget-id="<?php echo $widget_id; ?>">kneknk @<?php echo $twitter_username; ?>.</a>
+							<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+						</div> <!-- Blog Item -->
+					</div>
+				<?php } ?>
 			</aside>
 		</div>
 	</div>
