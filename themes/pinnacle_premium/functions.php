@@ -200,27 +200,27 @@ function show_related_results( $name ){
 		),
 	);
 	$results_query = new WP_Query( $projects_args );
-	if (! empty($results_query->posts)): ?>
-		<h5 class="hometitle">Related Results</h5>
-		<div class="[ isotope-container ]">
-			<?php foreach ($results_query->posts as $key => $post): ?>
-				<div class="[ rowtight ]">
-					<div class="[ post ][ tcol-ss-12 tcol-sm-6 tcol-md-12 ]">
-						<div class="[ post__card ]">
-							<h4 class="[ post__title ][ no-margin ]">
-								<a href="<?php echo get_the_permalink($post->ID); ?>">
-									<?php echo $post->post_title; ?>
-								</a>
-							</h4>
-							<?php if ( ! empty(get_implementing_partner( $post->ID )) ) { ?>
-								<p class="[ post__implementing-partner ]">Implementing partner: <?php echo get_implementing_partner( $post->ID ); ?></p>
-							<?php } ?>
-						</div>
-					</div>
-				</div>
-			<?php endforeach; ?>
-		</div>
-	<?php endif;
+	if ( ! empty($results_query->posts)):
+		echo '<h5 class="[ hometitle ]">Related Results</h5>';
+		echo '<div class="[ isotope-container ]">';
+			foreach ($results_query->posts as $key => $post):
+				echo '<div class="[ rowtight ]">';
+					echo '<div class="[ post ][ tcol-ss-12 tcol-sm-6 tcol-md-12 ]">';
+						echo '<div class="[ post__card ]">';
+							echo '<h4 class="[ post__title ][ no-margin ]">';
+								echo '<a href="' . get_the_permalink($post->ID) . '">';
+									echo $post->post_title;
+								echo '</a>';
+							echo '</h4>';
+							if ( get_implementing_partner( $post->ID ) != '' ) {
+								echo '<p class="[ post__implementing-partner ]">Implementing partner:' . get_implementing_partner( $post->ID ) . '</p>';
+							}
+						echo '</div>';
+					echo '</div>';
+				echo '</div>';
+			endforeach;
+		echo '</div>';
+	endif;
 } //show_related_results
 
 
