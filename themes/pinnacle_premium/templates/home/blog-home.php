@@ -41,7 +41,6 @@
 	jQuery(document).ready(function($) {
 		var $container = $('#kad-blog-grid');
 		if ($('#kad-blog-grid').attr('data-fade-in') == 1) {
-			console.log('sí fue igual que 1')
 			$('#kad-blog-grid .kad_blog_fade_in').css('opacity', 0);
 			$('#kad-blog-grid .kad_blog_fade_in').each(function(i) {
 				$(this).delay(i * 150).animate({

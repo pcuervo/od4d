@@ -44,7 +44,7 @@
 					<?php if($image) : ?>
 						<section class="postfeat">
 							<div class="imghoverclass post-single-img" itemprop="image">
-								<a href="<?php echo esc_url($img_url); ?>" data-rel="lightbox" class="">
+								<a href="<?php echo esc_url($img_url); ?>" class="">
 									<img src="<?php echo esc_url($image); ?>" itemprop="image" alt="<?php the_title(); ?>" />
 								</a>
 							</div>

@@ -28,8 +28,32 @@
 				<div class="[ margin-bottom ]">
 					<?php the_content(); ?>
 				</div>
-				<h4 class="[ hometitle ]">Recent Results</h4>
 				<?php get_template_part('templates/implementing-partner', 'projects'); ?>
+
+				<?php
+				$args_news = array(
+					'post_type' 		=> 'post',
+					'posts_per_page' 	=> 4,
+					'tax_query' => array(
+						array(
+							'taxonomy' => 'implementing_partner',
+							'field'    => 'slug',
+							'terms'    => array( $post->post_title ),
+						)
+					)
+				);
+
+				$query_news = new WP_Query($args_news);
+				if( have_posts() ) : while ( $query_news->have_posts() ) : $query_news->the_post(); ?>
+					<h4 class="[ hometitle ]">Highlights</h4>
+					<div class="row">
+						<div class="[ col-sm-12 col-md-6 col-lg-4 ][ news-item ]">
+							<a href="<?php echo the_permalink(); ?>">
+								<?php echo get_the_title(); ?>
+							</a>
+						</div>
+					</div>
+				<?php endwhile; endif; wp_reset_query(); ?>
 			</div>
 			<aside class="[ tcol-ss-12 tcol-md-4 ]">
 				<?php if ( $website_link != '' ){ ?>

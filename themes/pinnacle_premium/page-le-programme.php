@@ -21,8 +21,8 @@ the_post();
 	<div class="[ rowtight ][ postclass pageclass clearfix entry-content ]">
 		<article class="[ tcol-ss-12 ][ margin-top margin-bottom ]">
 			<p class="[ text-right ]">
-				<a class="[ kad-btn kad-btn--small kad-btn-border-primary ][ inline-block ]" href="<?php echo site_url('le-programme'); ?>">
-					français
+				<a class="[ kad-btn kad-btn--small kad-btn-border-primary ][ inline-block ]" href="<?php echo site_url('the-program'); ?>">
+					english
 				</a>
 				<a class="[ kad-btn kad-btn--small kad-btn-border-primary ][ inline-block ]" href="<?php echo site_url('el-programa'); ?>">
 					español

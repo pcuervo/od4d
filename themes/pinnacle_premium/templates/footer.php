@@ -4,141 +4,48 @@
   	<span class="[ pull-left ][ text-left ]">Funded by</span>
   	<div class="clearfix"></div>
 	<div class="row">
-		<?php if(isset($pinnacle['footer_layout'])) { $footer_layout = $pinnacle['footer_layout']; } else { $footer_layout = 'fourc'; }
-			if ($footer_layout == "fourc") {
-				if (is_active_sidebar('footer_1') ) { ?>
-					<div class="col-md-3 col-sm-6 footercol2">
-					<?php dynamic_sidebar('footer_1'); ?>
-					</div>
-				<?php }; ?>
-				<?php if (is_active_sidebar('footer_2') ) { ?>
-					<div class="col-md-3 col-sm-6 footercol2">
-					<?php dynamic_sidebar('footer_2'); ?>
-					</div>
-				<?php }; ?>
-				<?php if (is_active_sidebar('footer_3') ) { ?>
-					<div class="col-md-3 col-sm-6 footercol3">
-					<?php dynamic_sidebar('footer_3'); ?>
-					</div>
-				<?php }; ?>
-				<?php if (is_active_sidebar('footer_4') ) { ?>
-					<div class="col-md-3 col-sm-6 footercol4">
-					<?php dynamic_sidebar('footer_4'); ?>
-					</div>
-				<?php }; ?>
-			<?php } else if($footer_layout == "five") {
-				if (is_active_sidebar('footer_1') ) { ?>
-					<div class="col-md-12 col-sm-12 footercol1">
-					<?php dynamic_sidebar('footer_1'); ?>
-					</div>
-				<?php }; ?>
-				<?php if (is_active_sidebar('footer_2') ) { ?>
-					<div class="col-md-4 footercol2">
-					<?php dynamic_sidebar('footer_2'); ?>
-					</div>
-				<?php }; ?>
-				<?php if (is_active_sidebar('footer_3') ) { ?>
-					<div class="col-md-4 footercol3">
-					<?php dynamic_sidebar('footer_3'); ?>
-					</div>
-				<?php }; ?>
-				<?php if (is_active_sidebar('footer_4') ) { ?>
-					<div class="col-md-4 footercol4">
-					<?php dynamic_sidebar('footer_4'); ?>
-					</div>
-				<?php }; ?>
-			<?php } else if($footer_layout == "threec") {
-				if (is_active_sidebar('footer_third_1') ) { ?>
-					<div class="col-md-4 footercol1">
-					<?php dynamic_sidebar('footer_third_1'); ?>
-					</div>
-				<?php }; ?>
-				<?php if (is_active_sidebar('footer_third_2') ) { ?>
-					<div class="col-md-4 footercol2">
-					<?php dynamic_sidebar('footer_third_2'); ?>
-					</div>
-				<?php }; ?>
-				<?php if (is_active_sidebar('footer_third_3') ) { ?>
-					<div class="col-md-4 footercol3">
-					<?php dynamic_sidebar('footer_third_3'); ?>
-					</div>
-				<?php }; ?>
-			<?php } else if($footer_layout == "six") {
-					if (is_active_sidebar('footer_double_1') ) { ?>
-					<div class="col-md-12 footercol1 kt-center-foot">
-					<?php dynamic_sidebar('footer_double_1'); ?>
-					</div>
-					<?php }; ?>
-				<?php if (is_active_sidebar('footer_double_2') ) { ?>
-					<div class="col-md-12 footercol2 kt-center-foot">
-					<?php dynamic_sidebar('footer_double_2'); ?>
-					</div>
-					<?php }; ?>
-			<?php } else {
-				if (is_active_sidebar('footer_double_1') ) { ?>
-					<div class="col-md-6 footercol1">
-					<?php dynamic_sidebar('footer_double_1'); ?>
-					</div>
-				<?php }; ?>
-				<?php if (is_active_sidebar('footer_double_2') ) { ?>
-					<div class="col-md-6 footercol2">
-					<?php dynamic_sidebar('footer_double_2'); ?>
-					</div>
-				<?php }; ?>
-			<?php } ?>
 
-
-			<div class="col-md-3 col-sm-6 footercol1">
+			<div class="col-md-3 col-sm-6">
 				<div class="widget-1 footer-widget">
-					<aside id="kadence_simple_image-3" class="kadence_simple_image">
-						<div class="kad_img_upload_widget">
-							<a href="http://www.idrc.ca/" target="_blank">
-								<img src="<?php echo THEMEPATH; ?>assets/img/hosted-and-funded/idrc.jpg" alt="IDRC">
-							</a>
-						</div>
+					<aside class="kadence_simple_image">
+						<a href="http://www.idrc.ca/" target="_blank">
+							<img src="<?php echo THEMEPATH; ?>assets/img/hosted-and-funded/idrc.jpg" alt="IDRC">
+						</a>
 					</aside>
 				</div>
 			</div>
 
-			<div class="col-md-3 col-sm-6 footercol1">
+			<div class="col-md-3 col-sm-6">
 				<div class="widget-1 footer-widget">
-					<aside id="kadence_simple_image-3" class="kadence_simple_image">
-						<div class="kad_img_upload_widget">
-							<a href="http://www.international.gc.ca/" target="_blank">
-								<img src="<?php echo THEMEPATH; ?>assets/img/hosted-and-funded/goc.jpg" alt="Government of Canada">
-							</a>
-						</div>
+					<aside class="kadence_simple_image">
+						<a href="http://www.international.gc.ca/" target="_blank">
+							<img src="<?php echo THEMEPATH; ?>assets/img/hosted-and-funded/goc.jpg" alt="Government of Canada">
+						</a>
 					</aside>
 				</div>
 			</div>
 
-			<div class="col-md-3 col-sm-6 footercol1">
+			<div class="col-md-3 col-sm-6">
 				<div class="widget-1 footer-widget">
-					<aside id="kadence_simple_image-3" class="kadence_simple_image">
-						<div class="kad_img_upload_widget">
-							<span class="[ pull-left ][ text-left ]"></span>
-							<a href="http://www.worldbank.org/" target="_blank">
-								<img src="<?php echo THEMEPATH; ?>assets/img/hosted-and-funded/twb.jpg" alt="The World Bank">
-							</a>
-						</div>
+					<aside class="kadence_simple_image">
+						<a href="http://www.worldbank.org/" target="_blank">
+							<img src="<?php echo THEMEPATH; ?>assets/img/hosted-and-funded/twb.jpg" alt="The World Bank">
+						</a>
 					</aside>
 				</div>
 			</div>
 
-			<div class="col-md-3 col-sm-6 footercol1">
+			<div class="col-md-3 col-sm-6">
 				<div class="widget-1 footer-widget">
-					<aside id="kadence_simple_image-3" class="kadence_simple_image">
-						<div class="kad_img_upload_widget">
-							<span class="[ pull-left ][ text-left ]"></span>
-							<a href="http://pcuervo.com/od4d/wp-content/uploads/2015/12/dfid-uk-aid-logo1.jpg" target="_blank">
-								<img src="<?php echo THEMEPATH; ?>assets/img/hosted-and-funded/uk-aid.jpg" alt="UK Aid">
-							</a>
-						</div>
+					<aside class="kadence_simple_image">
+						<a href="https://www.gov.uk/government/organisations/department-for-international-development" target="_blank">
+							<img src="<?php echo THEMEPATH; ?>assets/img/hosted-and-funded/uk-aid.jpg" alt="UK Aid">
+						</a>
 					</aside>
 				</div>
 			</div>
 
-		</div> <!-- Row -->
+		</div> <!-- row -->
 
 		<div class="row">
 			<div class="col-md-3 col-sm-6 footercol1">

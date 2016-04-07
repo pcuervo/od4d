@@ -24,8 +24,8 @@ the_post();
 				<a class="[ kad-btn kad-btn--small kad-btn-border-primary ][ inline-block ]" href="<?php echo site_url('le-programme'); ?>">
 					français
 				</a>
-				<a class="[ kad-btn kad-btn--small kad-btn-border-primary ][ inline-block ]" href="<?php echo site_url('el-programa'); ?>">
-					español
+				<a class="[ kad-btn kad-btn--small kad-btn-border-primary ][ inline-block ]" href="<?php echo site_url('the-program'); ?>">
+					english
 				</a>
 			</p>
 			<div id="map_partners" class="[ partner-map ][ margin-bottom ]" style="height: 350px"></div>

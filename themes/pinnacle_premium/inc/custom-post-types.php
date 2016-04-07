@@ -22,10 +22,10 @@ add_action('init', function(){
 	$results_pt->add_taxonomy( 'Proyecto' );
 
 	$implementin_partners_pt = register_cuztom_post_type( 'Implementing Partner' );
-
 	$implementin_partners_pt = register_cuztom_post_type( 'Proyecto' );
-
 	$implementin_partners_pt = register_cuztom_post_type( 'Slider' );
+
+	register_taxonomy_for_object_type( 'implementing_partner', 'post' );
 
 });
 

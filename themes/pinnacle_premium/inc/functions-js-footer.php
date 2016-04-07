@@ -28,7 +28,7 @@ function footer_scripts(){
 					initMapProjects();
 				<?php endif; ?>
 
-				<?php if( is_page( 'the-program' ) OR is_page( 'network' ) ) : ?>
+				<?php if( is_page( 'the-program' ) OR is_page( 'le-programme' ) OR is_page( 'el-programa' ) OR is_page( 'network' ) ) : ?>
 					addAllMarkersPartners();
 				<?php endif; ?>
 

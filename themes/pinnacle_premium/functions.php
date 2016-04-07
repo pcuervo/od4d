@@ -197,7 +197,7 @@ function show_related_results( $name ){
 				'field'    => 'slug',
 				'terms'    => $name,
 			)
-		),
+		)
 	);
 	$results_query = new WP_Query( $projects_args );
 	if ( ! empty($results_query->posts)):
@@ -233,18 +233,20 @@ function update_dynamic_taxonomies( $post_id ){
 	if( ! isset( $post ) ) return;
 
 	if( 'implementing_partner' == $post->post_type )
+		insert_implementing_partner_taxonomy_term( $post->post_title, 'implementing_partner' );
 
-		insert_implementing_partner_taxonomy_term( $post->post_title );
+	if( 'post' == $post->post_type )
+		insert_implementing_partner_taxonomy_term( $post->post_title, 'post' );
 
 }// update_dynamic_taxonomies
 add_action( 'save_post', 'update_dynamic_taxonomies' );
 
-function insert_implementing_partner_taxonomy_term( $implementing_partner ){
+function insert_implementing_partner_taxonomy_term( $implementing_partner, $taxonomy ){
 
-	$term = term_exists( $implementing_partner, 'implementing_partner' );
+	$term = term_exists( $implementing_partner, $taxonomy );
 	if ($term !== 0 && $term !== null) return;
 
-	wp_insert_term( $implementing_partner, 'implementing_partner' );
+	wp_insert_term( $implementing_partner, $taxonomy );
 }
 
 /*------------------------------------*\

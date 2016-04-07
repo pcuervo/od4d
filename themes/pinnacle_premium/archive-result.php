@@ -75,7 +75,7 @@
 								<a href="<?php the_permalink(); ?>">
 									<?php the_post_thumbnail( 'medium', array( 'class' => '[ post__image ][ image-responsive ]' ) ); ?>
 								</a>
-								<?php if ( ! empty(get_implementing_partner( $post->ID )) ) { ?>
+								<?php if ( get_implementing_partner( $post->ID ) != '' ) { ?>
 									<p class="[ post__implementing-partner ]">Implementing partner: <?php echo get_implementing_partner( $post->ID ); ?></p>
 								<?php } ?>
 								<p class="title [ hidden ]"><?php the_title() ?></p>
