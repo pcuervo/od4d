@@ -1,4 +1,4 @@
-            <?php global $post, $pinnacle, $postcolumn; 
+            <?php global $post, $pinnacle, $postcolumn;
             if(!empty($postcolumn)) {
               if($postcolumn == '3') {
                 $image_width = 370;
@@ -33,7 +33,7 @@
                               $postsummery = 'video';
                     }
               }
-              
+
             } else if (has_post_format( 'gallery' )) {
               $postsummery = get_post_meta( $post->ID, '_kad_gallery_post_summery', true );
               if(empty($postsummery) || $postsummery == 'default') {
@@ -60,14 +60,14 @@
                 } else {
                   $postsummery = 'img_landscape';
                 }
-            
+
             }
 
                 if($postsummery == 'img_landscape' || $postsummery == 'img_portrait') { ?>
                 <div id="post-<?php the_ID(); ?>" class="blog_item postclass kt_item_fade_in kad_blog_fade_in grid_item" itemscope="" itemtype="http://schema.org/BlogPosting">
                             <?php if(has_post_thumbnail( $post->ID ) ){
-                                  $image_url = wp_get_attachment_image_src( 
-                                  get_post_thumbnail_id( $post->ID ), 'full' ); 
+                                  $image_url = wp_get_attachment_image_src(
+                                  get_post_thumbnail_id( $post->ID ), 'full' );
                                   $thumbnailURL = $image_url[0];
                                   if($hardcrop) {
                                     $image = aq_resize($thumbnailURL, $image_width, $image_height, true);
@@ -79,9 +79,9 @@
                                       <div class="imghoverclass img-margin-center" itemprop="image">
                                         <a href="<?php the_permalink()  ?>" title="<?php echo esc_attr(get_the_title() ); ?>">
                                           <img src="<?php echo esc_url($image); ?>" alt="<?php echo esc_attr(get_the_title() ); ?>" <?php if($hardcrop) {echo 'width="'.esc_attr($image_width).'" height="'.esc_attr($image_height).'"';}?> class="iconhover" style="display:block;">
-                                        </a> 
+                                        </a>
                                       </div>
-                                  <?php $image = null; $thumbnailURL = null;   
+                                  <?php $image = null; $thumbnailURL = null;
                                   } else {
                                     $thumbnailURL = pinnacle_post_default_placeholder();
                                   if($hardcrop) {
@@ -89,13 +89,9 @@
                                   } else {
                                     $image = aq_resize($thumbnailURL, $image_width, false);
                                   }
-                                  if(empty($image)) { $image = $thumbnailURL; } 
-                                    ?> 
-                                      <div class="imghoverclass img-margin-center" itemprop="image">
-                                        <a href="<?php the_permalink()  ?>" title="<?php the_title(); ?>">
-                                          <img src="<?php echo esc_url($image); ?>" alt="<?php the_title(); ?>" <?php if($hardcrop) {echo 'width="'.esc_attr($image_width).'" height="'.esc_attr($image_height).'"';}?> class="iconhover" style="display:block;">
-                                        </a> 
-                                      </div>
+                                  if(empty($image)) { $image = $thumbnailURL; }
+                                    ?>
+
                                   <?php $image = null; $thumbnailURL = null;
                                    } ?>
 

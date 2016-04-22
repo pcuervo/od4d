@@ -81,24 +81,10 @@
 					$layout = array("block_one" => "block_one", "block_four" => "block_four");
 				} ?>
 
-				<div class="home-what-is home-margin home-padding kad-animation" data-animation="fade-in" data-delay="0">
-					<div class="clearfix">
-						<h4 class="[ text-center ][ widget-title ]">What we do</h4>
-					</div>
-					<div class="home-margin[ rowtight ]">
-						<div class="[ tcol-ss-12 tcol-sm-8 tcol-lg-6 ][ tcol-sm-offset-2 tcol-lg-offset-3 ][ all ][ p-item ]" style="">
-							<?php $whatIs = get_page_by_title('What we do'); ?>
-							<p class=""><?php echo $whatIs->post_content; ?></p>
-						</div>
-					</div>
-				</div>
-
-				<div class="clearfix"></div>
-
-				<div class="key-concepts home-margin home-padding kad-animation" data-animation="fade-in" data-delay="0">
+				<article class="key-concepts home-margin home-padding kad-animation" data-animation="fade-in" data-delay="0">
 					<div class="[ home-margin ][ rowtight ]">
 						<?php
-							$key_concepts = get_page_by_title('Key concepts');
+							$key_concepts = get_page_by_title('What we do');
 							$key_concepts_ID = $key_concepts->ID;
 							$post = get_post($key_concepts_ID);
 							$content = apply_filters('the_content', $post->post_content);
@@ -107,12 +93,18 @@
 								'page_id' => $key_concepts_ID
 							);
 							$query_key_concepts = new WP_Query( $key_concepts_args );
-							if ( $query_key_concepts->have_posts() ) : while( $query_key_concepts->have_posts() ) : $query_key_concepts->the_post();
-								the_content();
-							endwhile; endif; wp_reset_query();
+							if ( $query_key_concepts->have_posts() ) : while( $query_key_concepts->have_posts() ) : $query_key_concepts->the_post(); ?>
+								<h4 class="[ text-center ][ widget-title ]"><?php the_title(); ?></h4>
+								<?php the_content(); ?>
+							<?php endwhile; endif; wp_reset_query();
 						?>
 					</div>
-				</div>
+				</article>
+
+				<article class="key-concepts home-margin home-padding kad-animation" data-animation="fade-in" data-delay="0">
+					<h4 class="[ text-center ][ widget-title ]">Our Projects around the world</h4>
+					<div id="map" class="[ projects-map ][ margin-bottom ]" style="height: 350px"></div>
+				</article>
 
 				<?php if ($layout):
 					foreach ($layout as $key=>$value) {
@@ -328,25 +320,44 @@
 				endif; ?>
 
 				<div class="home_blog home-margin clearfix home-padding">
-					<div id="kad-blog-grid" class="rowtight init-masonry" data-masonry-selector=".b_item">
-						<div class="tcol-xs-6 tcol-ss-12 b_item kad_blog_item">
-							<div class="clearfix">
-								<h5 class="hometitle">@Od4_d</h5>
-							</div>
+					<div class="[ tcol-xs-12 tcol-md-4 ]">
+						<?php get_template_part('templates/home/blog', 'home'); ?>
+					</div>
+					<div class="[ tcol-xs-12 tcol-md-4 ]">
+						<div id="kad-blog-grid">
+							<h3 class="hometitle">@Od4_d</h3>
 							<div id="post-85" class="blog_item postclass kad_blog_fade_in grid_item" itemscope="" itemtype="http://schema.org/BlogPosting">
 								<a class="twitter-timeline" href="https://twitter.com/OD4D" data-widget-id="678012125193723904">Tweets por el @OD4D.</a>
 								<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
 							</div> <!-- Blog Item -->
 						</div>
-						<div class="tcol-xs-6 tcol-ss-12 b_item kad_blog_item">
-							<div class="clearfix">
-								<h5 class="hometitle">#opendata</h5>
-							</div>
-							<div id="post-85" class="blog_item postclass kad_blog_fade_in grid_item" itemscope="" itemtype="http://schema.org/BlogPosting">
-								<a class="twitter-timeline"  href="https://twitter.com/hashtag/opendata" data-widget-id="678017565562642432">Tweets sobre #opendata</a>
-								<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
-							</div> <!-- Blog Item -->
-						</div>
+					</div>
+					<div class="[ tcol-xs-12 tcol-md-4 ]">
+						<h3 class="hometitle">Links</h3>
+						<?php
+							$homeLink1 = get_post(797);
+							$homeLink2 = get_post(800);
+							$homeLink3 = get_post(802);
+
+							$homeLink1Title = $homeLink1->post_title;
+							$homeLink1Link = $homeLink1->post_content;
+
+							$homeLink2Title = $homeLink2->post_title;
+							$homeLink2Link = $homeLink2->post_content;
+
+							$homeLink3Title = $homeLink3->post_title;
+							$homeLink3Link = $homeLink3->post_content;
+
+						?>
+						<a target="_blank" class="[ kad-btn kad-btn--primary kad-btn--xlarge ][ home-link--1 ][ margin-bottom ]" href="<?php echo $homeLink1Link; ?>">
+							<?php echo $homeLink1Title; ?>
+						</a>
+						<a target="_blank" class="[ kad-btn kad-btn--primary kad-btn--xlarge ][ home-link--2 ][ margin-bottom ]" href="<?php echo $homeLink2Link; ?>">
+							<?php echo $homeLink2Title; ?>
+						</a>
+						<a target="_blank" class="[ kad-btn kad-btn--primary kad-btn--xlarge ][ home-link--3 ]" href="<?php echo $homeLink3Link; ?>">
+							<?php echo $homeLink3Title; ?>
+						</a>
 					</div>
 				</div>
 			</div><!-- /.main -->

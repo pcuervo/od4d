@@ -1,4 +1,4 @@
-            <?php global $post, $pinnacle, $postcolumn; 
+            <?php global $post, $pinnacle, $postcolumn;
             if(!empty($postcolumn)) {if($postcolumn == '3') {$image_width = 370; $image_height = 246; $titletag = "h5";} else if($postcolumn == '2') {$image_width = 560; $image_height = 370; $titletag = "h4";} else {$image_width = 340; $image_height = 226; $titletag = "h5";}} else {$image_width = 340; $image_height = 226; $titletag = "h5";}
             if ( has_post_format( 'video' )) {
               // Get summary setting
@@ -10,7 +10,7 @@
                               $postsummery = 'video';
                     }
               }
-              
+
             } else if (has_post_format( 'gallery' )) {
               $postsummery = get_post_meta( $post->ID, '_kad_gallery_post_summery', true );
               if(empty($postsummery) || $postsummery == 'default') {
@@ -48,36 +48,30 @@
                     $postsummery = 'img_landscape';
                   }
               }
-            
+
             }
 
             if($postsummery == 'img_landscape' || $postsummery == 'img_portrait') { ?>
              <div id="post-<?php the_ID(); ?>" class="blog_item postclass kt_item_fade_in kad_blog_fade_in grid_item" itemscope="" itemtype="http://schema.org/BlogPosting">
                 <?php if(has_post_thumbnail( $post->ID ) ) {
-                              $image_url = wp_get_attachment_image_src( 
-                              get_post_thumbnail_id( $post->ID ), 'full' ); 
-                              $thumbnailURL = $image_url[0];
-                              $image = aq_resize($thumbnailURL, $image_width, false);
-                              if(empty($image)) { $image = $thumbnailURL; }
-                              ?>
-                                  <div class="imghoverclass img-margin-center" itemprop="image">
-                                    <a href="<?php the_permalink()  ?>" title="<?php the_title(); ?>">
-                                      <img src="<?php echo $image ?>" alt="<?php the_title(); ?>" class="iconhover" style="display:block;">
-                                    </a> 
-                                  </div>
-                              <?php $image = null; $thumbnailURL = null;
-                              } else {
-                                    $thumbnailURL = pinnacle_post_default_placeholder();
-                                  $image = aq_resize($thumbnailURL, $image_width, false);
-                                  if(empty($image)) { $image = $thumbnailURL; } 
-                                    ?> 
-                                      <div class="imghoverclass img-margin-center" itemprop="image">
-                                        <a href="<?php the_permalink()  ?>" title="<?php the_title(); ?>">
-                                          <img src="<?php echo esc_url($image); ?>" alt="<?php the_title(); ?>" class="iconhover" style="display:block;">
-                                        </a> 
-                                      </div>
-                                  <?php $image = null; $thumbnailURL = null;
-                                   } ?>
+                  $image_url = wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ), 'full' );
+                  $thumbnailURL = $image_url[0];
+                  $image = aq_resize($thumbnailURL, $image_width, false);
+                  if(empty($image)) { $image = $thumbnailURL; }
+                  ?>
+                      <div class="imghoverclass img-margin-center" itemprop="image">
+                        <a href="<?php the_permalink()  ?>" title="<?php the_title(); ?>">
+                          <img src="<?php echo $image ?>" alt="<?php the_title(); ?>" class="iconhover" style="display:block;">
+                        </a>
+                      </div>
+                  <?php $image = null; $thumbnailURL = null;
+                  } else {
+                        $thumbnailURL = pinnacle_post_default_placeholder();
+                      $image = aq_resize($thumbnailURL, $image_width, false);
+                      if(empty($image)) { $image = $thumbnailURL; }
+                        ?>
+                      <?php $image = null; $thumbnailURL = null;
+                       } ?>
                       <?php } elseif($postsummery == 'slider_landscape' || $postsummery == 'slider_portrait' || $postsummery == 'gallery_grid') {?>
                           <div id="post-<?php the_ID(); ?>" class="blog_item kt_item_fade_in postclass kad_blog_fade_in grid_item" itemscope="" itemtype="http://schema.org/BlogPosting">
                           <?php

@@ -1,7 +1,7 @@
 
 <?php
 	 if(!kadence_hide_pagetitle()) { ?>
-<?php } else { 
+<?php } else {
 	global $post, $pinnacle;
 
 	if(is_page()) {
@@ -38,19 +38,18 @@
 		if($bg_cover) {$bcover = 'background-size:cover;';} else {$bcover = "";}
 		if($bg_parallax) {$b_parallax = 'kad-parallax';} else {$b_parallax = '';}
 
-		} else {
+	} else {
 		$b_image = ''; $b_position = ""; $brepeat = ""; $bcover = ""; $b_parallax = '';
 		if(!empty($bg_color) && $bg_color != '#') {$bcolor = 'background:'.$bg_color.';';} else {$bcolor = '';}}
-	if(!empty($title_align) && $title_align != 'default') {$talign = 'text-align:'.$title_align.';';} else {$talign = '';}
-	if(!empty($top_padding)) {$tpadding = 'padding-top:'.$top_padding.'px;';} else {$tpadding = '';}
-	if(!empty($bottom_padding)) { $bpadding = 'padding-bottom:'.$bottom_padding.'px;';} else {$bpadding = '';}
+		if(!empty($title_align) && $title_align != 'default') {$talign = 'text-align:'.$title_align.';';} else {$talign = '';}
+		if(!empty($top_padding)) {$tpadding = 'padding-top:'.$top_padding.'px;';} else {$tpadding = '';}
+		if(!empty($bottom_padding)) { $bpadding = 'padding-bottom:'.$bottom_padding.'px;';} else {$bpadding = '';}
 
-if(!empty($shortcode_slider)) { ?>
+		if(!empty($shortcode_slider)) { ?>
 			<div class="sliderclass">
 			<?php echo do_shortcode( $shortcode_slider); ?>
 			</div><!--sliderclass-->
-<?php } else {
-?>
+<?php } else { ?>
 <div id="pageheader" class="titleclass <?php echo $b_parallax;?>" style="<?php echo $bcolor.' '.$b_image.' '.$b_position.' '.$brepeat.' '.$bcover?>">
 <div class="header-color-overlay"></div>
 <?php do_action("kt_header_overlay"); ?>

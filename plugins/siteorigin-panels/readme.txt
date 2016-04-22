@@ -2,7 +2,8 @@
 Tags: page builder, responsive, widget, widgets, builder, page, admin, gallery, content, cms, pages, post, css, layout, grid
 Requires at least: 4.0
 Tested up to: 4.5
-Stable tag: 2.3.1
+Stable tag: 2.4.3
+Build time: 2016-04-08T07:28:03+02:00
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl.html
 Donate link: http://siteorigin.com/page-builder/#donate
@@ -94,6 +95,39 @@ Page Builder is actively developed and updated, so generally I'd recommend that 
 We've tried to ensure that Page Builder is compatible with most plugin widgets. It's best to just download Page Builder and test for yourself.
 
 == Changelog ==
+
+= 2.4.4 - April 6 2016 =
+* Fixed ordering of new rows, widgets and cells in builder interface.
+* Fixed Layout Builder widget sanitization error. Was causing fatal error on older versions of PHP.
+
+= 2.4.3 - April 6 2016 =
+* Fixed measurement style fields.
+* Properly process raw widgets in Live Editor.
+* Remove empty widgets from raw widget processing.
+
+= 2.4.2 - April 4 2016 =
+* Improved error handling and reporting.
+* Don't add widget class for TwentySixteen theme.
+
+= 2.4.1 - April 2 2016 =
+* Fixed: Copying content from standard editor to Page Builder
+* Fixed: Plugin conflict with Jetpack Widget Visibility and other plugins.
+
+= 2.4 - April 1 2016 =
+* Created new Live Editor.
+* Changes to Page Builder admin HTML structure for Live Editor.
+* New layout for prebuilt dialog.
+* Now possible to append, prepend and replace layouts in prebuilt dialog.
+* Fixed contextual menu in Layout Builder widget.
+* Added row/widget actions to contextual menu.
+* Clarified functionality of "Switch to Editor" button by renaming to "Revert to Editor".
+* refreshPanelsData function is called more consistently.
+* Various background performance enhancements.
+* Full JS code refactoring.
+* Fixed cell bottom margins with reverse collapse order.
+* Improved window scroll locking for dialogs.
+* Added `in_widget_form` action when rendering widget forms
+* Custom home page now saves revisions.
 
 = 2.3.2 - March 11 2016 =
 * Fixed compatibility with WordPress 4.5

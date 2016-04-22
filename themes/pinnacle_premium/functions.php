@@ -134,7 +134,9 @@ add_action( 'wp_enqueue_scripts', function(){
 	wp_enqueue_script( 'plugins', JSPATH.'plugins.js', array('jquery'), '1.0', true );
 	wp_enqueue_script( 'gmaps', 'http://maps.googleapis.com/maps/api/js', array('jquery'), '1.0', true );
 	wp_enqueue_script( 'functions', JSPATH.'functions.js', array('plugins'), '1.0', true );
+	wp_localize_script( 'functions', 'implementingResult', get_implementing_result_coordinates() );
 	wp_localize_script( 'functions', 'implementingPartnersCoordinates', get_implementing_partners_coordinates() );
+
 
 });
 /**
@@ -161,19 +163,66 @@ add_action( 'admin_footer', 'footer_admin_scripts', 22 );
 function show_filters( $taxonomy ){
 
 	$args = array(
-	    'orderby'                => 'name',
-	    'hide_empty'             => true,
+		'orderby'                => 'name',
+		'hide_empty'             => true,
 	);
 	$filters = get_terms( $taxonomy, $args );
 	if( empty( $filters ) ) return;
 
 	echo '<div class="[ button-group ]" data-filter-group="' . $taxonomy . '">';
-	echo '<a class="[ kad-btn kad-btn-small kad-btn-border-primary ]" href="#" data-filter="">All</a>';
+	echo '<a class="[ kad-btn kad-btn--small kad-btn-border-primary ]" href="#" data-filter="">All</a>';
 	foreach ( $filters as $filter ) {
-		echo '<a class="[ kad-btn kad-btn-small kad-btn-border-primary ]" href="#" data-filter=".' . $filter->slug . '">' . $filter->name . '</a>';
+		echo '<a class="[ kad-btn kad-btn--small kad-btn-border-primary ][ text-center ]" href="#" data-filter=".' . $filter->slug . '">' . $filter->name . '</a>';
 	}
 	echo '</div>';
 }
+
+/**
+ * Show related results
+ * @param $nae
+*/
+function show_related_results( $name ){
+	$projects_args = array(
+		'post_type' 		=> 'result',
+		'posts_per_page' 	=> 4,
+		'tax_query' => array(
+			'relation' => 'OR',
+			array(
+				'taxonomy' => 'sector',
+				'field'    => 'slug',
+				'terms'    => $name,
+			),
+			array(
+				'taxonomy' => 'focus_areas_of_impact',
+				'field'    => 'slug',
+				'terms'    => $name,
+			)
+		)
+	);
+	$results_query = new WP_Query( $projects_args );
+	if ( ! empty($results_query->posts)):
+		echo '<h5 class="[ hometitle ]">Related Results</h5>';
+		echo '<div class="[ isotope-container ]">';
+			foreach ($results_query->posts as $key => $post):
+				echo '<div class="[ rowtight ]">';
+					echo '<div class="[ post ][ tcol-ss-12 tcol-sm-6 tcol-md-12 ]">';
+						echo '<div class="[ post__card ]">';
+							echo '<h4 class="[ post__title ][ no-margin ]">';
+								echo '<a href="' . get_the_permalink($post->ID) . '">';
+									echo $post->post_title;
+								echo '</a>';
+							echo '</h4>';
+							if ( get_implementing_partner( $post->ID ) != '' ) {
+								echo '<p class="[ post__implementing-partner ]">Implementing partner:' . get_implementing_partner( $post->ID ) . '</p>';
+							}
+						echo '</div>';
+					echo '</div>';
+				echo '</div>';
+			endforeach;
+		echo '</div>';
+	endif;
+} //show_related_results
+
 
 /*
  * Insert dynamic taxonomy terms after a post has been created/saved.
@@ -184,18 +233,20 @@ function update_dynamic_taxonomies( $post_id ){
 	if( ! isset( $post ) ) return;
 
 	if( 'implementing_partner' == $post->post_type )
+		insert_implementing_partner_taxonomy_term( $post->post_title, 'implementing_partner' );
 
-		insert_implementing_partner_taxonomy_term( $post->post_title );
+	if( 'post' == $post->post_type )
+		insert_implementing_partner_taxonomy_term( $post->post_title, 'post' );
 
 }// update_dynamic_taxonomies
 add_action( 'save_post', 'update_dynamic_taxonomies' );
 
-function insert_implementing_partner_taxonomy_term( $implementing_partner ){
+function insert_implementing_partner_taxonomy_term( $implementing_partner, $taxonomy ){
 
-	$term = term_exists( $implementing_partner, 'implementing_partner' );
+	$term = term_exists( $implementing_partner, $taxonomy );
 	if ($term !== 0 && $term !== null) return;
 
-	wp_insert_term( $implementing_partner, 'implementing_partner' );
+	wp_insert_term( $implementing_partner, $taxonomy );
 }
 
 /*------------------------------------*\
@@ -316,20 +367,51 @@ function get_focus_areas_of_impact( $post_id ){
  * Implementing Partners' posts
  * @return JSON $ip_coordinates
  */
-function get_implementing_partners_coordinates(){
+function get_implementing_result_coordinates(){
 
 	$ip_coordinates = array();
-	$args_implementing_partners = array(
+	$args_result = array(
 		'post_type' 		=> 'result',
+		'posts_per_page' 	=> -1
+	);
+
+	$query_result = new WP_Query( $args_result );
+	if ( $query_result->have_posts() ) : while ( $query_result->have_posts() ) : $query_result->the_post();
+		global $post;
+		$arr = array('','_b','_c','_d','_e');
+		for ($i=0; $i < 5; $i++) {
+			$lat = get_lat( $post->ID, '_lat_meta'.$arr[$i] );
+			$lng = get_lng( $post->ID, '_lng_meta'.$arr[$i] );
+
+			$ip_coordinates[$post->post_name.$arr[$i]] = array(
+				'lat'					=> $lat,
+				'lng'					=> $lng,
+				'permalink'				=> get_permalink( $post->ID ),
+				'implementingPartner'	=> get_the_title(),
+				);
+		}
+
+
+	endwhile; endif; wp_reset_query();
+
+	return json_encode( $ip_coordinates );
+
+}// get_implementing_result_coordinates
+
+
+function get_implementing_partners_coordinates(){
+	$ip_coordinates = array();
+	$args_implementing_partners = array(
+		'post_type' 		=> 'implementing_partner',
 		'posts_per_page' 	=> -1
 	);
 
 	$query_implementing_partners = new WP_Query( $args_implementing_partners );
 	if ( $query_implementing_partners->have_posts() ) : while ( $query_implementing_partners->have_posts() ) : $query_implementing_partners->the_post();
 		global $post;
+		$lat = get_lat( $post->ID, '_lat_meta' );
+		$lng = get_lng( $post->ID, '_lng_meta' );
 
-		$lat = get_lat( $post->ID );
-		$lng = get_lng( $post->ID );
 		$ip_coordinates[$post->post_name] = array(
 			'lat'					=> $lat,
 			'lng'					=> $lng,
@@ -337,19 +419,19 @@ function get_implementing_partners_coordinates(){
 			'implementingPartner'	=> get_the_title(),
 			);
 
+
 	endwhile; endif; wp_reset_query();
 
 	return json_encode( $ip_coordinates );
-
-}// get_implementing_partners_coordinates
+}
 
 /**
  * Get latitude from project (Result)
  * @param int $post_id
  * @return int $lat
  */
-function get_lat( $post_id ){
-	return get_post_meta( $post_id, '_lat_meta', true );
+function get_lat( $post_id, $meta ){
+	return get_post_meta( $post_id, $meta, true );
 }// get_lat
 
 /**
@@ -357,8 +439,8 @@ function get_lat( $post_id ){
  * @param int $post_id
  * @return int $lng
  */
-function get_lng( $post_id ){
-	return get_post_meta( $post_id, '_lng_meta', true );
+function get_lng( $post_id, $meta ){
+	return get_post_meta( $post_id, $meta, true );
 }// get_lng
 
 /**
@@ -436,6 +518,25 @@ function get_latest_projects( $num_posts ){
 	return $latest_projects;
 
 }// get_latest_projects
+
+function get_result_pdfs( $post_id ){
+	$pdfs = array();
+	$query_pdf_args = array(
+		'post_parent'		=> $post_id,
+		'post_status' 		=> 'inherit',
+		'post_type'			=> 'attachment',
+		'post_mime_type' 	=> 'application/pdf',
+		'post_per_page'		=> -1,
+	);
+	$query_pdf = new WP_Query( $query_pdf_args );
+	foreach ( $query_pdf->posts as $file) {
+		$pdfs[$file->post_name] = array(
+			'title' => $file->post_title,
+			'url' 	=> $file->guid
+		);
+	}
+	return $pdfs;
+}// get_result_pdfs
 
 
 /*------------------------------------*\
