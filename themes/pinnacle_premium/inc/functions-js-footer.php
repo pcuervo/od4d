@@ -18,7 +18,6 @@ function footer_scripts(){
 					$('select[name="sort"]').change( function(){
 						$sortAttribute =  $( "option:selected" ).val();
 						$sortOrder = $( "option:selected" ).data( 'order' );
-						console.log( $sortOrder );
 						sortResults( '.isotope-container', $sortAttribute, $sortOrder );
 					});
 
@@ -28,7 +27,11 @@ function footer_scripts(){
 					initMapProjects();
 				<?php endif; ?>
 
-				<?php if( is_page( 'the-program' ) OR is_page( 'le-programme' ) OR is_page( 'el-programa' ) OR is_page( 'network' ) ) : ?>
+				<?php if( is_page( 'the-program' ) OR is_page( 'le-programme' ) OR is_page( 'el-programa' ) ) : ?>
+					initMapProjects();
+				<?php endif; ?>
+
+				<?php if( is_page( 'network' ) ) : ?>
 					addAllMarkersPartners();
 				<?php endif; ?>
 

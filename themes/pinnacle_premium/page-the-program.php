@@ -28,7 +28,7 @@ the_post();
 					español
 				</a>
 			</p>
-			<div id="map_partners" class="[ partner-map ][ margin-bottom ]" style="height: 350px"></div>
+			<div id="map" class="[ partner-map ][ margin-bottom ]" style="height: 380px"></div>
 			<?php the_content(); ?>
 		</article>
 	</div><!-- /.row-->

@@ -234,7 +234,7 @@ img.kad-circle-iconclass{
 
 .post__title{
     margin-top: 0;
-    line-height: 1;
+    line-height: 1.2;
 }
 
 .post__image{
@@ -249,7 +249,7 @@ img.kad-circle-iconclass{
     line-height: 1.4;
 }
 
-.post__implementing-partner{ margin-bottom: 0; }
+.post__implementing-partner{ margin-bottom: 0; margin-top: 10px; }
 
 .post__type{}
 
