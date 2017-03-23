@@ -40,4 +40,3 @@
 	<?php endforeach; ?>
 </ul>
 <div class="clear"></div>
-<?php echo $debug ?>

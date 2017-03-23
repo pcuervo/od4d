@@ -3,7 +3,7 @@
 Plugin Name: Cyclone Slider Pro
 Plugin URI: http://www.codefleet.net/cyclone-slider-pro/
 Description: Create and manage sliders with ease. Built for both casual users and developers.
-Version: 2.10.1
+Version: 2.10.4
 Author: Nico Amarilla
 Author URI: http://www.codefleet.net/
 License:
@@ -34,7 +34,7 @@ $cyclone_slider_saved_done = false;
 add_action('plugins_loaded', 'cycloneslider_init');
 function cycloneslider_init() {
     global $cyclone_slider_plugin_instance;
-    
+
     $plugin = new CycloneSlider_Plugin();
     
     $plugin['path'] = realpath(plugin_dir_path(__FILE__)) . DIRECTORY_SEPARATOR;
@@ -80,9 +80,6 @@ function cycloneslider_init() {
     $plugin['imports_dir'] = $plugin['cyclone_slider_dir'].'/imports';
     $plugin['imports_extracts_dir'] = $plugin['imports_dir'].'/extracts';
     $plugin['import_zip_name'] = 'import.zip';
-    
-    
-    $plugin['zip_archive'] = 'ZipArchive';
     
     // Order is important. core is overridden by active-theme which in turn is overridden by wp-content.
     $plugin['template_locations'] = array(
@@ -165,15 +162,12 @@ function cycloneslider_init() {
     $plugin['frontend'] = 'cycloneslider_service_frontend';
     
     $plugin['updater'] = 'cycloneslider_service_updater';
-	$plugin['updater_properties'] = array(
-		'info_url' => 'http://support.codefleet.net/api/plugins/cyclone-slider-pro/latest/info',
-		'download_url' => 'http://support.codefleet.net/api/plugins/cyclone-slider-pro/latest/download'
-	);
     
     $plugin['widgets'] = new CycloneSlider_Widgets();
     
     require_once($plugin['path'].'src/functions.php'); // Function not autoloaded from the old days. Deprecated
-    
+
+
     $plugin->run();
     
     $cyclone_slider_plugin_instance = $plugin;
@@ -398,7 +392,7 @@ function cycloneslider_service_export_page_nextgen( $plugin ) {
 }
 
 function cycloneslider_service_zip_archive( $plugin ){
-    return new ZipArchive;
+    return 'ZipArchive';
 }
 
 function cycloneslider_service_asset_loader( $plugin ) {
@@ -440,8 +434,16 @@ function cycloneslider_service_updater( $plugin ) {
     if (null !== $object) {
         return $object;
     }
-	
-    $object = new CycloneSlider_Updater( $plugin['data']->get_settings_page_data(), $plugin['slug'], $plugin['version'], $plugin['updater_properties']['info_url'], $plugin['updater_properties']['download_url'] );
+
+	$settings_data = $plugin['data']->get_settings_page_data();
+
+    $object = new CycloneSlider_Updater(
+        'http://www.codefleet.net/plugin-endpoint/',
+	    $settings_data['license_id'],
+	    $settings_data['license_key'],
+        $plugin['slug'],
+        $plugin['version']
+    );
     return $object;
 }
 

@@ -32,7 +32,9 @@ class PluginUpdateChecker_2_0 {
     public $throttleRedundantChecks = false; //Check less often if we already know that an update is available.
     public $throttledCheckPeriod = 72;
 
+    // Kernl Custom.
     public $purchaseCode = false;
+    public $remoteGetTimeout = 10;
 
     private $cronHook = null;
     private $debugBarPlugin = null;
@@ -201,13 +203,13 @@ class PluginUpdateChecker_2_0 {
         $installedVersion = $this->getInstalledVersion();
         $queryArgs['installed_version'] = ($installedVersion !== null) ? $installedVersion : '';
         if($this->purchaseCode) {
-            $queryArgs['code'] = $this->purchaseCode;
+            $queryArgs['code'] = urlencode($this->purchaseCode);
         }
         $queryArgs = apply_filters('puc_request_info_query_args-'.$this->slug, $queryArgs);
 
         //Various options for the wp_remote_get() call. Plugins can filter these, too.
         $options = array(
-            'timeout' => 10, //seconds
+            'timeout' => $this->remoteGetTimeout, //seconds
             'headers' => array(
                 'Accept' => 'application/json'
             ),
@@ -227,7 +229,8 @@ class PluginUpdateChecker_2_0 {
 
         //Try to parse the response
         $pluginInfo = null;
-        if ( !is_wp_error($result) && isset($result['response']['code']) && ($result['response']['code'] == 200) && !empty($result['body']) ){
+        $status = $this->validateApiResponse($result);
+        if ( !is_wp_error($status) ){
             $pluginInfo = PluginInfo_2_0::fromJson($result['body'], $this->debugMode);
             $pluginInfo->filename = $this->pluginFile;
             $pluginInfo->slug = $this->slug;
@@ -245,6 +248,40 @@ class PluginUpdateChecker_2_0 {
 
         $pluginInfo = apply_filters('puc_request_info_result-'.$this->slug, $pluginInfo, $result);
         return $pluginInfo;
+    }
+    private function validateApiResponse($result) {
+        if ( is_wp_error($result) ) { /** @var WP_Error $result */
+            return new WP_Error($result->get_error_code(), 'WP HTTP Error: ' . $result->get_error_message());
+        }
+        if ( !isset($result['response']['code']) ) {
+            return new WP_Error('puc_no_response_code', 'wp_remote_get() returned an unexpected result.');
+        }
+        if ( $result['response']['code'] !== 200 ) {
+            return new WP_Error(
+                'puc_unexpected_response_code',
+                'HTTP response code is ' . $result['response']['code'] . ' (expected: 200)'
+            );
+        }
+        if ( empty($result['body']) ) {
+            return new WP_Error('puc_empty_response', 'The metadata file appears to be empty.');
+        }
+        return true;
+    }
+
+    public function purchase_code_invalid_notice() {
+        $pluginHeader = $this->getPluginHeader();
+        $pluginName = "";
+        if(isset($pluginHeader['Name'])) {
+            $pluginName = $pluginHeader['Name'];
+        }
+    ?>
+        <div class="notice notice-error">
+            <p>
+                <strong><? echo $pluginName; ?>:  </strong>
+                Your purchase code is invalid.  Please make sure that you have entered a valid purchase code to ensure that you receive updates.
+            </p>
+        </div>
+    <?php
     }
 
     /**
@@ -280,15 +317,15 @@ class PluginUpdateChecker_2_0 {
             return $pluginHeader['Version'];
         } else {
             //This can happen if the filename points to something that is not a plugin.
-            if ( $this->debugMode ) {
-                trigger_error(
-                    sprintf(
-                        "Can't to read the Version header for '%s'. The filename is incorrect or is not a plugin.",
-                        $this->pluginFile
-                    ),
-                    E_USER_WARNING
-                );
-            }
+            // if ( $this->debugMode ) {
+            //     trigger_error(
+            //         sprintf(
+            //             "Can't to read the Version header for '%s'. The filename is incorrect or is not a plugin.",
+            //             $this->pluginFile
+            //         ),
+            //         E_USER_WARNING
+            //     );
+            // }
             return null;
         }
     }
@@ -301,15 +338,15 @@ class PluginUpdateChecker_2_0 {
     protected function getPluginHeader() {
         if ( !is_file($this->pluginAbsolutePath) ) {
             //This can happen if the plugin filename is wrong.
-            if ( $this->debugMode ) {
-                trigger_error(
-                    sprintf(
-                        "Can't to read the plugin header for '%s'. The file does not exist.",
-                        $this->pluginFile
-                    ),
-                    E_USER_WARNING
-                );
-            }
+            // if ( $this->debugMode ) {
+            //     trigger_error(
+            //         sprintf(
+            //             "Can't to read the plugin header for '%s'. The file does not exist.",
+            //             $this->pluginFile
+            //         ),
+            //         E_USER_WARNING
+            //     );
+            // }
             return array();
         }
 
@@ -850,10 +887,10 @@ class PluginUpdateChecker_2_0 {
      * Initialize the update checker Debug Bar plugin/add-on thingy.
      */
     public function initDebugBarPanel() {
-        if ( class_exists('Debug_Bar') ) {
-            require_once dirname(__FILE__) . '/debug-bar-plugin.php';
-            $this->debugBarPlugin = new PucDebugBarPlugin($this);
-        }
+        // if ( class_exists('Debug_Bar') ) {
+        //     require_once dirname(__FILE__) . '/debug-bar-plugin.php';
+        //     $this->debugBarPlugin = new PucDebugBarPlugin($this);
+        // }
     }
 }
 
@@ -1105,21 +1142,21 @@ class PluginUpdate_2_0 {
 
 endif;
 
-if ( !class_exists('PucFactory') ):
+if ( !class_exists('KernlFactory') ):
 
 /**
  * A factory that builds instances of other classes from this library.
  *
  * When multiple versions of the same class have been loaded (e.g. PluginUpdateChecker 1.2
  * and 1.3), this factory will always use the latest available version. Register class
- * versions by calling {@link PucFactory::addVersion()}.
+ * versions by calling {@link KernlFactory::addVersion()}.
  *
  * At the moment it can only build instances of the PluginUpdateChecker class. Other classes
  * are intended mainly for internal use and refer directly to specific implementations. If you
- * want to instantiate one of them anyway, you can use {@link PucFactory::getLatestClassVersion()}
+ * want to instantiate one of them anyway, you can use {@link KernlFactory::getLatestClassVersion()}
  * to get the class name and then create it with <code>new $class(...)</code>.
  */
-class PucFactory {
+class KernlFactory {
     protected static $classVersions = array();
     protected static $sorted = false;
 
@@ -1197,10 +1234,10 @@ endif;
 // require_once(dirname(__FILE__) . '/github-checker.php');
 
 //Register classes defined in this file with the factory.
-PucFactory::addVersion('PluginUpdateChecker', 'PluginUpdateChecker_2_0', '2.0');
-PucFactory::addVersion('PluginUpdate', 'PluginUpdate_2_0', '2.0');
-PucFactory::addVersion('PluginInfo', 'PluginInfo_2_0', '2.0');
-// PucFactory::addVersion('PucGitHubChecker', 'PucGitHubChecker_2_0', '2.0');
+KernlFactory::addVersion('PluginUpdateChecker', 'PluginUpdateChecker_2_0', '2.0');
+KernlFactory::addVersion('PluginUpdate', 'PluginUpdate_2_0', '2.0');
+KernlFactory::addVersion('PluginInfo', 'PluginInfo_2_0', '2.0');
+// KernlFactory::addVersion('PucGitHubChecker', 'PucGitHubChecker_2_0', '2.0');
 
 /**
  * Create non-versioned variants of the update checker classes. This allows for backwards

@@ -175,10 +175,11 @@ class CycloneSlider_Exporter {
 		if( !class_exists('ZipArchive') ) {
 			throw new Exception( __( 'ZipArchive not supported.', $this->textdomain ) );
 		}
-		$zip = new $this->zip_archive;
-
-		if ( true !== $zip->open($zip_file, ZIPARCHIVE::OVERWRITE) ) {
-			throw new Exception( __( 'Error opening zip file.', $this->textdomain ) );
+		$zip_archive_class_name = $this->zip_archive;
+		$zip = new $zip_archive_class_name();
+		$result = $zip->open( $zip_file, ZipArchive::CREATE | ZipArchive::OVERWRITE );
+		if ( true !== $result ) {
+			throw new Exception( sprintf( __( 'Error opening zip file %s. Code: %s', $this->textdomain ), $zip_file, $result ) );
 		}
 		
 		// Add slide images

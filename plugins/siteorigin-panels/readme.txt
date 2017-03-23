@@ -1,12 +1,12 @@
 === Page Builder by SiteOrigin ===
 Tags: page builder, responsive, widget, widgets, builder, page, admin, gallery, content, cms, pages, post, css, layout, grid
 Requires at least: 4.0
-Tested up to: 4.5
-Stable tag: 2.4.3
-Build time: 2016-04-08T07:28:03+02:00
+Tested up to: 4.7.2
+Stable tag: 2.4.25
+Build time: 2017-02-21T09:54:44+02:00
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl.html
-Donate link: http://siteorigin.com/page-builder/#donate
+Donate link: https://siteorigin.com/downloads/contribution/
 Contributors: gpriday, braam-genis
 
 Build responsive page layouts using the widgets you know and love using this simple drag and drop page builder.
@@ -95,6 +95,103 @@ Page Builder is actively developed and updated, so generally I'd recommend that 
 We've tried to ensure that Page Builder is compatible with most plugin widgets. It's best to just download Page Builder and test for yourself.
 
 == Changelog ==
+
+= 2.4.25 - 21 February 2017 =
+* Fixed how widget wrapper IDs are generated.
+
+= 2.4.24 - 3 February 2017 =
+* Add row ID to style wrapper instead of actual row.
+* Use more specific selectors for padding CSS.
+
+= 2.4.23 - 31 January 2017 =
+* Fixed padding issue introduced by new mobile padding setting.
+
+= 2.4.22 - 31 January 2017 =
+* Add WP Color Picker as a dependency for admin script.
+* Include and check post ID in Live Editor. Fixes some issues with widgets using the_excerpt in Live Editor.
+* Added mobile padding settings.
+* Made all learning links/buttons removable in Page Builder settings.
+
+= 2.4.21 - 19 December 2016 =
+* Removed course toolbar links.
+* Added filter for post loop query.
+* Replace TinyMCE _.isUndefined() check with a typeof to prevent JS errors.
+
+= 2.4.20 - 7 December 2016 =
+* Removed Premium and contribution links.
+* Added course links.
+
+= 2.4.19 - 22 November 2016 =
+* Added fixed background support.
+* Cycle addon and contribution link.
+* Small type and translation fixes.
+
+= 2.4.18 - 7 November 2016 =
+* Fixes for PHP 7 checker.
+* Properly provide post ID on custom home page.
+* Fixed CSS and JS URLs.
+* Corrected post__not_in issue for query builder.
+
+= 2.4.17 - 14 October 2016 =
+* Removed old Stellar JS library.
+* Added parallax setup after small timeout.
+* Added way to add affiliate ID.
+* Added tips signup link.
+
+= 2.4.16 - 27 September 2016 =
+* Added disableable upgrade notice.
+
+= 2.4.15 - 6 September 2016 =
+* Fixed legacy widgets check.
+
+= 2.4.14 - 1 September 2016 =
+* Fixes to sidebar emulator to prevent early rewrite rule building.
+* Added option to completely disable sidebar emulator.
+
+= 2.4.13 - 18 August 2016 =
+* Fixed: layout directory imports in WordPress 4.6
+
+= 2.4.12 - 17 August 2016 =
+* Fixed layout directory requests for WordPress 4.6
+
+= 2.4.11 - 15 August 2016 =
+* Added esc_url to all add_query_arg calls.
+* Improved measurement style field to handle multiple values.
+* Hide empty columns after mobile collapse.
+
+= 2.4.10 - 4 July 2016 =
+* Made Live Editor quick link optional from Page Builder settings page.
+* Added option to specify parallax motion.
+* Fixed settings help link.
+* Renamed Prebuilt to Layouts
+* Reverted sidebars emulator change.
+* Skip empty attributes in CSS generator class.
+
+= 2.4.9 - May 26 2016 =
+* Improved parallax library to upscale images to ensure enough of a parallax.
+* Allow negative values in measurement fields.
+
+= 2.4.8 - May 13 2016 =
+* Reverted Wordfence fix from 2.4.7 - it raised other issues.
+
+= 2.4.7 - May 13 2016 =
+* Replaced parallax with custom implementation.
+* Added more filters and actions.
+* Allow other plugins to enable/disable certain builder functionality.
+* Added unique IDs (UUID) to all widgets.
+* Added fallback previewer for Live Editor.
+* Prevent double filtering of $panels_data.
+* Developer support for read-only widgets.
+* Fixed issue that resulted in Wordfence blocking some Page Builder requests.
+* Small interface improvements.
+
+= 2.4.6 - April 13 2016 =
+* Fixed Javascript errors with layout builder widget.
+
+= 2.4.5 - April 13 2016 =
+* Only trigger contextual menu for topmost dialog.
+* Improved design of Live Editor preview.
+* Added Live Editor link in the admin menu bar.
 
 = 2.4.4 - April 6 2016 =
 * Fixed ordering of new rows, widgets and cells in builder interface.

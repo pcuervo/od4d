@@ -1,13 +1,12 @@
 <?php if(!defined('ABSPATH')) die('Direct access denied.'); ?>
 
 <div class="wrap">
-	<?php echo $screen_icon; ?>
-	<h2><?php echo $page_title; ?></h2>
+	<?php echo esc_html($screen_icon); ?>
+	<h2><?php echo esc_html($page_title); ?></h2>
 	<div class="intro">
 		<p><?php _e('Play with these settings if Cyclone Slider is not working or if you want to optimize it.', $textdomain); ?></p>
 	</div>
 	<?php settings_errors();?>
-	<?php echo $debug; ?>
 	<form method="post" action="options.php">
 		<?php
 		echo $settings_fields;
@@ -82,18 +81,18 @@
 				</td>
 			</tr>
 			<tr>
-				<th><label for="cs2-settings-license_id"><?php _e('License ID:', $textdomain); ?></label></th>
+				<th><label for="cs2-settings-license_id"><?php _e('License:', $textdomain); ?></label></th>
 				<td>
-					<input type="number" id="<?php echo esc_attr( 'license_id' ); ?>" name="<?php echo esc_attr( $option_name."[license_id]" ); ?>" value="<?php echo esc_attr( $settings_data['license_id'] ); ?>" />
+					<input type="text" class="regular-text" id="cs2-settings-license_id" name="<?php echo esc_attr( $option_name."[license_id]" ); ?>" value="<?php echo esc_attr( $settings_data['license_id'] ); ?>" />
 					
 				</td>
 			</tr>
 			<tr>
-				<th><label for="cs2-settings-license_key"><?php _e('License Key:', $textdomain); ?></label></th>
+				<th><label for="cs2-settings-license_key"><?php _e('Secret Key:', $textdomain); ?></label></th>
 				<td>
-					<input type="text" class="regular-text" id="<?php echo esc_attr( 'license_key' ); ?>" name="<?php echo esc_attr( $option_name."[license_key]" ); ?>" value="<?php echo esc_attr( $settings_data['license_key'] ); ?>" />
+					<input type="text" class="regular-text" id="cs2-settings-license_key" name="<?php echo esc_attr( $option_name."[license_key]" ); ?>" value="<?php echo esc_attr( $settings_data['license_key'] ); ?>" />
 					
-					<p><em><?php printf( __('Your license ID and Key can be found in the %s', $textdomain), '<a target="_blank" href="//support.codefleet.net/client/">Client Area</a>'); ?></em></p>
+					<p><em><?php printf( __('Your license and secret key can be found in the %s page under each order.', $textdomain), '<a target="_blank" href="//www.codefleet.net/my-account/">My Account</a>'); ?></em></p>
 				</td>
 			</tr>
 		</table>

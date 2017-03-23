@@ -1,8 +1,4 @@
 var $=jQuery.noConflict();
-var infoWindows = [];
-var markers = [];   
-var infoWindow = null;
-
 /**
  * Run Isotope plugin
  * @container element cointaining items
@@ -44,6 +40,7 @@ function filterIsotope( container, item ){
 
     $('.filtros').on( 'click', '.button-group a', function() {
         var $this = $(this);
+        console.log($this);
         // get group key
         var $buttonGroup = $this.parents('.button-group');
         var filterGroup = $buttonGroup.attr('data-filter-group');
@@ -67,6 +64,7 @@ function filterIsotope( container, item ){
 }// filterIsotope
 
 function sortResults( container, attribute, order ){
+    console.log(attribute);
     $( container ).isotope({
       sortBy : attribute,
       sortAscending : order == 'asc' ? true : false
@@ -116,18 +114,17 @@ function createEmptyMap( id ){
 function initMapProjects(){
 
     var map = createEmptyMap( 'map' );
+    var markers = [];
     // implementingResult comes from WP functions.php
     var coordinates = $.parseJSON( implementingResult );
-    console.log( coordinates );
     $.each( coordinates, function( slug, coord ){
 
-        // // Skip if Implementing Partner doesn't have coordinates
+        // Skip if Implementing Partner doesn't have coordinates
         if( '' === coord.lat ) return true;
 
         var marker = createMarker( map, coord.lat, coord.lng );
-        markers.push( marker );
         createInfoWindow( map, marker, coord.implementingPartner, coord.permalink );
-        
+        markers.push( marker );
     });
     autoCenter( map, markers );
 
@@ -135,15 +132,17 @@ function initMapProjects(){
 
 function addAllMarkersPartners(){
     var map = createEmptyMap( 'map_partners' );
+    var markers = [];
     // implementingResult comes from WP functions.php
     var coordinates = $.parseJSON( implementingPartnersCoordinates );
     $.each( coordinates, function( slug, coord ){
+
         // Skip if Implementing Partner doesn't have coordinates
         if( '' === coord.lat ) return true;
 
         var marker = createMarker( map, coord.lat, coord.lng );
-        markers.push( marker );
         createInfoWindow( map, marker, coord.implementingPartner, coord.permalink );
+        markers.push( marker );
     });
     autoCenter( map, markers );
 }
@@ -175,14 +174,14 @@ function autoCenter( map, markers ) {
     var bounds = new google.maps.LatLngBounds();
     $.each(markers, function (index, marker) { bounds.extend(marker.position); });
     map.fitBounds(bounds);
-    // var listener = google.maps.event.addListener(map, "idle", function() {
-    //     if (map.getZoom() > 1){
-    //         map.setZoom();
-    //     }else{
-    //        map.setZoom(1);
-    //     }
-    //     google.maps.event.removeListener(listener);
-    // });
+    var listener = google.maps.event.addListener(map, "idle", function() {
+        if (map.getZoom() > 2){
+            map.setZoom();
+        }else{
+           map.setZoom(2);
+        }
+        google.maps.event.removeListener(listener);
+    });
 
 } // autoCenter
 
@@ -195,24 +194,14 @@ function autoCenter( map, markers ) {
 **/
 function createInfoWindow( map, marker, title, permalink ){
 
-    infoWindow = new google.maps.InfoWindow({ maxWidth: 200 });
+    var infoWindow = new google.maps.InfoWindow({ maxWidth: 200 });
     infoWindow.setContent( '<a class="" href="' + permalink + '">' + title + '<a/>' );
-    infoWindows.push( infoWindow );
+
+    //infoWindows.push( infoWindow );
 
     google.maps.event.addListener( marker, 'click', function() {
-        var i = markers.indexOf( marker );
-
-        closeInfoWindows();
-        // if( infoWindow ){
-        //     infoWindow.close();
-        // }
-        infoWindows[ i ].open( map, this );
+        infoWindow.open( map, this );
+        //styleInfoWindow();
      });
 
 }// createInfoWindow
-
-function closeInfoWindows(){
-    $.each( infoWindows, function(i, infoWindow){
-        infoWindow.close();
-    });
-}

@@ -1,9 +1,9 @@
 === Kadence Slider ===
 Contributors: Kadence Themes
 Tags: 
-Requires at least: 3.8
-Tested up to: 4.4
-Stable tag: 1.5.3
+Requires at least: 4.2
+Tested up to: 4.6.1
+Stable tag: 2.1.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -19,6 +19,57 @@ Install the plugin into the `/wp-content/plugins/` folder, and activate it.
 
 
 == Changelog ==
+
+= 2.1.2 =
+* Update: Small Js change to fix ratio issue.
+
+= 2.1.1 =
+* Update: Small Js change to fix ratio issue.
+
+= 2.1.0 =
+* Update: People having trouble with update.
+
+= 2.0.9 =
+* Update: Admin color option.
+* Update: Pause on hove option.
+* Update: Load Fonts Option.
+
+= 2.0.8 =
+* Update: Add min height option.
+
+= 2.0.7 =
+* Update: JS for better support of fullwidth panels in pagebuilder 
+
+= 2.0.6 =
+* Update: JS to better handle startup animation.
+
+= 2.0.5 =
+* Fix: Endless update loop
+
+= 2.0.4 =
+* Fix: resize issue.
+* Update: Page permissions.
+* Update: html output.
+
+= 2.0.3 =
+* Fix: Typo.
+* Fix: Legacy Slider with ratio. Navigation error.
+
+= 2.0.2 =
+* Fix: Border color issue.
+* Udpate: Few CSS tweeks.
+* Udpate: Aminte in and out issue.
+
+= 2.0.1 =
+* Add: Duplicate Slide option.
+* Update: UI css.
+
+= 2.0 =
+* NEW: Kadence Slider Pro with layers.
+ - Now you can add images, text and buttons as layers into the slider and place them where ever you want.
+ - Add multiple sliders to a page.
+ - Add an offset for fullheight. 
+
 
 = 1.5.3 =
 * Fix: Height Issue.
@@ -58,22 +109,3 @@ Install the plugin into the `/wp-content/plugins/` folder, and activate it.
 
 = 1.0 =
 * Initial Version.
-
-== Custom CSS for Kadence Slider ==
-
-// Caption Title Font Family
-
-.kad-slider-wrapper .kadcaptiontitle {
-font-family: "Open Sans",sans-serif;
-}
-
-// Caption Description Font Family
-
-.kad-slider-wrapper .kadcaptiontext {
-font-family: "Open Sans",sans-serif;
-}
-
-// Button Font Family
-.kad-slider .kad-slider-btn {
-font-family: "Open Sans",sans-serif;
-}

@@ -56,7 +56,8 @@ class CycloneSlider_Importer {
 		}
 		
 		// Open zip and perform checks
-		$zip = new $this->zip_archive;
+		$zip_archive_class_name = $this->zip_archive;
+		$zip = new $zip_archive_class_name();
 		$zip_result = $zip->open( $zip_file, ZipArchive::CHECKCONS);
 		if( true !== $zip_result ){
 			throw new Exception( sprintf( __('Error opening zip: %s', $this->textdomain), $this->get_zip_error( $zip_result ) ), 4);

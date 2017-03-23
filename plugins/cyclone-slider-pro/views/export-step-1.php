@@ -10,7 +10,7 @@
 	<?php $this->render('error-message.php', array('error'=>$error)); ?>
 	
 	<form method="post" action="<?php echo esc_url( $export_page_url ); ?>">
-		<input type="hidden" name="<?php echo $nonce_name; ?>" value="<?php echo $nonce; ?>" />
+		<input type="hidden" name="<?php echo esc_attr($nonce_name); ?>" value="<?php echo esc_attr($nonce); ?>" />
 		<input type="hidden" name="cycloneslider_export_step" value="1" />
         <?php if($sliders): ?>
             <table class="form-table">
@@ -25,7 +25,7 @@
                         <?php foreach($sliders as $slider): ?>
                             <label for="cs-slider-<?php echo $slider['post_name']; ?>">
                                 <input class="cs-sliders" type="checkbox" id="cs-slider-<?php echo esc_attr( $slider['post_name'] ); ?>" name="<?php echo esc_attr( $transient_name ); ?>[sliders][]" value="<?php echo esc_attr( $slider['post_name'] ); ?>" <?php echo ( in_array($slider['post_name'], $page_data['sliders']) ) ? 'checked="checked"' : '' ; ?> />
-                                <span><em><?php echo $slider['post_title']; ?></em></span>
+                                <span><em><?php echo esc_html($slider['post_title']); ?></em></span>
                             </label> <br />
                         <?php endforeach; ?>
                     </td>

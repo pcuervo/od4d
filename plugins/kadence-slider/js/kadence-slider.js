@@ -132,7 +132,8 @@ jQuery(document).ready(function ($) {
         kt_pausetime = this_slider.attr('data-ktslider-pause-time'),
         kt_id = this_slider.attr('data-ktslider-id'),
         kt_height = this_slider.attr('data-ktslider-height');
-        kt_height_type = this_slider.attr('data-ktslider-height-type');
+        kt_height_type = this_slider.attr('data-ktslider-height-type'),
+        kt_width = this_slider.attr('data-ktslider-width');
 
         var kt_id_name = 'kad-slider-'+kt_id;
 
@@ -195,6 +196,6 @@ jQuery(document).ready(function ($) {
 	        	kad_slide_ratio_resize_Height();
 	        }
     	}
-
     });
+
 });

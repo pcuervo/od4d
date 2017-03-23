@@ -299,7 +299,6 @@ jQuery(document).ready(function($){
                         textbox_url.removeAttr('disabled');
                         button.removeAttr('disabled');
                     }
-                    
                 }
             });
         });

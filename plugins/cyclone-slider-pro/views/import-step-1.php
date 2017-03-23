@@ -10,7 +10,7 @@
 	<?php $this->render('error-message.php', array('error'=>$error)); ?>
 	
 	<form enctype="multipart/form-data" method="post" action="<?php echo $import_page_url; ?>">
-		<input type="hidden" name="<?php echo $nonce_name; ?>" value="<?php echo $nonce; ?>" />
+		<input type="hidden" name="<?php echo esc_attr($nonce_name); ?>" value="<?php echo esc_attr($nonce); ?>" />
 		<input type="hidden" name="cycloneslider_import_step" value="1" />
 		<table class="form-table">
 			<tr>
