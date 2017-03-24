@@ -82,13 +82,14 @@
 				} ?>
 
 				<div class="[ home-description ][ text-center ][ margin-bottom ] kad-animation" data-animation="fade-in" data-delay="0">
-					<h5><strong>Open Data for Development (OD4D)</strong> is the leading global partnership to advance the creation of locally-driven and sustainable open data ecosystems around the world.</h5>
+					<h1 class="[ inline ][ h4 bold ]">Open Data for Development (OD4D)</h1>
+					<h2 class="[ h4 ]">is the leading global partnership to advance the creation of locally-driven and sustainable open data ecosystems around the world.</h2>
 					<hr class="[ line-primary ]">
 				</div>
 				<div class="[ row ][ margin-bottom ][ block-highlight ] kad-animation" data-animation="fade-in" data-delay="0">
 					<div class="[ tcol-sm-offset-2  tcol-xs-12 tcol-sm-4 ]">
 						<ul class="[ list-home list-dot ]">
-							<h4 class="[ margin-bottom ]">GLOBAL INITIATIVES</h4>
+							<h3 class="[ margin-bottom ]">GLOBAL INITIATIVES</h3>
 							<li>INTERNATIONAL CONFERENCE</li>
 							<li>IMPACT MAP</li>
 							<li>BAROMETER</li>
@@ -98,7 +99,7 @@
 					</div>
 					<div class="[ tcol-xs-12 tcol-md-5 ]">
 						<ul class="[ list-home list-dot ]">
-							<h4 class="[ margin-bottom ]">GLOBAL INITIATIVES</h4>
+							<h3 class="[ margin-bottom ]">GLOBAL INITIATIVES</h3>
 							<li>Latin America Open Data Initiative</li>
 							<li>Africa Open Data Network</li>
 							<li>Caribbean Open Institute</li>
