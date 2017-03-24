@@ -28,8 +28,32 @@ function footer_scripts(){
 					initMapProjects();
 				<?php endif; ?>
 
-				<?php if( is_page( 'the-program' ) OR is_page( 'le-programme' ) OR is_page( 'el-programa' ) OR is_page( 'network' ) ) : ?>
+				<?php if( is_page( 'the-program' ) OR is_page( 'le-programme' ) OR is_page( 'el-programa' ) OR is_page( 'network' ) OR is_page('regions') ) : ?>
 					addAllMarkersPartners();
+				<?php endif; ?>
+
+				<?php if( is_page( 'africa' ) ) : ?>
+					addAllMarkersPartners( 5.249129, 20.849410 );
+				<?php endif; ?>
+
+				<?php if( is_page( 'asia' ) ) : ?>
+					addAllMarkersPartners( 41.383236, 83.047808 );
+				<?php endif; ?>
+
+				<?php if( is_page( 'latin-america' ) ) : ?>
+					addAllMarkersPartners( 0.519690, -60.786332 );
+				<?php endif; ?>
+
+				<?php if( is_page( 'eastern-europe-central' ) ) : ?>
+					addAllMarkersPartners( 55.283516, 38.874491 );
+				<?php endif; ?>
+
+				<?php if( is_page( 'middle-east-and-northern-africa' ) ) : ?>
+					addAllMarkersPartners( 31.380724, 42.684882 );
+				<?php endif; ?>
+
+				<?php if( is_page( 'caribbean' ) ) : ?>
+					addAllMarkersPartners( 22.731635, -78.337274 );
 				<?php endif; ?>
 
 				<?php if( is_singular() ) : ?>

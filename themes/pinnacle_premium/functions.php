@@ -132,7 +132,7 @@ add_action( 'wp_enqueue_scripts', function(){
 
 	// scripts
 	wp_enqueue_script( 'plugins', JSPATH.'plugins.js', array('jquery'), '1.0', true );
-	wp_enqueue_script( 'gmaps', 'http://maps.googleapis.com/maps/api/js', array('jquery'), '1.0', true );
+	wp_enqueue_script( 'gmaps', 'http://maps.googleapis.com/maps/api/js?key=AIzaSyDRkwgchPOi6rF7wBsPHclZ8ihxletKsXA', array('jquery'), '1.0', true );
 	wp_enqueue_script( 'functions', JSPATH.'functions.js', array('plugins'), '1.0', true );
 	wp_localize_script( 'functions', 'implementingResult', get_implementing_result_coordinates() );
 	wp_localize_script( 'functions', 'implementingPartnersCoordinates', get_implementing_partners_coordinates() );
@@ -542,6 +542,13 @@ function get_result_pdfs( $post_id ){
 /*------------------------------------*\
 	#HELPER FUNCTIONS
 \*------------------------------------*/
+
+function wpsites_query( $query ) {
+if ( $query->is_archive() && $query->is_main_query() && !is_admin() ) {
+        $query->set( 'posts_per_page', -1 );
+    }
+}
+add_action( 'pre_get_posts', 'wpsites_query' );
 
 
 /*------------------------------------*\

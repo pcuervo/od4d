@@ -130,7 +130,7 @@ function initMapProjects(){
 
 }// initMapProjects
 
-function addAllMarkersPartners(){
+function addAllMarkersPartners( lat='', lng='' ){
     var map = createEmptyMap( 'map_partners' );
     var markers = [];
     // implementingResult comes from WP functions.php
@@ -144,7 +144,12 @@ function addAllMarkersPartners(){
         createInfoWindow( map, marker, coord.implementingPartner, coord.permalink );
         markers.push( marker );
     });
-    autoCenter( map, markers );
+    if( lat == '' && lng == '' ){
+        autoCenter( map, markers );   
+    } else {
+        map.setCenter( {lat: lat, lng: lng} );
+        map.setZoom(3);
+    }    
 }
 
 /**
