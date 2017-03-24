@@ -6,12 +6,11 @@
  * Registers styles and scripts, adds the custom administration page,
  * and processes user input on the "search/replace" form.
  *
- * @link       http://expandedfronts.com/better-search-replace
+ * @link       https://bettersearchreplace.com
  * @since      1.0.0
  *
  * @package    Better_Search_Replace
  * @subpackage Better_Search_Replace/includes
- * @author     Expanded Fronts, LLC
  */
 
 // Prevent direct access.
@@ -199,11 +198,11 @@ class BSR_Admin {
 		if ( get_transient( 'bsr_results' ) ) {
 
 			$results 		= get_transient( 'bsr_results' );
-			$styles_url 	= get_admin_url() . "load-styles.php?c=0&dir=ltr&load=dashicons,admin-bar,wp-admin,buttons,wp-auth-check";
+			$min 			= ( defined( 'SCRIPT_DEBUG' ) && true === SCRIPT_DEBUG ) ? '' : '.min';
 			$bsr_styles 	= BSR_URL . 'assets/css/better-search-replace.css?v=' . BSR_VERSION;
 
 			?>
-			<link href="<?php echo esc_url( $styles_url ); ?>" rel="stylesheet" type="text/css">
+			<link href="<?php echo esc_url( get_admin_url( null, 'css/common' . $min . '.css' ) ); ?>" rel="stylesheet" type="text/css" />
 			<link href="<?php echo esc_url( $bsr_styles ); ?>" rel="stylesheet" type="text/css">
 
 			<div class="container" style="padding:10px;">
@@ -240,7 +239,7 @@ class BSR_Admin {
 				</table>
 
 				<p style="text-align:center;"><strong><?php _e( 'Want even more details, easy database migrations, and saved search/replace profiles?', 'better-search-replace' ); ?><br>
-				<a href="https://expandedfronts.com/products/better-search-replace-pro/" target="_blank"><?php _e( 'Learn more about the pro version', 'better-search-replace' ); ?></a></strong></p>
+				<a href="https://bettersearchreplace.com/?utm_source=insideplugin&utm_medium=web&utm_content=results-modal&utm_campaign=pro-upsell" target="_blank"><?php _e( 'Learn more about the pro version', 'better-search-replace' ); ?></a></strong></p>
 
 			</div>
 			<?php
@@ -285,7 +284,7 @@ class BSR_Admin {
 		if ( $file == $plugin ) {
 			return array_merge(
 				$links,
-				array( '<a href="https://expandedfronts.com/products/better-search-replace-pro/">' . __( 'Upgrade to Pro', 'better-search-replace' ) . '</a>' )
+				array( '<a href="https://bettersearchreplace.com/?utm_source=insideplugin&utm_medium=web&utm_content=plugins-page&utm_campaign=pro-upsell">' . __( 'Upgrade to Pro', 'better-search-replace' ) . '</a>' )
 			);
 		}
 

@@ -2,9 +2,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Cyclone Slider\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-04-02 16:53+0800\n"
-"PO-Revision-Date: 2015-04-02 16:53+0800\n"
-"Last-Translator: Nico Amarilla <kosinix@codefleet.net>\n"
+"POT-Creation-Date: 2016-02-07 13:57+0800\n"
+"PO-Revision-Date: 2016-02-07 13:57+0800\n"
+"Last-Translator: Kosinix <kosinix@codefleet.net>\n"
 "Language-Team: kosinix <kosinix@codefleet.net>\n"
 "Language: en_US\n"
 "MIME-Version: 1.0\n"
@@ -17,38 +17,38 @@ msgstr ""
 "X-Poedit-SearchPath-0: .\n"
 "X-Poedit-SearchPath-1: ..\n"
 
-#: ../cyclone-slider.php:109
+#: ../cyclone-slider.php:106
 msgid "Cyclone Slider Settings"
 msgstr ""
 
-#: ../cyclone-slider.php:110
+#: ../cyclone-slider.php:107
 msgid "Settings"
 msgstr ""
 
-#: ../cyclone-slider.php:120
+#: ../cyclone-slider.php:117
 msgid "Cyclone Slider Export"
 msgstr ""
 
-#: ../cyclone-slider.php:121
+#: ../cyclone-slider.php:118
 msgid "Export/Import"
 msgstr ""
 
-#: ../cyclone-slider.php:133
+#: ../cyclone-slider.php:130
 msgid "Cyclone Slider Nextgen Export"
 msgstr ""
 
-#: ../cyclone-slider.php:134 ../src/CycloneSlider/ExportPageNextgen.php:75
+#: ../cyclone-slider.php:131 ../src/CycloneSlider/ExportPageNextgen.php:75
 msgid "Export Nextgen"
 msgstr ""
 
-#: ../cyclone-slider.php:146
+#: ../cyclone-slider.php:143
 msgid "Cyclone Slider Import"
 msgstr ""
 
-#: ../cyclone-slider.php:147 ../src/CycloneSlider/ExportPage.php:72
+#: ../cyclone-slider.php:144 ../src/CycloneSlider/ExportPage.php:72
 #: ../src/CycloneSlider/ExportPageNextgen.php:70
 #: ../src/CycloneSlider/ExporterNextgen.php:65
-#: ../src/CycloneSlider/ImportPage.php:74
+#: ../src/CycloneSlider/ImportPage.php:77
 #: ../src/CycloneSlider/NextgenIntegration.php:65
 msgid "Import"
 msgstr ""
@@ -219,26 +219,32 @@ msgstr ""
 
 #: ../src/CycloneSlider/ExportPage.php:67
 #: ../src/CycloneSlider/ExportPageNextgen.php:65
-#: ../src/CycloneSlider/ImportPage.php:69
+#: ../src/CycloneSlider/ImportPage.php:72
 msgid "Export"
 msgstr ""
 
-#: ../src/CycloneSlider/ExportPage.php:114
+#: ../src/CycloneSlider/ExportPage.php:80
+#: ../src/CycloneSlider/ImportPage.php:66
+msgid ""
+"ZipArchive not supported. ZipArchive is needed for Import and Export to work."
+msgstr ""
+
+#: ../src/CycloneSlider/ExportPage.php:116
 #: ../src/CycloneSlider/ExportPageNextgen.php:121
 msgid "Your export file is ready. Click Download."
 msgstr ""
 
-#: ../src/CycloneSlider/ExportPage.php:119
+#: ../src/CycloneSlider/ExportPage.php:121
 #: ../src/CycloneSlider/ExportPageNextgen.php:126
 msgid "Error creating exports directory."
 msgstr ""
 
-#: ../src/CycloneSlider/ExportPage.php:168
+#: ../src/CycloneSlider/ExportPage.php:170
 #: ../src/CycloneSlider/ExportPageNextgen.php:175
 msgid "No slider selected."
 msgstr ""
 
-#: ../src/CycloneSlider/ExportPage.php:173
+#: ../src/CycloneSlider/ExportPage.php:175
 #: ../src/CycloneSlider/ExportPageNextgen.php:180
 msgid "Please choose a file name."
 msgstr ""
@@ -276,16 +282,17 @@ msgstr ""
 msgid "ZipArchive not supported."
 msgstr ""
 
-#: ../src/CycloneSlider/Exporter.php:181
-msgid "Error opening zip file."
+#: ../src/CycloneSlider/Exporter.php:182
+#, php-format
+msgid "Error opening zip file %s. Code: %s"
 msgstr ""
 
-#: ../src/CycloneSlider/Exporter.php:190
+#: ../src/CycloneSlider/Exporter.php:191
 #, php-format
 msgid "Error adding file %s to zip."
 msgstr ""
 
-#: ../src/CycloneSlider/Exporter.php:192 ../src/CycloneSlider/Exporter.php:200
+#: ../src/CycloneSlider/Exporter.php:193 ../src/CycloneSlider/Exporter.php:201
 #, php-format
 msgid "File %s added to zip."
 msgstr ""
@@ -316,7 +323,7 @@ msgstr ""
 msgid "[Template \"%s\" not found]"
 msgstr ""
 
-#: ../src/CycloneSlider/ImportPage.php:116
+#: ../src/CycloneSlider/ImportPage.php:119
 msgid "Import operation success!"
 msgstr ""
 
@@ -336,34 +343,34 @@ msgstr ""
 msgid "Error moving uploaded zip."
 msgstr ""
 
-#: ../src/CycloneSlider/Importer.php:62
+#: ../src/CycloneSlider/Importer.php:63
 #, php-format
 msgid "Error opening zip: %s"
 msgstr ""
 
-#: ../src/CycloneSlider/Importer.php:68
+#: ../src/CycloneSlider/Importer.php:69
 msgid "Error extracting zip."
 msgstr ""
 
-#: ../src/CycloneSlider/Importer.php:75
+#: ../src/CycloneSlider/Importer.php:76
 msgid "Failed to read export JSON."
 msgstr ""
 
-#: ../src/CycloneSlider/Importer.php:80
+#: ../src/CycloneSlider/Importer.php:81
 msgid "Failed to decode JSON."
 msgstr ""
 
-#: ../src/CycloneSlider/Importer.php:151
+#: ../src/CycloneSlider/Importer.php:152
 #, php-format
 msgid "scandir failed on %s"
 msgstr ""
 
-#: ../src/CycloneSlider/Importer.php:167
+#: ../src/CycloneSlider/Importer.php:168
 #, php-format
 msgid "Source image %s not found."
 msgstr ""
 
-#: ../src/CycloneSlider/Importer.php:171
+#: ../src/CycloneSlider/Importer.php:172
 msgid "Copy error."
 msgstr ""
 

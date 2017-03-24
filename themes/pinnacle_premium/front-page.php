@@ -81,30 +81,34 @@
 					$layout = array("block_one" => "block_one", "block_four" => "block_four");
 				} ?>
 
-				<article class="key-concepts home-margin home-padding kad-animation" data-animation="fade-in" data-delay="0">
-					<div class="[ home-margin ][ rowtight ]">
-						<?php
-							$key_concepts = get_page_by_title('What we do');
-							$key_concepts_ID = $key_concepts->ID;
-							$post = get_post($key_concepts_ID);
-							$content = apply_filters('the_content', $post->post_content);
-
-							$key_concepts_args = array(
-								'page_id' => $key_concepts_ID
-							);
-							$query_key_concepts = new WP_Query( $key_concepts_args );
-							if ( $query_key_concepts->have_posts() ) : while( $query_key_concepts->have_posts() ) : $query_key_concepts->the_post(); ?>
-								<h4 class="[ text-center ][ widget-title ]"><?php the_title(); ?></h4>
-								<?php the_content(); ?>
-							<?php endwhile; endif; wp_reset_query();
-						?>
+				<div class="[ home-description ][ text-center ][ margin-bottom ] kad-animation" data-animation="fade-in" data-delay="0">
+					<h1 class="[ inline ][ h4 bold ]">Open Data for Development (OD4D)</h1>
+					<h2 class="[ h4 ]">is the leading global partnership to advance the creation of locally-driven and sustainable open data ecosystems around the world.</h2>
+					<hr class="[ line-primary ]">
+				</div>
+				<div class="[ row ][ margin-bottom ][ block-highlight ] kad-animation" data-animation="fade-in" data-delay="0">
+					<div class="[ tcol-sm-offset-2  tcol-xs-12 tcol-sm-4 ]">
+						<ul class="[ list-home list-dot ]">
+							<h3 class="[ margin-bottom ]">GLOBAL INITIATIVES</h3>
+							<li>INTERNATIONAL CONFERENCE</li>
+							<li>IMPACT MAP</li>
+							<li>BAROMETER</li>
+							<li>INDEX</li>
+							<li>And more…</li>
+						</ul>						
 					</div>
-				</article>
-
-				<article class="key-concepts home-margin home-padding kad-animation" data-animation="fade-in" data-delay="0">
-					<h4 class="[ text-center ][ widget-title ]">Our Projects around the world</h4>
-					<div id="map" class="[ projects-map ][ margin-bottom ]" style="height: 350px"></div>
-				</article>
+					<div class="[ tcol-xs-12 tcol-md-5 ]">
+						<ul class="[ list-home list-dot ]">
+							<h3 class="[ margin-bottom ]">GLOBAL INITIATIVES</h3>
+							<li>Latin America Open Data Initiative</li>
+							<li>Africa Open Data Network</li>
+							<li>Caribbean Open Institute</li>
+							<li>ODECA</li>
+							<li>OD4D MENA</li>
+						</ul>	
+					</div>
+					
+				</div>
 
 				<?php if ($layout):
 					foreach ($layout as $key=>$value) {
@@ -321,19 +325,7 @@
 
 				<div class="home_blog home-margin clearfix home-padding">
 					<div class="[ tcol-xs-12 tcol-md-4 ]">
-						<?php get_template_part('templates/home/blog', 'home'); ?>
-					</div>
-					<div class="[ tcol-xs-12 tcol-md-4 ]">
-						<div id="kad-blog-grid">
-							<h3 class="hometitle">@Od4_d</h3>
-							<div id="post-85" class="blog_item postclass kad_blog_fade_in grid_item" itemscope="" itemtype="http://schema.org/BlogPosting">
-								<a class="twitter-timeline" href="https://twitter.com/OD4D" data-widget-id="678012125193723904">Tweets por el @OD4D.</a>
-								<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
-							</div> <!-- Blog Item -->
-						</div>
-					</div>
-					<div class="[ tcol-xs-12 tcol-md-4 ]">
-						<h3 class="hometitle">Links</h3>
+						<h3 class="hometitle">Recent publications</h3>
 						<?php
 							$homeLink1 = get_post(797);
 							$homeLink2 = get_post(800);
@@ -358,6 +350,17 @@
 						<a target="_blank" class="[ kad-btn kad-btn--primary kad-btn--xlarge ][ home-link--3 ]" href="<?php echo $homeLink3Link; ?>">
 							<?php echo $homeLink3Title; ?>
 						</a>
+					</div>
+					<div class="[ tcol-xs-12 tcol-md-4 ]">
+						<?php get_template_part('templates/home/blog', 'home'); ?>
+					</div>
+					<div class="[ tcol-xs-12 tcol-md-4 ]">
+						<div id="kad-blog-grid">
+							<h3 class="hometitle">@Od4_d</h3>
+							<div id="post-85" class="blog_item postclass kad_blog_fade_in grid_item" itemscope="" itemtype="http://schema.org/BlogPosting">
+							<?php echo do_shortcode( '[custom-twitter-feeds]' ); ?>							
+							</div> <!-- Blog Item -->
+						</div>
 					</div>
 				</div>
 			</div><!-- /.main -->

@@ -25,7 +25,8 @@
 				  $xyz = 0;
 				if ( $wp_query ) : while ( $wp_query->have_posts() ) : $wp_query->the_post(); ?>
 				<div class="<?php echo $itemsize;?> b_item kad_blog_item">
-					<?php get_template_part('templates/content', 'post-latest');?>
+					<div class="[ home-blog-thumb-img ]"><?php echo get_the_post_thumbnail( $post->ID, 'thumbnail' ); ?></div>
+					<div class="[ home-blog-thumb-title ]"><?php get_template_part('templates/content', 'post-latest');?></div>
 				</div>
 				<?php endwhile; else: ?>
 					<li class="error-not-found"><?php _e('Sorry, no blog entries found.', 'pinnacle');?></li>

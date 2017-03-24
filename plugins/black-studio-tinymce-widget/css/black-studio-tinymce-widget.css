@@ -114,6 +114,7 @@ div[id*="black-studio-tinymce"] .mce-wp-fullscreen {
 	z-index: 1000100 !important;
 }
 
+
 /* Fix z-index for link dialog windows (used on recent WP versions) */
 
 .wp-customizer #wp-link-backdrop {
@@ -124,6 +125,10 @@ div[id*="black-studio-tinymce"] .mce-wp-fullscreen {
 	z-index: 500020;
 }
 
+.wp-customizer .ui-autocomplete.wplink-autocomplete,
+.wp-customizer div.mce-inline-toolbar-grp {
+	z-index: 500025;
+}
 
 
 /* Change mouse cursor when waiting */
@@ -137,6 +142,14 @@ body.wait, body.wait * {
 
 #zedity_content_overlay {
 	z-index: 100000 !important;
+}
+
+
+/* Fix for menubar styling (TinyMCE Advanced) */
+.mce-menubar {
+	border-color: #e5e5e5 !important;
+	background: #fff !important;
+	border-width: 0px 0px 1px !important;
 }
 
 

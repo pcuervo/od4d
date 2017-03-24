@@ -10,7 +10,7 @@
 	<?php $this->render('error-message.php', array('error'=>$error)); ?>
 	
 	<form method="post" action="<?php echo esc_url( $export_page_url ); ?>">
-		<input type="hidden" name="<?php echo $nonce_name; ?>" value="<?php echo $nonce; ?>" />
+		<input type="hidden" name="<?php echo esc_attr($nonce_name); ?>" value="<?php echo esc_attr($nonce); ?>" />
 		<input type="hidden" name="cycloneslider_export_step" value="2" />
         <table class="form-table">
 			<tr>
@@ -18,7 +18,7 @@
 				<td><?php if($page_data['sliders']): ?>
 					<ul class="export-page-list ">
 						<?php foreach($page_data['sliders'] as $slider): ?>
-							<li><?php echo $slider; ?></li>
+							<li><?php echo esc_html($slider); ?></li>
 						<?php endforeach; ?>
 					</ul>
 					<?php endif; ?>

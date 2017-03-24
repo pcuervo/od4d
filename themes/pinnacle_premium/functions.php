@@ -223,32 +223,6 @@ function show_related_results( $name ){
 	endif;
 } //show_related_results
 
-/**
- * Show related results
- * @param $nae
-*/
-function show_highlights( $name ){
-	$projects_args = array(
-		'posts_per_page' 	=> 3,
-		'category_name'		=> $name,
-		'orderby'			=> 'rand'
-	);
-	$results_query = new WP_Query( $projects_args );
-	if ( ! empty($results_query->posts) ):
-
-		echo '<div class="row">';
-		while ( $results_query->have_posts() ) : $results_query->the_post(); ?>
-			<div class="[ col-sm-12 col-md-6 col-lg-4 ][ implementing-partner ]">
-			   	<a href="<?php echo the_permalink(); ?>">
-					<?php echo get_the_title(); ?>
-				</a>
-			</div>
-			<?php
-		endwhile; wp_reset_query();
-		echo '</div>';
-	endif;
-} //show_highlights
-
 
 /*
  * Insert dynamic taxonomy terms after a post has been created/saved.
@@ -409,14 +383,12 @@ function get_implementing_result_coordinates(){
 			$lat = get_lat( $post->ID, '_lat_meta'.$arr[$i] );
 			$lng = get_lng( $post->ID, '_lng_meta'.$arr[$i] );
 
-			if( empty( $lat ) || empty ( $lng ) ) continue;
-
 			$ip_coordinates[$post->post_name.$arr[$i]] = array(
 				'lat'					=> $lat,
 				'lng'					=> $lng,
 				'permalink'				=> get_permalink( $post->ID ),
 				'implementingPartner'	=> get_the_title(),
-			);
+				);
 		}
 
 

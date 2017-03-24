@@ -65,4 +65,3 @@
 	</span>
 	<div class="clear"></div>
 </div>
-<?php echo $debug ?>

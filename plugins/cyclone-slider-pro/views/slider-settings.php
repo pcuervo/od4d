@@ -106,5 +106,3 @@
 	<span class="note"><?php _e('Randomize order of slides on every page visit.', 'cycloneslider'); ?></span>
 	<div class="clear"></div>
 </div>
-
-<?php echo $debug ?>

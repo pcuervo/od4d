@@ -62,6 +62,9 @@ class CycloneSlider_ImportPage extends CycloneSlider_WpAdminSubPage {
 		$vars['import_page_url'] = $this->import_page_url;
 		$vars['nextgen_page_url'] = $this->nextgen_page_url;
 		$vars['error'] = get_transient( 'cycloneslider_error_import');
+		if(!class_exists('ZipArchive')){
+			$vars['error'] = __( 'ZipArchive not supported. ZipArchive is needed for Import and Export to work.', $this->textdomain );
+		}
 		delete_transient( 'cycloneslider_error_import');
 		
 		$vars['tabs'] = array(

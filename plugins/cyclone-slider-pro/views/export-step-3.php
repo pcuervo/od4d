@@ -18,11 +18,11 @@
 			<?php endforeach; ?>
 		</ul>
 		<br /><br />
-		<a class="button" href="<?php echo $export_page_url; ?>"><?php _e('Back', $textdomain); ?></a>
-		<a class="button button-primary" href="<?php echo $zip_url; ?>"><?php _e('Download', $textdomain); ?></a>
+		<a class="button" href="<?php echo esc_url($export_page_url); ?>"><?php _e('Back', $textdomain); ?></a>
+		<a class="button button-primary" href="<?php echo esc_url($zip_url); ?>"><?php _e('Download', $textdomain); ?></a>
 	<?php else: ?>
 		
 		<br /><br />
-		<a class="button" href="<?php echo $export_page_url; ?>"><?php _e('Back', $textdomain); ?></a>
+		<a class="button" href="<?php echo esc_url($export_page_url); ?>"><?php _e('Back', $textdomain); ?></a>
 	<?php endif; ?>
 </div>

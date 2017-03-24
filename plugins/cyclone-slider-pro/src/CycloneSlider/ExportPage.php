@@ -75,7 +75,12 @@ class CycloneSlider_ExportPage extends CycloneSlider_WpAdminSubPage{
 			)
 		);
 		$vars['page_data'] = $this->get_page_data();
-		
+	    $vars['error'] = get_transient( 'cycloneslider_error_export');
+	    if(!class_exists('ZipArchive')){
+		    $vars['error'] = __( 'ZipArchive not supported. ZipArchive is needed for Import and Export to work.', $this->textdomain );
+	    }
+	    delete_transient( 'cycloneslider_error_export');
+
 		switch ( $current_step ) {
 			case 1:
 				$this->render_step_1( $vars );
@@ -92,15 +97,12 @@ class CycloneSlider_ExportPage extends CycloneSlider_WpAdminSubPage{
     private function render_step_1( $vars ){
         
         $vars['sliders'] = $this->sliders;
-        $vars['error'] = get_transient( 'cycloneslider_error_export');
-		delete_transient( 'cycloneslider_error_export');
+
         $this->view->render( 'export-step-1.php', $vars );
 
     }
     private function render_step_2( $vars ){
-		
-		$vars['error'] = get_transient( 'cycloneslider_error_export');
-		delete_transient( 'cycloneslider_error_export');
+
         $this->view->render( 'export-step-2.php', $vars );
     }
 	

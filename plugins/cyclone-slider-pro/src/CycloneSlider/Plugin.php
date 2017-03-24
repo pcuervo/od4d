@@ -26,7 +26,8 @@ class CycloneSlider_Plugin implements ArrayAccess {
         return isset($this->contents[$offset]) ? $this->contents[$offset] : null;
     }
     
-    public function run(){ 
+    public function run(){
+        $this->contents = apply_filters('cyclone_slider_services', $this->contents);
         // Loop on contents
         foreach($this->contents as $key=>$content){
             if( is_callable($content) ){

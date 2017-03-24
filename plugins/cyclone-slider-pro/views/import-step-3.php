@@ -12,5 +12,5 @@
 	<?php $this->render('ok-message.php', array('ok'=>$ok)); ?>
 	
 	<br /><br />
-	<a class="button" href="<?php echo $import_page_url; ?>"><?php _e('Back', $textdomain ); ?></a>
+	<a class="button" href="<?php echo esc_url($import_page_url); ?>"><?php _e('Back', $textdomain ); ?></a>
 </div>
