@@ -1,3 +1,8 @@
+<?php
+/*
+Template Name: Region
+*/
+?>
 <?php get_header(); ?>
 	<?php get_template_part('templates/page', 'header'); ?>
 	
@@ -32,8 +37,9 @@
 				<a href="">Learn more about the AODN:</a>			
 			</div>
 		</div>
-		<div id="map" class="[ projects-map ][ margin-bottom ]" style="height: 350px"></div>
 
+
+		<div id="map" class="[ projects-map ][ margin-bottom ]" style="height: 350px"></div>
 
 
 		<?php do_action('kt_after_pagecontent'); ?>

@@ -86,7 +86,7 @@
 					<hr class="[ line-primary ]">
 				</div>
 				<div class="[ row ][ margin-bottom ][ block-highlight ] kad-animation" data-animation="fade-in" data-delay="0">
-					<div class="[ tcol-sm-offset-2  tcol-xs-12 tcol-md-4 ]">
+					<div class="[ tcol-sm-offset-2  tcol-xs-12 tcol-sm-4 ]">
 						<ul class="[ list-home list-dot ]">
 							<h4 class="[ margin-bottom ]">GLOBAL INITIATIVES</h4>
 							<li>INTERNATIONAL CONFERENCE</li>
