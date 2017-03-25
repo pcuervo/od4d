@@ -499,7 +499,6 @@ function get_related_projects( $implementing_partner, $region, $sector, $num_pos
  * @return mixed $latest_projects
  */
 function get_latest_projects( $num_posts ){
-
 	global $post;
 	$latest_projects = array();
 	$projects_args = array(
@@ -537,6 +536,41 @@ function get_result_pdfs( $post_id ){
 	}
 	return $pdfs;
 }// get_result_pdfs
+
+/**
+ * Return all recent publications
+ * @param int $num_publications
+ * @return array $recent_publications
+ */
+function get_recent_publications( $num_publications=-1 ){
+	global $post;
+
+	$recent_publications = array();
+	$args = array(
+        'post_type' 	 => 'result',
+        'post_status'	 => 'publish',
+        'posts_per_page' => $num_publications,
+        'meta_query'	 => array(
+        	'free_clause'	=> array(
+        		'key'     => '_is_recent_meta',
+        		'compare' => '=',
+        		'value'	  => 1
+        	)
+        ),
+        'orderby'		 => 'date'
+   	);
+	$recent_publications_query = new WP_Query( $args );
+    if ( ! $recent_publications_query->have_posts() ) return $recent_publications;
+
+    while ( $recent_publications_query->have_posts() ) : $recent_publications_query->the_post();
+    	$publication = array(
+    		'title' => $post->post_title,
+    		'permalink' => get_permalink( $post->ID )
+    	);
+		array_push( $recent_publications, $publication );
+	endwhile; wp_reset_postdata();
+	return $recent_publications;
+}// get_free_recent_publications
 
 
 /*------------------------------------*\

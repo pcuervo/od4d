@@ -325,31 +325,14 @@
 
 				<div class="home_blog home-margin clearfix home-padding">
 					<div class="[ tcol-xs-12 tcol-md-4 ]">
-						<h3 class="hometitle">Recent publications</h3>
-						<?php
-							$homeLink1 = get_post(797);
-							$homeLink2 = get_post(800);
-							$homeLink3 = get_post(802);
-
-							$homeLink1Title = $homeLink1->post_title;
-							$homeLink1Link = $homeLink1->post_content;
-
-							$homeLink2Title = $homeLink2->post_title;
-							$homeLink2Link = $homeLink2->post_content;
-
-							$homeLink3Title = $homeLink3->post_title;
-							$homeLink3Link = $homeLink3->post_content;
-
-						?>
-						<a target="_blank" class="[ kad-btn kad-btn--primary kad-btn--xlarge ][ home-link--1 ][ margin-bottom ]" href="<?php echo $homeLink1Link; ?>">
-							<?php echo $homeLink1Title; ?>
-						</a>
-						<a target="_blank" class="[ kad-btn kad-btn--primary kad-btn--xlarge ][ home-link--2 ][ margin-bottom ]" href="<?php echo $homeLink2Link; ?>">
-							<?php echo $homeLink2Title; ?>
-						</a>
-						<a target="_blank" class="[ kad-btn kad-btn--primary kad-btn--xlarge ][ home-link--3 ]" href="<?php echo $homeLink3Link; ?>">
-							<?php echo $homeLink3Title; ?>
-						</a>
+						<h3 class="hometitle">Recent Publications</h3>
+						<?php $recent_publications = get_recent_publications( 3 ) ?>
+						<?php foreach ( $recent_publications as $publication ) : ?>
+							<?php var_dump( $publication ); ?>
+							<a target="_blank" class="[ kad-btn kad-btn--primary kad-btn--xlarge ][ home-link--1 ][ margin-bottom ]" href="<?php echo $publication['permalink']; ?>">
+								<?php echo $publication['title']; ?>
+							</a>
+						<?php endforeach; ?>
 					</div>
 					<div class="[ tcol-xs-12 tcol-md-4 ]">
 						<?php get_template_part('templates/home/blog', 'home'); ?>

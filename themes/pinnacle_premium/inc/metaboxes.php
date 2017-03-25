@@ -16,6 +16,7 @@ add_action('add_meta_boxes', function(){
 			add_meta_box( 'institution', 'Institution', 'metabox_institution', 'result', 'advanced', 'high' );
 			add_meta_box( 'city', 'City', 'metabox_city', 'result', 'advanced', 'high' );
 			add_meta_box( 'url', 'URL', 'metabox_url', 'result', 'advanced', 'high' );
+			add_meta_box( 'is_recent', 'Recent Publications', 'metabox_is_recent', 'result', 'advanced', 'high' );
 		case 'implementing_partner':
 			add_meta_box( 'official_website', 'Official Website Url', 'metabox_official_website', 'implementing_partner', 'advanced', 'high' );
 			add_meta_box( 'rss_link', 'RSS Link', 'metabox_rss_link', 'implementing_partner', 'advanced', 'high' );
@@ -141,6 +142,16 @@ function metabox_url( $post ){
 	echo "<input type='text' class='[ widefat ]' name='_url_meta' value='$url'>";
 }// metabox_url
 
+function metabox_is_recent( $post ){
+	$is_recent = get_post_meta($post->ID, '_is_recent_meta', true);
+
+	wp_nonce_field(__FILE__, '_is_recent_meta_nonce');
+
+	$checked_recent = $is_recent == 1 ? 'checked' : '';
+	echo "<input id='free' type='checkbox' class='[ widefat ]' name='_is_recent_meta' value=1 $checked_recent />";
+	echo "<label for='free'>Show in Recent Publications</label><br /><br />";
+}// metabox_url
+
 function metabox_official_website( $post ){
 	$official_website = get_post_meta($post->ID, '_official_website_meta', true);
 
@@ -242,6 +253,12 @@ add_action('save_post', function( $post_id ){
 		update_post_meta($post_id, '_twitter_username_meta', $_POST['_twitter_username_meta']);
 		update_post_meta($post_id, '_widget_id_meta', $_POST['_widget_id_meta']);
 
+	}
+
+	if ( isset($_POST['_is_recent_meta']) and check_admin_referer( __FILE__, '_is_recent_meta_nonce') ){
+		update_post_meta($post_id, '_is_recent_meta', $_POST['_is_recent_meta']);
+	} else {
+		update_post_meta($post_id, '_is_recent_meta', 0);
 	}
 
 });
