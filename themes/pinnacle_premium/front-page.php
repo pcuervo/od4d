@@ -328,7 +328,6 @@
 						<h3 class="hometitle">Recent Publications</h3>
 						<?php $recent_publications = get_recent_publications( 3 ) ?>
 						<?php foreach ( $recent_publications as $publication ) : ?>
-							<?php var_dump( $publication ); ?>
 							<a target="_blank" class="[ kad-btn kad-btn--primary kad-btn--xlarge ][ home-link--1 ][ margin-bottom ]" href="<?php echo $publication['permalink']; ?>">
 								<?php echo $publication['title']; ?>
 							</a>
