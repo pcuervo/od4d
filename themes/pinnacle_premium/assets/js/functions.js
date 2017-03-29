@@ -40,7 +40,6 @@ function filterIsotope( container, item ){
 
     $('.filtros').on( 'click', '.button-group a', function() {
         var $this = $(this);
-        console.log($this);
         // get group key
         var $buttonGroup = $this.parents('.button-group');
         var filterGroup = $buttonGroup.attr('data-filter-group');
@@ -64,7 +63,6 @@ function filterIsotope( container, item ){
 }// filterIsotope
 
 function sortResults( container, attribute, order ){
-    console.log(attribute);
     $( container ).isotope({
       sortBy : attribute,
       sortAscending : order == 'asc' ? true : false
@@ -111,7 +109,7 @@ function createEmptyMap( id ){
 /**
  * Add Markers of Implementing Partners to an empty map
 **/
-function initMapProjects(){
+function initMapProjects( lat='', lng='' ){
 
     var map = createEmptyMap( 'map' );
     var markers = [];
@@ -126,8 +124,12 @@ function initMapProjects(){
         createInfoWindow( map, marker, coord.implementingPartner, coord.permalink );
         markers.push( marker );
     });
-    autoCenter( map, markers );
-
+    if( lat == '' && lng == '' ){
+        autoCenter( map, markers );   
+    } else {
+        map.setCenter( {lat: lat, lng: lng} );
+        map.setZoom(3);
+    } 
 }// initMapProjects
 
 function addAllMarkersPartners( lat='', lng='' ){
@@ -183,7 +185,7 @@ function autoCenter( map, markers ) {
         if (map.getZoom() > 2){
             map.setZoom();
         }else{
-           map.setZoom(2);
+            map.setZoom(1);
         }
         google.maps.event.removeListener(listener);
     });

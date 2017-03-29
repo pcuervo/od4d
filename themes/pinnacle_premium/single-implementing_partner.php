@@ -42,18 +42,20 @@
 						)
 					)
 				);
-
 				$query_news = new WP_Query($args_news);
-				if( have_posts() ) : while ( $query_news->have_posts() ) : $query_news->the_post(); ?>
+				if( have_posts() ) : ?>
 					<h4 class="[ hometitle ]">Highlights</h4>
 					<div class="row">
-						<div class="[ col-sm-12 col-md-6 col-lg-4 ][ news-item ]">
-							<a href="<?php echo the_permalink(); ?>">
-								<?php echo get_the_title(); ?>
-							</a>
-						</div>
-					</div>
+					<?php while ( $query_news->have_posts() ) : $query_news->the_post(); ?>	
+						
+							<div class="[ col-sm-12 col-md-6 col-lg-4 ][ news-item ]">
+								<a href="<?php echo the_permalink(); ?>">
+									<?php echo get_the_title(); ?>
+								</a>
+							</div>
+						
 				<?php endwhile; endif; wp_reset_query(); ?>
+				</div>
 			</div>
 			<aside class="[ tcol-ss-12 tcol-md-4 ]">
 				<?php if ( $website_link != '' ){ ?>

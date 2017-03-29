@@ -15,7 +15,7 @@ Template Name: Region
 			</div>
 			<?php do_action('kt_after_pagecontent'); ?>
 
-			<div id="map_partners" class="[ partner-map ][ margin-bottom ]" style="height: 430px"></div>
+			<div id="map" class="[ partner-map ][ margin-bottom ]" style="height: 430px"></div>
 
 		</div>
 
