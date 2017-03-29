@@ -41,9 +41,24 @@
 	overflow:hidden;
 }
 
+.relative{ position: relative; }
+.absolute{ position: absolute; }
+
 .bold{ font-weight: bold; }
 
+.center-full{
+	top: 50%;
+	left: 50%;
+	margin-right: -50%;
+	transform: translate(-50%, -50%);
+}
 
+.transition-ease-out{
+	transition: all .6s ease-out;
+    -webkit-transition: all .6s ease-out;
+    -moz-transition: all .6s ease-out;
+    -o-transition: all .6s ease-out;
+}
 
 
 /*------------------------------------*\
@@ -110,7 +125,13 @@ aside{ padding-top: 20px; }
     color: #fff;
 }
 
-
+.kad-title-recent-publish{
+    padding: 10px;
+    margin-top: 0;
+    color: #fff;
+    font-size: 22px;
+    line-height:28px
+}
 
 
 
@@ -324,13 +345,15 @@ ul.list-dot li::before {
   display: inline-block; width: 1em;
   margin-left: -1em;
 }
-ul.list-home li{ 
+ul.list-home li, ul.list-home li a{ 
 	font-family: Roboto;
     font-size: 20px;
-    line-height: 28px;
+    line-height: 32px;
     letter-spacing: 1px;
     color: #01a5b1;
 }
+
+ul.list-home li a:hover{ color: #f46721 }
 
 ul.list-highlights li{ 
 	margin-bottom: 16px;
@@ -345,14 +368,20 @@ hr.line-primary {
 	border-color: #f3690e;
 	border-width: 2.5px;
     width: 150px;
-    margin-bottom: 0px;
+/*    margin-bottom: 0px;*/
 }
 
 /*------------------------------------*\
     #CONTENT USER 
 \*------------------------------------*/
 
-@media(min-width:1000px){.content-regions-right{ padding-right: 60px}}
+.content-regions-right li a,
+.content-regions-right p a{ 
+	display: inline;
+}
+
+@media(min-width:1000px){.content-regions-right{ padding-right: 60px; }}
+.content-regions-right{ margin-bottom: 30px; }
 .content-regions-left{ 
 	background: #dbf3f5;
 	padding: 40px 20px;
@@ -371,4 +400,28 @@ hr.line-primary {
 
 .content-regions-left h2, .content-regions-left p{ 
 	margin-bottom: 20px;
+}
+
+.content-initiative .panel-grid:first-child{
+	text-align: center;
+	font-size: 18px !important;
+	line-height: 24px !important;
+}
+
+.content-initiative .panel-grid:first-child .textwidget{ padding: 20px; }
+
+.content-initiative .panel-grid:first-child:after{ 
+	content: '';
+    width: 150px;
+    height: 2.5px;
+    margin-top: 40px;
+    display: block;
+    margin: 0 auto;
+	background-color: #f46721;
+}
+
+#grid-initiatives h5{
+    font-size: 14px;
+    line-height: 20px;
+    font-weight: 300;
 }
