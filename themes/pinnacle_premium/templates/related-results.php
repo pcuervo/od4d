@@ -1,6 +1,7 @@
 <?php
 	
 	$pagename = get_query_var('pagename'); 
+	echo $pagename;
 	switch ( $pagename ) {
 		case 'catalyzing-action':
 			$tax_term = array( 'agenda-setting', 'standards' );
