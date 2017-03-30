@@ -1,0 +1,1 @@
+[29-Mar-2017 02:11:49 UTC] PHP Notice:  Undefined property: stdClass::$theme in /Users/cuervo/Documents/sitios/od4d/wp-admin/includes/class-wp-automatic-updater.php on line 275

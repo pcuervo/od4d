@@ -14,7 +14,7 @@ Template Name: Initiative
 
 			<div class="[ tcol-ss-12 tcol-lg-offset-2 tcol-lg-8  ]">
 				<?php the_post_thumbnail( 'full', array( 'class' => '[ margin-bottom ][ image-responsive image-centered ][ padding ]' ) ); ?>
-				<div class="[ margin-bottom ]">
+				<div class="[ content-initiative ][ margin-bottom ]">
 					<?php the_content(); ?>
 				</div>
 				<?php get_template_part('templates/related-results'); ?>

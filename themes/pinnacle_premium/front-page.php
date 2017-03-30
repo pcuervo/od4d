@@ -87,24 +87,23 @@
 					<hr class="[ line-primary ]">
 				</div>
 				<div class="[ row ][ margin-bottom ][ block-highlight ] kad-animation" data-animation="fade-in" data-delay="0">
-					<div class="[ tcol-sm-offset-2  tcol-xs-12 tcol-sm-4 ]">
+					<div class="[ tcol-xs-12 tcol-sm-4 tcol-sm-offset-2 ]">
 						<ul class="[ list-home list-dot ]">
-							<h3 class="[ margin-bottom ]">GLOBAL INITIATIVES</h3>
-							<li>INTERNATIONAL CONFERENCE</li>
-							<li>IMPACT MAP</li>
-							<li>BAROMETER</li>
-							<li>INDEX</li>
-							<li>And more…</li>
+							<h3 class="[ margin-bottom ]">Global Initiatives</h3>
+							<li><a class="[ transition-ease-out ]" href="<?php echo home_url(); ?>/iodc">International Conference</a></li>
+							<li><a class="[ transition-ease-out ]" href="<?php echo home_url(); ?>/impact-map">Open Data Impact Map</a></li>
+							<li><a class="[ transition-ease-out ]" href="<?php echo home_url(); ?>/odb">Open Data Barometer</li>
+							<li><a class="[ transition-ease-out ]" href="<?php echo home_url(); ?>/odindex">Open Data Index</a></li>
+							<li><a class="[ transition-ease-out ]" href="<?php echo home_url(); ?>/initiatives">And more…</a></li>
 						</ul>						
 					</div>
 					<div class="[ tcol-xs-12 tcol-md-5 ]">
 						<ul class="[ list-home list-dot ]">
-							<h3 class="[ margin-bottom ]">GLOBAL INITIATIVES</h3>
-							<li>Latin America Open Data Initiative</li>
-							<li>Africa Open Data Network</li>
-							<li>Caribbean Open Institute</li>
-							<li>ODECA</li>
-							<li>OD4D MENA</li>
+							<h3 class="[ margin-bottom ]">Regional Hubs</h3>
+							<li><a class="[ transition-ease-out ]" href="<?php echo home_url(); ?>/latin-america">Latin America Open Data Initiative</a></li>
+							<li><a class="[ transition-ease-out ]" href="<?php echo home_url(); ?>/africa">Africa Open Data Network</a></li>
+							<li><a class="[ transition-ease-out ]" href="<?php echo home_url(); ?>/caribbean">Caribbean Open Institute</a></li>
+							<li><a class="[ transition-ease-out ]" href="<?php echo home_url(); ?>/eastern-europe-central">Open Data in East Europe and Central Asia</a></li>
 						</ul>	
 					</div>
 					
@@ -328,8 +327,8 @@
 						<h3 class="hometitle">Recent Publications</h3>
 						<?php $recent_publications = get_recent_publications( 3 ) ?>
 						<?php foreach ( $recent_publications as $publication ) : ?>
-							<a target="_blank" class="[ kad-btn kad-btn--primary kad-btn--xlarge ][ home-link--1 ][ margin-bottom ]" href="<?php echo $publication['permalink']; ?>">
-								<?php echo $publication['title']; ?>
+							<a target="_blank" class="[ kad-btn kad-btn--primary kad-btn--xlarge ][ home-link--1 ][ margin-bottom ][ relative ]" href="<?php echo $publication['permalink']; ?>">
+								<h4 class="[ center-full ][ kad-title-recent-publish ][ absolute ]"><?php echo $publication['title']; ?></h4>
 							</a>
 						<?php endforeach; ?>
 					</div>
