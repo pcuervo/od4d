@@ -1,7 +1,6 @@
 <?php
 	
 	$pagename = get_query_var('pagename'); 
-	echo $pagename;
 	switch ( $pagename ) {
 		case 'catalyzing-action':
 			$taxonomy = 'focus_areas_of_impact';
