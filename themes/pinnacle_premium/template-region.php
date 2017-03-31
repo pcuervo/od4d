@@ -16,8 +16,8 @@ Template Name: Region
 			<?php do_action('kt_after_pagecontent'); ?>
 
 			<div id="map" class="[ partner-map ][ margin-bottom ]" style="height: 430px"></div>
-
+	
 		</div>
-
+		<?php get_template_part('templates/related-results'); ?>
 	</div><!-- /.main -->
   <?php get_footer(); ?>

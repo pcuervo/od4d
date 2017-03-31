@@ -1,18 +1,47 @@
 <?php
 	
 	$pagename = get_query_var('pagename'); 
+	echo $pagename;
 	switch ( $pagename ) {
 		case 'catalyzing-action':
+			$taxonomy = 'focus_areas_of_impact';
 			$tax_term = array( 'agenda-setting', 'standards' );
 			break;
 		case 'support-to-governments':
+			$taxonomy = 'focus_areas_of_impact';
 			$tax_term = 'policy';
 			break;
 		case 'scale-effective-use':
+			$taxonomy = 'focus_areas_of_impact';
 			$tax_term = 'innovation';
 			break;
 		case 'monitor-impact':
+			$taxonomy = 'focus_areas_of_impact';
 			$tax_term = 'research';
+			break;
+		case 'asia':
+			$taxonomy = 'region';
+			$tax_term = 'asia';	
+			break;
+		case 'africa':
+			$taxonomy = 'region';
+			$tax_term = 'africa';	
+			break;
+		case 'latin-america':
+			$taxonomy = 'region';
+			$tax_term = 'latin-america';	
+			break;
+		case 'eastern-europe-central':
+			$taxonomy = 'region';
+			$tax_term = 'eastern-europe-central-asia';	
+			break;
+		case 'caribbean':
+			$taxonomy = 'region';
+			$tax_term = 'caribbean';	
+			break;
+		case 'middle-east-and-northern-africa':
+			$taxonomy = 'region';
+			$tax_term = 'middle-east-and-northern-africa';	
 			break;
 	}
 
@@ -20,7 +49,7 @@
 		'post_type' 		=> 'result',
 		'tax_query' => array(
 			array(
-				'taxonomy' => 'focus_areas_of_impact',
+				'taxonomy' => $taxonomy,
 				'field'    => 'slug',
 				'terms'    => $tax_term,
 			),
