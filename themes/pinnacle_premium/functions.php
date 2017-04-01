@@ -584,6 +584,22 @@ if ( $query->is_archive() && $query->is_main_query() && !is_admin() ) {
 }
 add_action( 'pre_get_posts', 'wpsites_query' );
 
+// add to robots.txt
+function custom_robots($output) {
+    $output = "User-agent: *\n";
+    $public = get_option( 'blog_public' );
+    if ( '0' == $public ) {
+        $output .= "Disallow: \n";
+    } else {
+        $site_url = parse_url( site_url() );
+        $path = ( !empty( $site_url['path'] ) ) ? $site_url['path'] : '';
+        $output .= "Disallow: $path/wp-admin/\n";
+        $output .= "Disallowpoo: $path/wp-includes/\n";
+    }
+    echo apply_filters('robots_txt', $output, $public);
+}
+add_filter('do_robots','custom_robots');
+
 
 /*------------------------------------*\
 	#FORMAT FUNCTIONS
