@@ -8,7 +8,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta name="robots" content="index,follow"/>
 	<meta name="description" content="Open Data For Development is the leading global partnership to advance the creation of locally-driven and sustainable open data ecosystems around the world." >
-	<meta name="keywords" content="open data for development, open data, data, od4d, open data charter, open data network, idrc, crdi, sustainable development, advance, innovation, innovative platforms, network,innovative applications, open data research, open data roadmap, international development, world, open data ecosystems, open data regions, open data initiatives, open data policies, open data ecosystems">
+	<meta name="keywords" content="open data for development, open data, data, od4d, open data charter, open data network, idrc, crdi, sustainable development, advance, innovation, open data research, open data roadmap, international development, world, open data ecosystems, open data regions, open data initiatives, open data policies, open data ecosystems">
 	<!-- Google -->
 	<meta name="google-site-verification" content="DZ1mnF9xh57A3mJuss9PImOCOYELqUTtEjMDurW5-X4" />
 	<!-- Canonical URL -->
@@ -28,9 +28,9 @@
 	<meta property="og:title" content="<?php bloginfo('name'); ?>" />
 	<meta name="og:description" content="OD4D is the leading global partnership to advance the creation of locally-driven and sustainable open data ecosystems around the world." />
 
-	<meta property="og:image" content="<?php echo THEMEPATH; ?>images/Od4_d.png">
-	<meta property="og:image:url" content="<?php echo site_url(); ?>" />   
-	<meta property="og:image:secure_url" content="<?php echo THEMEPATH; ?>images/Od4_d.png"/>
+	<meta property="og:image" content="<?php echo THEMEPATH; ?>images/od4d.png">
+	<meta property="og:image:url" content="<?php echo THEMEPATH; ?>images/od4d.png"/>   
+	<meta property="og:image:secure_url" content="<?php echo THEMEPATH; ?>images/od4d.png"/>
 	<meta property="og:image:type" content="image/png"/>
 	<meta property="og:image:width" content="210" />
 	<meta property="og:image:height" content="110" />
