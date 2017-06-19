@@ -12,7 +12,7 @@
 	<!-- Google -->
 	<meta name="google-site-verification" content="DZ1mnF9xh57A3mJuss9PImOCOYELqUTtEjMDurW5-X4" />
 	<!-- Canonical URL -->
-	<link rel="canonical" href="http://od4d.net/" />
+	<link rel="canonical" href="http://od4d.com/" />
 	<!-- Compatibility -->
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 	<meta http-equiv="cleartype" content="on">

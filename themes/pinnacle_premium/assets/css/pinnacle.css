@@ -410,7 +410,13 @@ hr.line-primary {
 
 .content-initiative .panel-grid:first-child .textwidget{ padding: 20px; }
 
-.content-initiative .panel-grid:first-child:after{ 
+.content-home-description{ 
+	text-align: center; 
+	margin-top: 30px;
+	margin-bottom: 30px;
+}
+
+.content-initiative .panel-grid:first-child:after, .content-home-description:after{ 
 	content: '';
     width: 150px;
     height: 2.5px;
@@ -424,4 +430,32 @@ hr.line-primary {
     font-size: 14px;
     line-height: 20px;
     font-weight: 300;
+}
+
+.content-home-description h1, .content-home-description h2{
+	font-size: 18px !important;
+	font-family: 'Lora';
+	line-height: 1.5em;
+	margin-top: 10px !important;
+	margin-bottom: 10px !important;
+}
+.content-home-description h1{ font-weight: bold !important; }
+
+.content-home-list li::before {
+  content: "•"; color: #f46721;
+  display: inline-block; width: 1em;
+  margin-left: -1em;
+}
+
+.content-home-list a, .content-home-list li{ 
+	font-family: Roboto;
+    font-size: 20px;
+    line-height: 32px;
+    letter-spacing: 1px;
+    color: #01a5b1;
+    list-style: none;
+	transition: all .6s ease-out;
+    -webkit-transition: all .6s ease-out;
+    -moz-transition: all .6s ease-out;
+    -o-transition: all .6s ease-out;
 }

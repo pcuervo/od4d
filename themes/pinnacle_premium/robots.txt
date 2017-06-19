@@ -1,3 +1,3 @@
 User-Agent: *
 Disallow:  
-http://od4d.net/sitemap.xml
+http://od4d.com/sitemap.xml

@@ -77,7 +77,7 @@
 			<div class="col-md-3 col-sm-6 footercol3">
 				<div id="text-4" class="widget widget_text [ text-left ]">
 					<div class="textwidget">
-						<a href="mailto:contact@od4d.net">contact@od4d.net</a>
+						<a href="mailto:contact@od4d.com">contact@od4d.com</a>
 					</div>
 				</div>
 			</div>

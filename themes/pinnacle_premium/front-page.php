@@ -81,33 +81,7 @@
 					$layout = array("block_one" => "block_one", "block_four" => "block_four");
 				} ?>
 
-				<div class="[ home-description ][ text-center ][ margin-bottom ] kad-animation" data-animation="fade-in" data-delay="0">
-					<h1 class="[ inline ][ h4 bold ]">Open Data for Development (OD4D)</h1>
-					<h2 class="[ h4 ]">is the leading global partnership to advance the creation of locally-driven and sustainable open data ecosystems around the world.</h2>
-					<hr class="[ line-primary ]">
-				</div>
-				<div class="[ row ][ margin-bottom ][ block-highlight ] kad-animation" data-animation="fade-in" data-delay="0">
-					<div class="[ tcol-xs-12 tcol-sm-4 tcol-sm-offset-2 ]">
-						<ul class="[ list-home list-dot ]">
-							<h3 class="[ margin-bottom ]">Global Initiatives</h3>
-							<li><a class="[ transition-ease-out ]" href="<?php echo home_url(); ?>/iodc">International Conference</a></li>
-							<li><a class="[ transition-ease-out ]" href="<?php echo home_url(); ?>/impact-map">Open Data Impact Map</a></li>
-							<li><a class="[ transition-ease-out ]" href="<?php echo home_url(); ?>/odb">Open Data Barometer</li>
-							<li><a class="[ transition-ease-out ]" href="<?php echo home_url(); ?>/odindex">Open Data Index</a></li>
-							<li><a class="[ transition-ease-out ]" href="<?php echo home_url(); ?>/initiatives">And more…</a></li>
-						</ul>						
-					</div>
-					<div class="[ tcol-xs-12 tcol-md-5 ]">
-						<ul class="[ list-home list-dot ]">
-							<h3 class="[ margin-bottom ]">Regional Hubs</h3>
-							<li><a class="[ transition-ease-out ]" href="<?php echo home_url(); ?>/latin-america">Latin America Open Data Initiative</a></li>
-							<li><a class="[ transition-ease-out ]" href="<?php echo home_url(); ?>/africa">Africa Open Data Network</a></li>
-							<li><a class="[ transition-ease-out ]" href="<?php echo home_url(); ?>/caribbean">Caribbean Open Institute</a></li>
-							<li><a class="[ transition-ease-out ]" href="<?php echo home_url(); ?>/eastern-europe-central">Open Data in East Europe and Central Asia</a></li>
-						</ul>	
-					</div>
-					
-				</div>
+				<?php the_content(); ?>
 
 				<?php if ($layout):
 					foreach ($layout as $key=>$value) {
